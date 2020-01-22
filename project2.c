@@ -63,11 +63,6 @@ int main()
     }
     printf("After sort: \n");
     qsort(job_array, NUM_JOBS, sizeof(job), compare_jobs);
-    /*int j = 0;
-    for (j = 0; j < NUM_JOBS; ++j)
-    {
-        printf("Job =  %.1f, %.1f, %d, %.0f, %.0f, %.0f \n", job_array[j].arrival_time, job_array[j].expected_run_time, job_array[j].priority, job_array[j].start_time, job_array[j].accum_run_time, job_array[j].end_time);       
-    }*/
     
     assign_job_nums(job_array);
     print_all_job_fields(job_array);
