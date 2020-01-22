@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define NUM_JOBS 100
+#define NUM_JOBS 10
 
 typedef struct
 {
@@ -71,6 +71,5 @@ int main()
     
     assign_job_nums(job_array);
     print_all_job_fields(job_array);
-    printf("%d",check_quantum_gaps(job_array));
     return 0;
 }
