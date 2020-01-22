@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define NUM_JOBS 130
+#define NUM_JOBS 100
 
 typedef struct
 {
@@ -44,29 +44,9 @@ void print_all_job_fields(job * job_array)
     }
 }
 
-/*Returns 1 if gap of 2 quanta exists in job array*/
-int check_quantum_gaps(job * job_array)
-{
-    int i = 0;
-    for (i = 0; i < NUM_JOBS - 1; ++i)
-    {
-        //printf("i = %d \n",i);
-        //printf("%f \n", job_array[i].arrival_time);
-        float max_interval = job_array[i].arrival_time + job_array[i].expected_run_time;
-        if (job_array[i+1].arrival_time - max_interval > 2.0)
-        {
-            printf("End time of job %d = %f", job_array[i].jobnum, max_interval);
-            printf(" Arrival time of job %d  = %f", job_array[i+1].jobnum, job_array[i+1].arrival_time);
-            printf(" CPU Idle = %f \n", job_array[i+1].arrival_time - max_interval);
-            return 1;
-        }
-    }
-    return 0;
-}
-
 int main()
 {
-    int seed = 10;
+    int seed = 10173;
     srand(seed);
     job job_array[NUM_JOBS];
     int i = 0;
@@ -83,11 +63,12 @@ int main()
     }
     printf("After sort: \n");
     qsort(job_array, NUM_JOBS, sizeof(job), compare_jobs);
-    int j = 0;
+    /*int j = 0;
     for (j = 0; j < NUM_JOBS; ++j)
     {
         printf("Job =  %.1f, %.1f, %d, %.0f, %.0f, %.0f \n", job_array[j].arrival_time, job_array[j].expected_run_time, job_array[j].priority, job_array[j].start_time, job_array[j].accum_run_time, job_array[j].end_time);       
-    }
+    }*/
+    
     assign_job_nums(job_array);
     print_all_job_fields(job_array);
     printf("%d",check_quantum_gaps(job_array));
