@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define NUM_JOBS 10
+#define NUM_JOBS 20
 
 typedef struct
 {
@@ -40,8 +40,40 @@ void print_all_job_fields(job * job_array)
     int j = 0;
     for (j = 0; j < NUM_JOBS; ++j)
     {
-        printf("Job =  %.1f, %.1f, %d, %.0f, %.0f, %.0f %d \n", job_array[j].arrival_time, job_array[j].expected_run_time, job_array[j].priority, job_array[j].start_time, job_array[j].accum_run_time, job_array[j].end_time, job_array[j].jobnum); 
+        printf("Job =  %.1f, %.1f, %d, %.0f, %.0f, %.0f, %d \n", job_array[j].arrival_time, job_array[j].expected_run_time, job_array[j].priority, job_array[j].start_time, job_array[j].accum_run_time, job_array[j].end_time, job_array[j].jobnum); 
     }
+}
+
+int check_quantum_gaps(job * job_array)
+{
+    float left = job_array[0].arrival_time;
+    float right = job_array[0].arrival_time + job_array[0].expected_run_time;
+    int i;
+    for (i = 0; i < NUM_JOBS; ++i)
+    {
+       if (job_array[i].arrival_time > left && (job_array[i].arrival_time + job_array[i].expected_run_time) < right)
+       {
+           printf ("%d job is completely contained \n",i);
+           //job is completely contained
+           left = job_array[i].arrival_time;
+       }
+       else if (job_array[i].arrival_time > left && (job_array[i].arrival_time) > right)
+       {
+           printf("%d we have a gap \n", i);
+           if (job_array[i].arrival_time - right > 2.0)
+           {
+               printf("Gap = %f \n",job_array[i].arrival_time - right);
+               printf("Gap too large. Regenerate Jobs. \n");
+               return 1;
+           }
+       }
+       else if (job_array[i].arrival_time > left && job_array[i].arrival_time + job_array[i].expected_run_time > right)
+       {
+           printf("%d job finishes after old right. update right \n", i);
+           right = job_array[i].arrival_time;
+       }
+    }
+    return 0;
 }
 
 int main()
@@ -66,5 +98,6 @@ int main()
     
     assign_job_nums(job_array);
     print_all_job_fields(job_array);
+    printf("%d",check_quantum_gaps(job_array));
     return 0;
 }
