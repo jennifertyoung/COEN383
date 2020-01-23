@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define NUM_JOBS 20
+#define NUM_JOBS 90
 
 typedef struct
 {
@@ -44,34 +44,45 @@ void print_all_job_fields(job * job_array)
     }
 }
 
+//returns 1 if CPU is idle for 2 or more quanta, 0 otherwise.
 int check_quantum_gaps(job * job_array)
 {
-    float left = job_array[0].arrival_time;
-    float right = job_array[0].arrival_time + job_array[0].expected_run_time;
+    int left_job_index = 0;
+    int right_job_index = 1;
     int i;
-    for (i = 0; i < NUM_JOBS; ++i)
+    for (i = 1; i < NUM_JOBS; ++i)
     {
-       if (job_array[i].arrival_time > left && (job_array[i].arrival_time + job_array[i].expected_run_time) < right)
-       {
-           printf ("%d job is completely contained \n",i);
-           //job is completely contained
-           left = job_array[i].arrival_time;
-       }
-       else if (job_array[i].arrival_time > left && (job_array[i].arrival_time) > right)
-       {
-           printf("%d we have a gap \n", i);
-           if (job_array[i].arrival_time - right > 2.0)
-           {
-               printf("Gap = %f \n",job_array[i].arrival_time - right);
-               printf("Gap too large. Regenerate Jobs. \n");
-               return 1;
-           }
-       }
-       else if (job_array[i].arrival_time > left && job_array[i].arrival_time + job_array[i].expected_run_time > right)
-       {
-           printf("%d job finishes after old right. update right \n", i);
-           right = job_array[i].arrival_time;
-       }
+        right_job_index = i;
+        float left_arrival_time = job_array[left_job_index].arrival_time;
+        float left_finish_time = job_array[left_job_index].arrival_time + job_array[left_job_index].expected_run_time;
+        float right_arrival_time = job_array[i].arrival_time;
+        float right_finish_time = job_array[i].arrival_time + job_array[i].expected_run_time;
+        if (right_finish_time <= left_finish_time)
+        {
+            //right job is completely contained
+            continue;
+        }
+        else if (right_arrival_time <= left_finish_time)
+        {
+            //partial overlap
+            left_job_index = i;
+            continue;
+        }
+        else
+        {
+            //we have a gap. Adding 0.5 and casting to int is like the ceiling. Right arrival time won't be able to start until next quantum.
+            //Need to take ceiling of left finish time because CPU was not idle during part of this quantum
+            int gap_quanta = (int)(right_arrival_time+0.5) - (int)(left_finish_time+0.5);
+            printf("Left Job Index = %d, Right Job Index = %d \n", left_job_index, right_job_index);
+            printf("Gap = %d \n",gap_quanta);
+            if (gap_quanta >= 2)
+            {
+                printf("Generate more jobs!\n");
+                return 1;
+            }
+            //gap small enough
+            left_job_index = i;
+        }
     }
     return 0;
 }
