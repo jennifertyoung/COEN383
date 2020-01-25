@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #define NUM_JOBS 90
 
 typedef struct
@@ -72,7 +73,7 @@ int check_quantum_gaps(job * job_array)
         {
             //we have a gap. Adding 0.5 and casting to int is like the ceiling. Right arrival time won't be able to start until next quantum.
             //Need to take ceiling of left finish time because CPU was not idle during part of this quantum
-            int gap_quanta = (int)(right_arrival_time+0.5) - (int)(left_finish_time+0.5);
+            int gap_quanta = (int) ceil(right_arrival_time) - (int) ceil(left_finish_time);
             printf("Left Job Index = %d, Right Job Index = %d \n", left_job_index, right_job_index);
             printf("Gap = %d \n",gap_quanta);
             if (gap_quanta >= 2)
