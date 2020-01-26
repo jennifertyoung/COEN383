@@ -19,13 +19,8 @@ int get_unfinished_job_index_range(int quantum, int *lower, int *upper);
 //Output: job index for new jobs that have arrived and are available for scheduling in this quantum
 //This differs from get_unfinished_job_index_range because it only returns newly arrived jobs
 //Returned value 0 means range returned is valid, otherwise range returned is undefined
+//Only valid at the start of the quantum before any new jobs have been scheduled
 int get_new_job_index_range(int quantum, int *lower_new, int *upper_new);
-
-//Input: specified quantum number
-//Output: job index for jobs that previously arrived and are not done. the unfinished jobs, not including
-//newly arrived jobs
-//Returned value 0 means range returned is valid, otherwise range returned is undefined
-int get_prior_job_index_range(int quantum, int *lower_prior, int *upper_prior);
 
 //Returns 1 if the job specified by job_index is done, 0 otherwise
 int is_job_done(int job_index);
@@ -42,7 +37,8 @@ int is_job_started(int job_index);
 int sched_job_at_quantum(int job_index, int quantum);
 
 //Input: Job index
-//Output: Remaining run time for that job
+//Output: Remaining run time for that job. Returns 0 if remaining time is valid, otherwise
+//remaining time is undefined
 int get_remaining_run_time(int job_index, float * rem_time);
 
 //Utility function that will prevent any new jobs from being scheduled after it is called

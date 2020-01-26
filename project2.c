@@ -142,6 +142,7 @@ int get_unfinished_job_index_range(int quantum, int *lower, int *upper)
    return 0;
 }
 
+//Only valid at the start of the quantum before any new jobs have been scheduled
 int get_new_job_index_range(int quantum, int *lower_new, int *upper_new)
 {
    if ( (highest_job_index_to_eval[quantum-1]+1) > highest_job_index_to_eval[quantum])
@@ -156,6 +157,45 @@ int get_new_job_index_range(int quantum, int *lower_new, int *upper_new)
    }
    return 0;
 }
+
+int is_job_done(int job_index)
+{
+   if (job_index < 0 || job_index >= NUM_JOBS)
+   {
+       return 0;
+   }
+   else
+   {
+       return job_array[job_index].done;
+   }
+}
+
+int is_job_started(int job_index)
+{
+   if (job_index < 0 || job_index >= NUM_JOBS)
+   {
+       return 0;
+   }
+   else
+   {
+       return job_array[job_index].started;
+   }
+}
+
+int get_remaining_run_time(int job_index, float *rem_time)
+{
+   if (job_index < 0 || job_index >= NUM_JOBS)
+   {
+       printf("Invalid job index to get remaining run time %d", job_index);
+       return (-__LINE__);
+   }
+   else
+   {
+       *rem_time = job_array[job_index].expected_run_time - job_array[job_index].accum_run_time;
+   }
+   return 0;
+}
+
 typedef enum _scheduling_algorithm_e
 {
     fcfs,
@@ -482,6 +522,22 @@ int main()
        {
           printf("Quantum: %d Status: %d \n", quantum_range, return_val);
        }
+    }
+
+    float rem_time;
+    int jobi = 0;
+    for (jobi = 0; jobi < NUM_JOBS; ++jobi)
+    {
+        int status;
+        status = get_remaining_run_time(jobi, &rem_time);
+        if (status != 0)
+        {
+            printf("Error Job Index %d\n", jobi);
+        }
+        else
+        {
+            printf("JOB %d Remaining run time %f\n", jobi, rem_time);
+        }
     }
     return 0;
 
