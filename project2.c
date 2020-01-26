@@ -3,7 +3,7 @@
 #include <math.h>
 #define NUM_JOBS 10
 
-typedef struct
+typedef struct _job
 {
     float arrival_time; /* random between 0.0 and 99.0 */
     float expected_run_time; /* random float between 0.1 through 10 quanta */
@@ -14,6 +14,10 @@ typedef struct
     //char name[10];
     int jobnum;
 } job;
+
+job job_array[NUM_JOBS];
+static int theoretical_max_quantum_for_job_array;
+int * highest_job_index_to_eval;
 
 int compare_jobs(const void * a, const void * b)
 {
@@ -45,8 +49,27 @@ void print_all_job_fields(job * job_array)
     }
 }
 
+typedef enum _scheduling_algorithm
+{
+    fcfs,
+    sjf,
+    srt,
+    rr,
+    hpf_np,
+    hpf_pre
+} scheduling_algorithm;
+
+typedef int(*scheduling_algorithm_function)(job * job_array);
+
+typedef struct alg_parameters
+{
+    scheduling_algorithm alg;
+    char * scheduling_output_file;
+    scheduling_algorithm_function func;
+} alg_parameters;
+
 //returns 1 if CPU is idle for 2 or more quanta, 0 otherwise.
-int check_quantum_gaps(job * job_array)
+/*int check_quantum_gaps(job * job_array)
 {
     int left_job_index = 0;
     int right_job_index = 1;
@@ -87,10 +110,10 @@ int check_quantum_gaps(job * job_array)
     }
     return 0;
 }
-
-int compute_theoretical_max_quantum_for_job_array(job * job_array)
+*/
+int compute_theoretical_max_quantum_for_job_array()
 {
-    int theoretical_max_quantum_for_job_array = (int) ceil(job_array[0].arrival_time);
+    theoretical_max_quantum_for_job_array = (int) ceil(job_array[0].arrival_time);
     int left_job_index = 0;
     int right_job_index = 1;
     int i;
@@ -124,38 +147,14 @@ int compute_theoretical_max_quantum_for_job_array(job * job_array)
     return theoretical_max_quantum_for_job_array;
 }
 
-int main()
+//  Theoretical max quantum for job array is the number of quanta we would need if we actually ran all the jobs generated
+int precompute_job_indices()
 {
-    int seed = 10173;
-    srand(seed);
-    job job_array[NUM_JOBS];
-    int i = 0;
-    printf("Before sort: \n");
-    for (i = 0; i < NUM_JOBS; ++i)
-    {
-        job_array[i].arrival_time = (float)(rand())/(float)(RAND_MAX) * 99.0; 
-        job_array[i].expected_run_time = ((float)(rand())/(float)(RAND_MAX) * 9.9) + 0.1;
-        job_array[i].priority = (rand() % 4) + 1;
-        job_array[i].start_time = 0.0; 
-        job_array[i].accum_run_time = 0.0;
-        job_array[i].end_time = 0.0;
-        printf("Job =  %.1f, %.1f, %d, %.0f, %.0f, %.0f \n", job_array[i].arrival_time, job_array[i].expected_run_time, job_array[i].priority, job_array[i].start_time, job_array[i].accum_run_time, job_array[i].end_time);
-    }
-    printf("After sort: \n");
-    qsort(job_array, NUM_JOBS, sizeof(job), compare_jobs);
-    
-    assign_job_nums(job_array);
-    print_all_job_fields(job_array);
-//  printf("%d",check_quantum_gaps(job_array));
-    int theoretical_max_quantum_for_job_array;
-    theoretical_max_quantum_for_job_array = compute_theoretical_max_quantum_for_job_array(job_array); 
-    printf("%d \n",theoretical_max_quantum_for_job_array);
-    int * highest_job_index_to_eval;
     highest_job_index_to_eval = calloc(theoretical_max_quantum_for_job_array+1,sizeof(int));
     if (highest_job_index_to_eval == NULL)
     {
         printf("Unable to allocate memory for highest_job_index_to_eval \n");
-        exit(-__LINE__);
+        return (-__LINE__);
     }
     int m = 0;
     int right_quantum = theoretical_max_quantum_for_job_array + 1;
@@ -174,6 +173,39 @@ int main()
     for (p = 0; p < (int) ceil(job_array[0].arrival_time); ++p)
     {
        highest_job_index_to_eval[p] = -1;
+    }
+
+    return 0;
+}
+
+int main()
+{
+    int seed = 10173;
+    srand(seed);
+    int i = 0;
+    printf("Before sort: \n");
+    for (i = 0; i < NUM_JOBS; ++i)
+    {
+        job_array[i].arrival_time = (float)(rand())/(float)(RAND_MAX) * 99.0; 
+        job_array[i].expected_run_time = ((float)(rand())/(float)(RAND_MAX) * 9.9) + 0.1;
+        job_array[i].priority = (rand() % 4) + 1;
+        job_array[i].start_time = 0.0; 
+        job_array[i].accum_run_time = 0.0;
+        job_array[i].end_time = 0.0;
+        printf("Job =  %.1f, %.1f, %d, %.0f, %.0f, %.0f \n", job_array[i].arrival_time, job_array[i].expected_run_time, job_array[i].priority, job_array[i].start_time, job_array[i].accum_run_time, job_array[i].end_time);
+    }
+    printf("After sort: \n");
+    qsort(job_array, NUM_JOBS, sizeof(job), compare_jobs);
+    
+    assign_job_nums(job_array);
+    print_all_job_fields(job_array);
+   
+    compute_theoretical_max_quantum_for_job_array();
+
+    if (precompute_job_indices() != 0)
+    {
+        printf("Precomputing index failed\n");
+        exit(-__LINE__);
     }
 
     printf("Highest job index to eval: \n");
