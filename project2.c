@@ -69,7 +69,7 @@ int generate_and_sort_jobs()
     return 0;
 }
 
-typedef enum _scheduling_algorithm
+typedef enum _scheduling_algorithm_e
 {
     fcfs,
     sjf,
@@ -77,16 +77,143 @@ typedef enum _scheduling_algorithm
     rr,
     hpf_np,
     hpf_pre
-} scheduling_algorithm;
+} scheduling_algorithm_e;
 
-typedef int(*scheduling_algorithm_function)(job * job_array);
+int do_fcfs(scheduling_algorithm_e alg, int run_number, char * base_file_name)
+{
+    char file_name[80] = {'\0'};
+    snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
+    printf("file name %d = %s", alg, file_name);
+    FILE * output_file;
+    output_file = fopen(file_name, "w");
+    if (output_file != NULL)
+    {
+        fprintf(output_file, "%d %d \n", alg, run_number);
+        fclose(output_file);
+    }
+    else
+    {
+        printf("Unable to create file for %s\n", file_name);
+    }
+    return 0;
+}
+
+int do_sjf(scheduling_algorithm_e alg, int run_number, char * base_file_name)
+{
+    char file_name[80] = {'\0'};
+    snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
+    printf("file name %d = %s", alg, file_name);
+    FILE * output_file;
+    output_file = fopen(file_name, "w");
+    if (output_file != NULL)
+    {
+        fprintf(output_file, "%d %d \n", alg, run_number);
+        fclose(output_file);
+    }
+    else
+    {
+        printf("Unable to create file for %s\n", file_name);
+    }
+    return 0;
+}
+
+int do_srt(scheduling_algorithm_e alg, int run_number, char * base_file_name)
+{
+    char file_name[80] = {'\0'};
+    snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
+    printf("file name %d = %s", alg, file_name);
+    FILE * output_file;
+    output_file = fopen(file_name, "w");
+    if (output_file != NULL)
+    {
+        fprintf(output_file, "%d %d \n", alg, run_number);
+        fclose(output_file);
+    }
+    else
+    {
+        printf("Unable to create file for %s\n", file_name);
+    }
+    return 0;
+}
+
+int do_rr(scheduling_algorithm_e alg, int run_number, char * base_file_name)
+{
+    char file_name[80] = {'\0'};
+    snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
+    printf("file name %d = %s", alg, file_name);
+    FILE * output_file;
+    output_file = fopen(file_name, "w");
+    if (output_file != NULL)
+    {
+        fprintf(output_file, "%d %d \n", alg, run_number);
+        fclose(output_file);
+    }
+    else
+    {
+        printf("Unable to create file for %s\n", file_name);
+    }
+    return 0;
+}
+
+
+int do_hpf_np(scheduling_algorithm_e alg, int run_number, char * base_file_name)
+{
+    char file_name[80] = {'\0'};
+    snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
+    printf("file name %d = %s", alg, file_name);
+    FILE * output_file;
+    output_file = fopen(file_name, "w");
+    if (output_file != NULL)
+    {
+        fprintf(output_file, "%d %d \n", alg, run_number);
+        fclose(output_file);
+    }
+    else
+    {
+        printf("Unable to create file for %s\n", file_name);
+    }
+    return 0;
+}
+
+int do_hpf_pre(scheduling_algorithm_e alg, int run_number, char * base_file_name)
+{
+    char file_name[80] = {'\0'};
+    snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
+    printf("file name %d = %s", alg, file_name);
+    FILE * output_file;
+    output_file = fopen(file_name, "w");
+    if (output_file != NULL)
+    {
+        fprintf(output_file, "%d %d \n", alg, run_number);
+        fclose(output_file);
+    }
+    else
+    {
+        printf("Unable to create file for %s\n", file_name);
+    }
+    return 0;
+}
+
+typedef int(*scheduling_algorithm_function)(scheduling_algorithm_e alg, int run_number, char * base_file_name);
 
 typedef struct alg_parameters
 {
-    scheduling_algorithm alg;
+    scheduling_algorithm_e alg;
     char * scheduling_output_file;
     scheduling_algorithm_function func;
 } alg_parameters;
+
+alg_parameters scheduling_algorithm[] =
+{
+    {fcfs, "./fcfs_sched_out", do_fcfs},
+    {sjf, "./sjf_sched_out", do_sjf},
+    {srt, "./srt_sched_out", do_srt},
+    {rr, "./rr_sched_out", do_rr},
+    {hpf_np, "./hpf_np_sched_out", do_hpf_np},
+    {hpf_pre, "./hpf_pre_sched_out", do_hpf_pre}
+};
+
+int num_alg_defined = sizeof(scheduling_algorithm)/sizeof(scheduling_algorithm[0]);
 
 //returns 1 if CPU is idle for 2 or more quanta, 0 otherwise.
 /*int check_quantum_gaps(job * job_array)
@@ -213,6 +340,7 @@ int main()
         exit(-__LINE__);
     }
 
+    //check highest job index to eval array
     printf("Highest job index to eval: \n");
     int q = 0;
     for (q = 0; q < theoretical_max_quantum_for_job_array+1; ++q)
@@ -220,5 +348,13 @@ int main()
        printf("%d ",highest_job_index_to_eval[q]);
     }
     printf("\n");
+/*
+    int alg_index = 0;
+    for (alg_index = 0; alg_index < num_alg_defined; ++alg_index)
+    {
+       alg_parameters * sched = scheduling_algorithm;
+       
+    }
+*/
     return 0;
 }
