@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define NUM_JOBS 90
+#define NUM_JOBS 10
 
 typedef struct
 {
@@ -88,6 +88,42 @@ int check_quantum_gaps(job * job_array)
     return 0;
 }
 
+int compute_theoretical_max_quantum_for_job_array(job * job_array)
+{
+    int theoretical_max_quantum_for_job_array = (int) ceil(job_array[0].arrival_time);
+    int left_job_index = 0;
+    int right_job_index = 1;
+    int i;
+    for (i = 1; i < NUM_JOBS; ++i)
+    {
+        right_job_index = i;
+        float left_arrival_time = job_array[left_job_index].arrival_time;
+        float left_finish_time = job_array[left_job_index].arrival_time + job_array[left_job_index].expected_run_time;
+        float right_arrival_time = job_array[i].arrival_time;
+        float right_finish_time = job_array[i].arrival_time + job_array[i].expected_run_time;
+        int partial_overlap = right_arrival_time <= left_finish_time;
+        int completely_contained = right_finish_time <= left_finish_time;
+        if (completely_contained || partial_overlap)
+        {
+            //any overlap
+            theoretical_max_quantum_for_job_array += (int) ceil(job_array[i].expected_run_time);
+            if (partial_overlap)
+            {
+                left_job_index = i;
+            }
+        }
+        else
+        {
+            //we have a gap
+            int gap_quanta = (int) ceil(right_arrival_time) - (int) ceil(left_finish_time);
+            theoretical_max_quantum_for_job_array += gap_quanta;
+            theoretical_max_quantum_for_job_array += (int) ceil(job_array[i].expected_run_time);
+            left_job_index = i;
+        }
+    }
+    return theoretical_max_quantum_for_job_array;
+}
+
 int main()
 {
     int seed = 10173;
@@ -110,6 +146,18 @@ int main()
     
     assign_job_nums(job_array);
     print_all_job_fields(job_array);
-    printf("%d",check_quantum_gaps(job_array));
+//  printf("%d",check_quantum_gaps(job_array));
+    int theoretical_max_quantum_for_job_array;
+    theoretical_max_quantum_for_job_array = compute_theoretical_max_quantum_for_job_array(job_array); 
+    printf("%d \n",theoretical_max_quantum_for_job_array);
+    /*
+    int k = 0;
+    for (k = 0; k < NUM_JOBS; ++k)
+    {
+       theoretical_max_quantum_for_job_array += (int) ceil(job_array[k].expected_run_time);
+    }
+    //int highest_job_index_to_eval[];
+    printf("%d \n",theoretical_max_quantum_for_job_array);
+*/
     return 0;
 }
