@@ -83,7 +83,7 @@ int do_fcfs(scheduling_algorithm_e alg, int run_number, char * base_file_name)
 {
     char file_name[80] = {'\0'};
     snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
-    printf("file name %d = %s", alg, file_name);
+    printf("file name %d = %s \n", alg, file_name);
     FILE * output_file;
     output_file = fopen(file_name, "w");
     if (output_file != NULL)
@@ -102,7 +102,7 @@ int do_sjf(scheduling_algorithm_e alg, int run_number, char * base_file_name)
 {
     char file_name[80] = {'\0'};
     snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
-    printf("file name %d = %s", alg, file_name);
+    printf("file name %d = %s \n", alg, file_name);
     FILE * output_file;
     output_file = fopen(file_name, "w");
     if (output_file != NULL)
@@ -121,7 +121,7 @@ int do_srt(scheduling_algorithm_e alg, int run_number, char * base_file_name)
 {
     char file_name[80] = {'\0'};
     snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
-    printf("file name %d = %s", alg, file_name);
+    printf("file name %d = %s \n", alg, file_name);
     FILE * output_file;
     output_file = fopen(file_name, "w");
     if (output_file != NULL)
@@ -140,7 +140,7 @@ int do_rr(scheduling_algorithm_e alg, int run_number, char * base_file_name)
 {
     char file_name[80] = {'\0'};
     snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
-    printf("file name %d = %s", alg, file_name);
+    printf("file name %d = %s \n", alg, file_name);
     FILE * output_file;
     output_file = fopen(file_name, "w");
     if (output_file != NULL)
@@ -160,7 +160,7 @@ int do_hpf_np(scheduling_algorithm_e alg, int run_number, char * base_file_name)
 {
     char file_name[80] = {'\0'};
     snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
-    printf("file name %d = %s", alg, file_name);
+    printf("file name %d = %s \n", alg, file_name);
     FILE * output_file;
     output_file = fopen(file_name, "w");
     if (output_file != NULL)
@@ -179,7 +179,7 @@ int do_hpf_pre(scheduling_algorithm_e alg, int run_number, char * base_file_name
 {
     char file_name[80] = {'\0'};
     snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
-    printf("file name %d = %s", alg, file_name);
+    printf("file name %d = %s \n", alg, file_name);
     FILE * output_file;
     output_file = fopen(file_name, "w");
     if (output_file != NULL)
@@ -327,6 +327,7 @@ int precompute_job_indices()
 
 int main()
 {
+    int run = 0;
     int seed = 10173;
     srand(seed);
     generate_and_sort_jobs();
@@ -348,13 +349,17 @@ int main()
        printf("%d ",highest_job_index_to_eval[q]);
     }
     printf("\n");
-/*
+
     int alg_index = 0;
     for (alg_index = 0; alg_index < num_alg_defined; ++alg_index)
     {
-       alg_parameters * sched = scheduling_algorithm;
-       
+       alg_parameters * alg_ptr = &scheduling_algorithm[alg_index];
+       int status = alg_ptr->func(alg_ptr->alg, run, alg_ptr->scheduling_output_file);
+       if (status != 0)
+       {
+           printf("Failed to complete run: %d algorithm: %d", run, alg_ptr->alg); 
+       }
     }
-*/
+
     return 0;
 }
