@@ -11,13 +11,16 @@ typedef struct _job
     float start_time;  /*quantum when job started running for the first time. use float for easy subtraction from end time*/
     float accum_run_time; /* accum time slices */
     float end_time; /* tracks when job is complete */
-    //char name[10];
-    int jobnum;
+    int jobnum; /*Identifier for job that corresponds with job index in sorted job_array*/
+    int done; /*1 if job is complete, 0 otherwise*/
+    int started; /*1 if job started, 0 otherwise*/
+    int sched_allowed; /*1 if job is allowed to be scheduled, 0 otherwise*/
 } job;
 
 job job_array[NUM_JOBS];
 static int theoretical_max_quantum_for_job_array;
 int * highest_job_index_to_eval;
+int * all_done;
 
 int compare_jobs(const void * a, const void * b)
 {
@@ -61,12 +64,82 @@ int generate_and_sort_jobs()
         job_array[i].start_time = 0.0; 
         job_array[i].accum_run_time = 0.0;
         job_array[i].end_time = 0.0;
+        job_array[i].jobnum = 0; //this will be overwritten after sort
+        job_array[i].done = 0;
+        job_array[i].started = 0;
+        job_array[i].sched_allowed = 1;
         printf("Job =  %.1f, %.1f, %d, %.0f, %.0f, %.0f \n", job_array[i].arrival_time, job_array[i].expected_run_time, job_array[i].priority, job_array[i].start_time, job_array[i].accum_run_time, job_array[i].end_time);
     }
     printf("After sort: \n");
     qsort(job_array, NUM_JOBS, sizeof(job), compare_jobs);
     assign_job_nums(job_array);
     return 0;
+}
+
+/*Define Scheduling Algorithm API*/
+int get_unfinished_job_index_range(int quantum, int *lower, int *upper)
+{
+   if (quantum <= 0 || quantum > theoretical_max_quantum_for_job_array)
+   {
+       //Invalid quantum given. Return negative number.
+       return (-__LINE__);
+   }
+   else
+   {
+       if (highest_job_index_to_eval[quantum] < 0)
+       {
+           //No unfinished jobs. Return positive number.
+           all_done[quantum] = 1;
+           return (__LINE__);
+       }
+       else
+       {
+           int lower_new;
+           int upper_new;
+          /* if (are_all_prev_jobs_done(quantum))
+           {
+              int status = get_new_job_index_range(quantum,&lower_new, &upper_new);
+              if (status != 0)
+              {
+                  //No new jobs to be done
+                  return status;
+              }
+              else
+              {
+                  *lower = lower_new;
+                  *upper = upper_new;
+              }
+           }
+           else
+           */
+           
+           int ji = 0;
+           int lower_found = 0;
+           for (ji = 0; ji <= highest_job_index_to_eval[quantum]; ++ji)
+           {
+              if (job_array[ji].done == 0)
+              {
+                  if (lower_found == 0)
+                  {
+                     lower_new = ji;
+                     lower_found = 1;
+                  }
+                  upper_new = ji;
+              }
+           }
+           if (lower_found == 0)
+           {
+               all_done[quantum] = 1;
+               return (__LINE__);
+           }
+           else
+           {
+               *lower = lower_new;
+               *upper = upper_new;
+           }
+       }
+   }
+   return 0;
 }
 
 typedef enum _scheduling_algorithm_e
@@ -295,7 +368,7 @@ int compute_theoretical_max_quantum_for_job_array()
 }
 
 //  Theoretical max quantum for job array is the number of quanta we would need if we actually ran all the jobs generated
-int precompute_job_indices()
+int allocate_quanta_helper_arrays()
 {
     highest_job_index_to_eval = calloc(theoretical_max_quantum_for_job_array+1,sizeof(int));
     if (highest_job_index_to_eval == NULL)
@@ -322,6 +395,12 @@ int precompute_job_indices()
        highest_job_index_to_eval[p] = -1;
     }
 
+    all_done = calloc(theoretical_max_quantum_for_job_array+1,sizeof(int));
+    if (all_done == NULL)
+    {
+        printf("Unable to allocate memory for all_done \n");
+        return (-__LINE__);
+    }
     return 0;
 }
 
@@ -335,7 +414,7 @@ int main()
    
     compute_theoretical_max_quantum_for_job_array();
 
-    if (precompute_job_indices() != 0)
+    if (allocate_quanta_helper_arrays() != 0)
     {
         printf("Precomputing index failed\n");
         exit(-__LINE__);
@@ -361,5 +440,23 @@ int main()
        }
     }
 
+    int lower;
+    int upper;
+    int return_val;
+    int quantum_range;
+    for (quantum_range = 0; quantum_range < 100; ++quantum_range)
+    {
+       return_val = get_unfinished_job_index_range(quantum_range, &lower, &upper);
+       if (return_val == 0)
+       {
+          printf("Quantum: %d Lower: %d Upper %d \n", quantum_range, lower, upper);
+       }
+       else
+       {
+          printf("Quantum: %d Status: %d \n", quantum_range, return_val);
+       }
+    }
+
     return 0;
+
 }
