@@ -19,12 +19,7 @@ int compare_jobs(const void * a, const void * b)
 {
     job *job_a = (job *) a;
     job *job_b = (job *) b;
-    if (job_a->arrival_time < job_b->arrival_time)
-        return -1;
-    else if (job_a->arrival_time > job_b->arrival_time)
-        return 1;
-    else
-        return 0;
+    return(job_a->arrival_time - job_b->arrival_time);
 }
 
 void assign_job_nums(job * job_array)
@@ -88,13 +83,14 @@ int check_quantum_gaps(job * job_array)
     return 0;
 }
 
+void hfpf_schedule(job *);
+
 int main()
 {
     int seed = 10173;
     srand(seed);
     job job_array[NUM_JOBS];
     int i = 0;
-    printf("Before sort: \n");
     for (i = 0; i < NUM_JOBS; ++i)
     {
         job_array[i].arrival_time = (float)(rand())/(float)(RAND_MAX) * 99.0; 
@@ -103,13 +99,13 @@ int main()
         job_array[i].start_time = 0.0; 
         job_array[i].accum_run_time = 0.0;
         job_array[i].end_time = 0.0;
-        printf("Job =  %.1f, %.1f, %d, %.0f, %.0f, %.0f \n", job_array[i].arrival_time, job_array[i].expected_run_time, job_array[i].priority, job_array[i].start_time, job_array[i].accum_run_time, job_array[i].end_time);
     }
-    printf("After sort: \n");
     qsort(job_array, NUM_JOBS, sizeof(job), compare_jobs);
     
     assign_job_nums(job_array);
-    print_all_job_fields(job_array);
-    printf("%d",check_quantum_gaps(job_array));
+    check_quantum_gaps(job_array);
+
+    hpfp_schedule(job_array);
+
     return 0;
 }
