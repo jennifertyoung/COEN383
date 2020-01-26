@@ -150,14 +150,5 @@ int main()
     int theoretical_max_quantum_for_job_array;
     theoretical_max_quantum_for_job_array = compute_theoretical_max_quantum_for_job_array(job_array); 
     printf("%d \n",theoretical_max_quantum_for_job_array);
-    /*
-    int k = 0;
-    for (k = 0; k < NUM_JOBS; ++k)
-    {
-       theoretical_max_quantum_for_job_array += (int) ceil(job_array[k].expected_run_time);
-    }
-    //int highest_job_index_to_eval[];
-    printf("%d \n",theoretical_max_quantum_for_job_array);
-*/
     return 0;
 }
