@@ -150,5 +150,38 @@ int main()
     int theoretical_max_quantum_for_job_array;
     theoretical_max_quantum_for_job_array = compute_theoretical_max_quantum_for_job_array(job_array); 
     printf("%d \n",theoretical_max_quantum_for_job_array);
+    int * highest_job_index_to_eval;
+    highest_job_index_to_eval = calloc(theoretical_max_quantum_for_job_array+1,sizeof(int));
+    if (highest_job_index_to_eval == NULL)
+    {
+        printf("Unable to allocate memory for highest_job_index_to_eval \n");
+        exit(-__LINE__);
+    }
+    int m = 0;
+    int right_quantum = theoretical_max_quantum_for_job_array + 1;
+    int left_quantum; //index for highest_job_index_to_eval 
+    for (m = NUM_JOBS - 1; m >= 0; --m)
+    {
+       left_quantum = (int) ceil(job_array[m].arrival_time);
+       int qi = 0;
+       for (qi = left_quantum; qi < right_quantum; ++qi)
+       {
+          highest_job_index_to_eval[qi] = m;
+       }
+       right_quantum = left_quantum; 
+    }
+    int p = 0;
+    for (p = 0; p < (int) ceil(job_array[0].arrival_time); ++p)
+    {
+       highest_job_index_to_eval[p] = -1;
+    }
+
+    printf("Highest job index to eval: \n");
+    int q = 0;
+    for (q = 0; q < theoretical_max_quantum_for_job_array+1; ++q)
+    {
+       printf("%d ",highest_job_index_to_eval[q]);
+    }
+    printf("\n");
     return 0;
 }
