@@ -142,6 +142,20 @@ int get_unfinished_job_index_range(int quantum, int *lower, int *upper)
    return 0;
 }
 
+int get_new_job_index_range(int quantum, int *lower_new, int *upper_new)
+{
+   if ( (highest_job_index_to_eval[quantum-1]+1) > highest_job_index_to_eval[quantum])
+   {
+       //No unfinished jobs. Return positive number.
+       return (__LINE__);
+   }
+   else
+   {
+       *lower_new = highest_job_index_to_eval[quantum-1] + 1;
+       *upper_new = highest_job_index_to_eval[quantum];
+   }
+   return 0;
+}
 typedef enum _scheduling_algorithm_e
 {
     fcfs,
@@ -457,6 +471,18 @@ int main()
        }
     }
 
+    for (quantum_range = 0; quantum_range < 100; ++quantum_range)
+    {
+       return_val = get_new_job_index_range(quantum_range, &lower, &upper);
+       if (return_val == 0)
+       {
+          printf("Quantum: %d Lower New: %d Upper New: %d \n", quantum_range, lower, upper);
+       }
+       else
+       {
+          printf("Quantum: %d Status: %d \n", quantum_range, return_val);
+       }
+    }
     return 0;
 
 }
