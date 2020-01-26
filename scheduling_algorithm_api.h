@@ -3,6 +3,9 @@
  * API for interacting with job array from scheduling algorithm
 */
 
+#ifndef scheduling_algorithm_api_h
+#define scheduling_algorithm_api_h
+
 //Input: quantum number
 //Output: job index into job array for the lowest unfinished job inclusive at that quantum
 //job index into job array for the highest unfinished job inclusive at that quantum
@@ -49,3 +52,5 @@ int get_remaining_run_time(int job_index, float * rem_time);
 //Output: Every job that has arrived prior to that quantum is done
 //Returns 1 if all prev jobs done at that quantum, 0 otherwise
 int are_all_prev_jobs_done(int quantum);
+
+#endif
