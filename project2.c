@@ -49,6 +49,26 @@ void print_all_job_fields(job * job_array)
     }
 }
 
+int generate_and_sort_jobs()
+{
+    int i = 0;
+    printf("Before sort: \n");
+    for (i = 0; i < NUM_JOBS; ++i)
+    {
+        job_array[i].arrival_time = (float)(rand())/(float)(RAND_MAX) * 99.0; 
+        job_array[i].expected_run_time = ((float)(rand())/(float)(RAND_MAX) * 9.9) + 0.1;
+        job_array[i].priority = (rand() % 4) + 1;
+        job_array[i].start_time = 0.0; 
+        job_array[i].accum_run_time = 0.0;
+        job_array[i].end_time = 0.0;
+        printf("Job =  %.1f, %.1f, %d, %.0f, %.0f, %.0f \n", job_array[i].arrival_time, job_array[i].expected_run_time, job_array[i].priority, job_array[i].start_time, job_array[i].accum_run_time, job_array[i].end_time);
+    }
+    printf("After sort: \n");
+    qsort(job_array, NUM_JOBS, sizeof(job), compare_jobs);
+    assign_job_nums(job_array);
+    return 0;
+}
+
 typedef enum _scheduling_algorithm
 {
     fcfs,
@@ -182,22 +202,7 @@ int main()
 {
     int seed = 10173;
     srand(seed);
-    int i = 0;
-    printf("Before sort: \n");
-    for (i = 0; i < NUM_JOBS; ++i)
-    {
-        job_array[i].arrival_time = (float)(rand())/(float)(RAND_MAX) * 99.0; 
-        job_array[i].expected_run_time = ((float)(rand())/(float)(RAND_MAX) * 9.9) + 0.1;
-        job_array[i].priority = (rand() % 4) + 1;
-        job_array[i].start_time = 0.0; 
-        job_array[i].accum_run_time = 0.0;
-        job_array[i].end_time = 0.0;
-        printf("Job =  %.1f, %.1f, %d, %.0f, %.0f, %.0f \n", job_array[i].arrival_time, job_array[i].expected_run_time, job_array[i].priority, job_array[i].start_time, job_array[i].accum_run_time, job_array[i].end_time);
-    }
-    printf("After sort: \n");
-    qsort(job_array, NUM_JOBS, sizeof(job), compare_jobs);
-    
-    assign_job_nums(job_array);
+    generate_and_sort_jobs();
     print_all_job_fields(job_array);
    
     compute_theoretical_max_quantum_for_job_array();
