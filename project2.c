@@ -21,6 +21,9 @@ job job_array[NUM_JOBS];
 static int theoretical_max_quantum_for_job_array;
 int * highest_job_index_to_eval;
 int * all_done;
+int quantum_stop_scheduling = 100;
+
+static FILE * current_quanta_chart_fp = NULL;
 
 int compare_jobs(const void * a, const void * b)
 {
@@ -77,6 +80,19 @@ int generate_and_sort_jobs()
 }
 
 /*Define Scheduling Algorithm API*/
+
+static int unfinished_job(int quantum, int ji)
+{
+   if (quantum < quantum_stop_scheduling)
+   {
+       return (job_array[ji].done == 0);
+   }
+   else
+   {
+       return ( (job_array[ji].done == 0) && (job_array[ji].sched_allowed == 1) );
+   }
+}
+
 int get_unfinished_job_index_range(int quantum, int *lower, int *upper)
 {
    if (quantum <= 0 || quantum > theoretical_max_quantum_for_job_array)
@@ -96,28 +112,11 @@ int get_unfinished_job_index_range(int quantum, int *lower, int *upper)
        {
            int lower_new;
            int upper_new;
-          /* if (are_all_prev_jobs_done(quantum))
-           {
-              int status = get_new_job_index_range(quantum,&lower_new, &upper_new);
-              if (status != 0)
-              {
-                  //No new jobs to be done
-                  return status;
-              }
-              else
-              {
-                  *lower = lower_new;
-                  *upper = upper_new;
-              }
-           }
-           else
-           */
-           
            int ji = 0;
            int lower_found = 0;
            for (ji = 0; ji <= highest_job_index_to_eval[quantum]; ++ji)
            {
-              if (job_array[ji].done == 0)
+              if (unfinished_job(quantum, ji))
               {
                   if (lower_found == 0)
                   {
@@ -196,6 +195,107 @@ int get_remaining_run_time(int job_index, float *rem_time)
    return 0;
 }
 
+int are_all_jobs_done(int quantum)
+{
+    return 0;
+}
+
+static void stop_new_jobs_scheduling(void)
+{
+   int ji;
+   for (ji = 0; ji < NUM_JOBS; ++ji)
+   {
+       if ( (job_array[ji].done == 0) && (job_array[ji].started == 0))
+       {
+           job_array[ji].sched_allowed = 0;
+       }
+   }
+}
+
+int update_quanta_chart(job_index)
+{
+   if (current_quanta_chart_fp == NULL)
+   {
+       return (-__LINE__);
+   }
+   else
+   {
+       if (job_index >= 0 && job_index < NUM_JOBS)
+       {
+          fprintf(current_quanta_chart_fp,"%d ,", job_array[job_index].jobnum);
+       }
+       else
+       {
+          return (-__LINE__);
+       }
+   }
+   return 0;
+}
+
+static int scheduling_stop_called = 0;
+int sched_job_at_quantum(int job_index, int quantum)
+{
+   if (job_index < 0 || job_index >= NUM_JOBS)
+   {
+       printf("Invalid job index to schedule %d \n", job_index);
+       return (-__LINE__);
+   }
+   else if (quantum < 0 || quantum > theoretical_max_quantum_for_job_array)
+   {
+       printf("Invalid quantum to schedule %d \n", quantum);
+       return (-__LINE__);
+   }
+   else
+   {
+       if ( (scheduling_stop_called == 0) && (quantum >= quantum_stop_scheduling) )
+       {
+           stop_new_jobs_scheduling();
+           scheduling_stop_called = 1;
+       }
+       if (unfinished_job(quantum, job_index))
+       {
+           if (job_array[job_index].started == 0)
+           {
+               //start the job
+               //We already prevented starting new jobs after quantum_stop_scheduling (100)
+               job_array[job_index].started = 1;
+               job_array[job_index].start_time = quantum;
+           }
+           
+           float rem_time;
+           int status = get_remaining_run_time(job_index, &rem_time);
+           int quanta_update_status = 0;
+           if (status == 0)
+           {
+               //write out to quanta chart since we are scheduling this job
+               quanta_update_status = update_quanta_chart(job_index);
+               if (quanta_update_status != 0)
+               {
+                  printf("Failed up update quanta chart %d for job index %d at quantum %d \n", quanta_update_status, job_index, quantum);
+               }
+               if (rem_time <= 1.0)
+               {
+                  //done
+                  job_array[job_index].accum_run_time += rem_time;
+                  job_array[job_index].end_time = (float) quantum + rem_time;
+                  job_array[job_index].done = 1;
+               }
+               else
+               {
+                  //job not done
+                  job_array[job_index].accum_run_time += 1.0;
+               }
+           }
+           else
+           {
+               printf("Impossible case: %d\n", status);
+               return (-__LINE__);
+           }
+       }
+   }
+   return 0;
+}
+
 typedef enum _scheduling_algorithm_e
 {
     fcfs,
@@ -206,122 +306,38 @@ typedef enum _scheduling_algorithm_e
     hpf_pre
 } scheduling_algorithm_e;
 
-int do_fcfs(scheduling_algorithm_e alg, int run_number, char * base_file_name)
+
+int do_fcfs(job * job_array, int num_jobs)
 {
-    char file_name[80] = {'\0'};
-    snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
-    printf("file name %d = %s \n", alg, file_name);
-    FILE * output_file;
-    output_file = fopen(file_name, "w");
-    if (output_file != NULL)
-    {
-        fprintf(output_file, "%d %d \n", alg, run_number);
-        fclose(output_file);
-    }
-    else
-    {
-        printf("Unable to create file for %s\n", file_name);
-    }
     return 0;
 }
 
-int do_sjf(scheduling_algorithm_e alg, int run_number, char * base_file_name)
+int do_sjf(job * job_array, int num_jobs)
 {
-    char file_name[80] = {'\0'};
-    snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
-    printf("file name %d = %s \n", alg, file_name);
-    FILE * output_file;
-    output_file = fopen(file_name, "w");
-    if (output_file != NULL)
-    {
-        fprintf(output_file, "%d %d \n", alg, run_number);
-        fclose(output_file);
-    }
-    else
-    {
-        printf("Unable to create file for %s\n", file_name);
-    }
     return 0;
 }
 
-int do_srt(scheduling_algorithm_e alg, int run_number, char * base_file_name)
+int do_srt(job * job_array, int num_jobs)
 {
-    char file_name[80] = {'\0'};
-    snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
-    printf("file name %d = %s \n", alg, file_name);
-    FILE * output_file;
-    output_file = fopen(file_name, "w");
-    if (output_file != NULL)
-    {
-        fprintf(output_file, "%d %d \n", alg, run_number);
-        fclose(output_file);
-    }
-    else
-    {
-        printf("Unable to create file for %s\n", file_name);
-    }
     return 0;
 }
 
-int do_rr(scheduling_algorithm_e alg, int run_number, char * base_file_name)
+int do_rr(job * job_array, int num_jobs)
 {
-    char file_name[80] = {'\0'};
-    snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
-    printf("file name %d = %s \n", alg, file_name);
-    FILE * output_file;
-    output_file = fopen(file_name, "w");
-    if (output_file != NULL)
-    {
-        fprintf(output_file, "%d %d \n", alg, run_number);
-        fclose(output_file);
-    }
-    else
-    {
-        printf("Unable to create file for %s\n", file_name);
-    }
     return 0;
 }
 
-
-int do_hpf_np(scheduling_algorithm_e alg, int run_number, char * base_file_name)
+int do_hpf_np(job * job_array, int num_jobs)
 {
-    char file_name[80] = {'\0'};
-    snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
-    printf("file name %d = %s \n", alg, file_name);
-    FILE * output_file;
-    output_file = fopen(file_name, "w");
-    if (output_file != NULL)
-    {
-        fprintf(output_file, "%d %d \n", alg, run_number);
-        fclose(output_file);
-    }
-    else
-    {
-        printf("Unable to create file for %s\n", file_name);
-    }
     return 0;
 }
 
-int do_hpf_pre(scheduling_algorithm_e alg, int run_number, char * base_file_name)
+int do_hpf_pre(job * job_array, int num_jobs)
 {
-    char file_name[80] = {'\0'};
-    snprintf(file_name, sizeof(file_name), "%s_run%d.txt", base_file_name, run_number);
-    printf("file name %d = %s \n", alg, file_name);
-    FILE * output_file;
-    output_file = fopen(file_name, "w");
-    if (output_file != NULL)
-    {
-        fprintf(output_file, "%d %d \n", alg, run_number);
-        fclose(output_file);
-    }
-    else
-    {
-        printf("Unable to create file for %s\n", file_name);
-    }
     return 0;
 }
 
-typedef int(*scheduling_algorithm_function)(scheduling_algorithm_e alg, int run_number, char * base_file_name);
+typedef int(*scheduling_algorithm_function)(job * job_array, int num_jobs);
 
 typedef struct alg_parameters
 {
@@ -458,47 +474,13 @@ int allocate_quanta_helper_arrays()
     return 0;
 }
 
-int main()
+int testing()
 {
-    int run = 0;
-    int seed = 10173;
-    srand(seed);
-    generate_and_sort_jobs();
-    print_all_job_fields(job_array);
-   
-    compute_theoretical_max_quantum_for_job_array();
-
-    if (allocate_quanta_helper_arrays() != 0)
-    {
-        printf("Precomputing index failed\n");
-        exit(-__LINE__);
-    }
-
-    //check highest job index to eval array
-    printf("Highest job index to eval: \n");
-    int q = 0;
-    for (q = 0; q < theoretical_max_quantum_for_job_array+1; ++q)
-    {
-       printf("%d ",highest_job_index_to_eval[q]);
-    }
-    printf("\n");
-
-    int alg_index = 0;
-    for (alg_index = 0; alg_index < num_alg_defined; ++alg_index)
-    {
-       alg_parameters * alg_ptr = &scheduling_algorithm[alg_index];
-       int status = alg_ptr->func(alg_ptr->alg, run, alg_ptr->scheduling_output_file);
-       if (status != 0)
-       {
-           printf("Failed to complete run: %d algorithm: %d", run, alg_ptr->alg); 
-       }
-    }
-
     int lower;
     int upper;
     int return_val;
     int quantum_range;
-    for (quantum_range = 0; quantum_range < 100; ++quantum_range)
+    for (quantum_range = 0; quantum_range < 110; ++quantum_range)
     {
        return_val = get_unfinished_job_index_range(quantum_range, &lower, &upper);
        if (return_val == 0)
@@ -539,6 +521,79 @@ int main()
             printf("JOB %d Remaining run time %f\n", jobi, rem_time);
         }
     }
+    printf ("Theoretical max: %d \n", theoretical_max_quantum_for_job_array);
+    return 0;
+}
+
+
+
+int create_quanta_chart(int run_number, alg_parameters *alg_ptr)
+{
+    char file_name[80] = {'\0'};
+    snprintf(file_name, sizeof(file_name), "%s_run%d.txt", alg_ptr->scheduling_output_file, run_number);
+    printf("file name %d = %s \n", alg_ptr->alg, file_name);
+    current_quanta_chart_fp = fopen(file_name, "w");
+    if (current_quanta_chart_fp == NULL)
+    {
+        printf("Unable to create file for %s\n", file_name);
+        return (-__LINE__);
+    }
+    return 0;
+}
+
+int cleanup_simulation_run()
+{
+    scheduling_stop_called = 0;
+    if (current_quanta_chart_fp != NULL)
+    {
+        fclose(current_quanta_chart_fp);
+        current_quanta_chart_fp = NULL;
+    }
+    return 0;
+}
+
+int main()
+{
+    int run = 0;
+    int seed = 10173;
+    srand(seed);
+    generate_and_sort_jobs();
+    print_all_job_fields(job_array);
+   
+    compute_theoretical_max_quantum_for_job_array();
+
+    if (allocate_quanta_helper_arrays() != 0)
+    {
+        printf("Precomputing index failed\n");
+        exit(-__LINE__);
+    }
+
+    //check highest job index to eval array
+    printf("Highest job index to eval: \n");
+    int q = 0;
+    for (q = 0; q < theoretical_max_quantum_for_job_array+1; ++q)
+    {
+       printf("%d ",highest_job_index_to_eval[q]);
+    }
+    printf("\n");
+    int status = 0;
+    int alg_index = 0;
+    for (alg_index = 0; alg_index < num_alg_defined; ++alg_index)
+    {
+       alg_parameters * alg_ptr = &scheduling_algorithm[alg_index];
+       status = create_quanta_chart(run, alg_ptr);
+       status = alg_ptr->func(job_array, NUM_JOBS);
+       if (status != 0)
+       {
+           printf("Failed to complete run: %d algorithm: %d", run, alg_ptr->alg); 
+       }
+       status = cleanup_simulation_run();
+       if (status != 0)
+       {
+           printf("Failed to cleanup: %d algorithm: %d", run, alg_ptr->alg); 
+       }
+    }
+
     return 0;
 
 }
