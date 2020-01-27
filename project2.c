@@ -88,6 +88,21 @@ int check_quantum_gaps(job * job_array)
     return 0;
 }
 
+void first_come_first_serve(job * job_array)
+{
+    int i = 0;
+    int quanta = 0;
+    for (i = 0; quanta < 100 && i < NUM_JOBS; ++i)
+    {
+        // wait if the current quanta is not busy and no other job has arrived
+        while (quanta < (int)(job_array[i].arrival_time + .9))
+            ++quanta;
+        printf("Starting quanta for process %d: %d\n", i, quanta);
+        quanta += (int)(job_array[i].expected_run_time + .9);
+    }
+}
+
+
 int main()
 {
     int seed = 10173;
@@ -111,5 +126,6 @@ int main()
     assign_job_nums(job_array);
     print_all_job_fields(job_array);
     printf("%d",check_quantum_gaps(job_array));
+    first_come_first_serve(job_array);
     return 0;
 }
