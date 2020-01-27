@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define NUM_JOBS 50
+#define NUM_JOBS 90
 #include "scheduling_algorithm_api.h"
 
 job job_array[NUM_JOBS];
