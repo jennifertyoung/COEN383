@@ -36,12 +36,6 @@ int get_unfinished_job_index_range(int quantum, int *lower, int *upper);
 //Only valid at the start of the quantum before any new jobs have been scheduled
 int get_new_job_index_range(int quantum, int *lower_new, int *upper_new);
 
-//Returns 1 if the job specified by job_index is done, 0 otherwise
-int is_job_done(int job_index);
-
-//Returns 1 if the job specified by job_index is started, 0 otherwise
-int is_job_started(int job_index);
-
 //Whatever scheduling algorithm is running needs to decide which job is running at a particular quantum
 //This function will update the job array with the start time, accum_run_time, done_flag for the requested
 //job at the requested quantum.
@@ -54,14 +48,6 @@ int sched_job_at_quantum(int job_index, int quantum);
 //Output: Remaining run time for that job. Returns 0 if remaining time is valid, otherwise
 //remaining time is undefined
 int get_remaining_run_time(int job_index, float * rem_time);
-
-//Utility function that will prevent any new jobs from being scheduled after it is called
-//int stop_scheduling_more_jobs(void);
-
-//Input: Quantum
-//Output: Every job that has arrived prior to that quantum is done
-//Returns 1 if all prev jobs done at that quantum, 0 otherwise
-int are_all_prev_jobs_done(int quantum);
 
 //Gets theoretical max
 int get_theoretical_max_quantum_for_job_array();

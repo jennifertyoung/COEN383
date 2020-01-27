@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define NUM_JOBS 10
+#define NUM_JOBS 50
 #include "scheduling_algorithm_api.h"
 
 job job_array[NUM_JOBS];
 static int theoretical_max_quantum_for_job_array;
 int * highest_job_index_to_eval;
-int * all_done;
 int quantum_stop_scheduling = 100;
 
 static FILE * current_quanta_chart_fp = NULL;
@@ -104,7 +103,6 @@ int get_unfinished_job_index_range(int quantum, int *lower, int *upper)
        if (highest_job_index_to_eval[quantum] < 0)
        {
            //No unfinished jobs. Return positive number.
-           all_done[quantum] = 1;
            return (__LINE__);
        }
        else
@@ -127,7 +125,6 @@ int get_unfinished_job_index_range(int quantum, int *lower, int *upper)
            }
            if (lower_found == 0)
            {
-               all_done[quantum] = 1;
                return (__LINE__);
            }
            else
@@ -477,12 +474,6 @@ int allocate_quanta_helper_arrays()
        highest_job_index_to_eval[p] = -1;
     }
 
-    all_done = calloc(theoretical_max_quantum_for_job_array+1,sizeof(int));
-    if (all_done == NULL)
-    {
-        printf("Unable to allocate memory for all_done \n");
-        return (-__LINE__);
-    }
     return 0;
 }
 
@@ -590,6 +581,21 @@ int display_job_stats(scheduling_algorithm_e alg, int run)
     return 0;
 }    
 
+static void cleanup_job_array()
+{
+    int i = 0;
+    for (i = 0; i < NUM_JOBS; ++i)
+    {
+        job_array[i].start_time = 0.0;
+        job_array[i].accum_run_time = 0.0;
+        job_array[i].end_time = 0.0;
+        job_array[i].done = 0;
+        job_array[i].started = 0;
+        job_array[i].sched_allowed = 1;
+        //printf("Job =  %.1f, %.1f, %d, %.0f, %.0f, %.0f \n", job_array[i].arrival_time, job_array[i].expected_run_time, job_array[i].priority, job_array[i].start_time, job_array[i].accum_run_time, job_array[i].end_time);
+    }
+}
+
 int cleanup_simulation_run()
 {
     scheduling_stop_called = 0;
@@ -598,53 +604,60 @@ int cleanup_simulation_run()
         fclose(current_quanta_chart_fp);
         current_quanta_chart_fp = NULL;
     }
+    theoretical_max_initialized = 0;
+    cleanup_job_array();
+    return 0;
+}
+
+int cleanup_overall()
+{
+    if (highest_job_index_to_eval != NULL)
+    {   
+       free(highest_job_index_to_eval);
+       highest_job_index_to_eval = NULL;
+    }
     return 0;
 }
 
 int main()
 {
     int run = 0;
-    int seed = 10173;
-    srand(seed);
-    generate_and_sort_jobs();
-    print_all_job_fields(job_array);
-   
-    get_theoretical_max_quantum_for_job_array();
-
-    if (allocate_quanta_helper_arrays() != 0)
+    int seed[] = {10173, 10, 20, 30, 40};
+    int num_seeds = sizeof(seed)/sizeof(seed[0]);
+    for (run = 0; run < num_seeds; ++run)
     {
-        printf("Precomputing index failed\n");
-        exit(-__LINE__);
-    }
+        srand(seed[run]);
+        generate_and_sort_jobs();
+        print_all_job_fields(job_array);
+       
+        get_theoretical_max_quantum_for_job_array();
 
-    //check highest job index to eval array
-/*    printf("Highest job index to eval: \n");
-    int q = 0;
-    for (q = 0; q < theoretical_max_quantum_for_job_array+1; ++q)
-    {
-       printf("%d ",highest_job_index_to_eval[q]);
-    }
-    printf("\n");
-*/
-    int status = 0;
-    int alg_index = 0;
-    for (alg_index = 0; alg_index < num_alg_defined; ++alg_index)
-    {
-       alg_parameters * alg_ptr = &scheduling_algorithm[alg_index];
-       status = create_quanta_chart(run, alg_ptr);
-       status = alg_ptr->func(job_array, NUM_JOBS);
-       if (status != 0)
-       {
-           printf("Failed to complete run: %d algorithm: %d", run, alg_ptr->alg); 
-       }
-       display_job_stats(alg_ptr->alg, run);
-       status = cleanup_simulation_run();
-       if (status != 0)
-       {
-           printf("Failed to cleanup: %d algorithm: %d", run, alg_ptr->alg); 
-       }
-    }
+        if (allocate_quanta_helper_arrays() != 0)
+        {
+            printf("Precomputing index failed\n");
+            exit(-__LINE__);
+        }
 
+        int status = 0;
+        int alg_index = 0;
+        for (alg_index = 0; alg_index < num_alg_defined; ++alg_index)
+        {
+           alg_parameters * alg_ptr = &scheduling_algorithm[alg_index];
+           status = create_quanta_chart(run, alg_ptr);
+           status = alg_ptr->func(job_array, NUM_JOBS);
+           if (status != 0)
+           {
+               printf("Failed to complete run: %d algorithm: %d", run, alg_ptr->alg); 
+           }
+           display_job_stats(alg_ptr->alg, run);
+           status = cleanup_simulation_run();
+           if (status != 0)
+           {
+               printf("Failed to cleanup: %d algorithm: %d", run, alg_ptr->alg); 
+           }
+        }
+        status = cleanup_overall();
+    }
     return 0;
 
 }
