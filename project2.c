@@ -222,7 +222,7 @@ int update_quanta_chart(job_index)
    {
        if (job_index >= 0 && job_index < NUM_JOBS)
        {
-          fprintf(current_quanta_chart_fp,"%d ,", job_array[job_index].jobnum);
+          fprintf(current_quanta_chart_fp,"%d, ", job_array[job_index].jobnum);
        }
        else
        {
@@ -324,6 +324,8 @@ int do_srt(job * job_array, int num_jobs)
 
 int do_rr(job * job_array, int num_jobs)
 {
+    sched_job_at_quantum(0, 6);
+    sched_job_at_quantum(2, 40);
     return 0;
 }
 
