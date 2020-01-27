@@ -56,8 +56,8 @@ int do_rr(job * job_array, int num_jobs)
         }
         else if (status == 0)
         {
-            printf("%s:%d qi = %d, lower = %d, upper = %d \n", __FUNCTION__, __LINE__, qi, lower, upper);
-            printf("%s:%d current_rr_index = %d, num_rr_entries = %d \n", __FUNCTION__, __LINE__, current_rr_index, num_rr_entries);
+//            printf("%s:%d qi = %d, lower = %d, upper = %d \n", __FUNCTION__, __LINE__, qi, lower, upper);
+//            printf("%s:%d current_rr_index = %d, num_rr_entries = %d \n", __FUNCTION__, __LINE__, current_rr_index, num_rr_entries);
             //add newly arrived jobs to our round robin array
             int index = lower;
             for (index = lower; index <= upper; ++index)
@@ -67,8 +67,8 @@ int do_rr(job * job_array, int num_jobs)
                     rr_job_index_array[num_rr_entries++] = index;
                 }
             }
-            printf("%s:%d qi = %d, lower = %d, upper = %d \n", __FUNCTION__, __LINE__, qi, lower, upper);
-            printf("%s:%d current_rr_index = %d, num_rr_entries = %d \n", __FUNCTION__, __LINE__, current_rr_index, num_rr_entries);
+            //printf("%s:%d qi = %d, lower = %d, upper = %d \n", __FUNCTION__, __LINE__, qi, lower, upper);
+            //printf("%s:%d current_rr_index = %d, num_rr_entries = %d \n", __FUNCTION__, __LINE__, current_rr_index, num_rr_entries);
         }
         //If the rr_job_index array was empty and now has entries, restart current_rr_index at 0
         if (current_rr_index == -1)
@@ -79,23 +79,23 @@ int do_rr(job * job_array, int num_jobs)
         sched_job_at_quantum(rr_job_index_array[current_rr_index], qi);
         if (unfinished_job(qi,rr_job_index_array[current_rr_index]))
         {
-           printf("%s:%d qi = %d \n", __FUNCTION__, __LINE__, qi);
+//           printf("%s:%d qi = %d \n", __FUNCTION__, __LINE__, qi);
            if (num_rr_entries == 0)
            {
                printf("Unexpected 0 RR entries. \n");
-               printf("%s:%d qi = %d\n", __FUNCTION__, __LINE__, qi);
+//               printf("%s:%d qi = %d\n", __FUNCTION__, __LINE__, qi);
                return (-__LINE__);
            }
            //Move to next round robin entry. Preemptive
            current_rr_index = (current_rr_index + 1) % num_rr_entries;
-           printf("%s:%d current_rr_index = %d \n", __FUNCTION__, __LINE__, current_rr_index);
+//           printf("%s:%d current_rr_index = %d \n", __FUNCTION__, __LINE__, current_rr_index);
         }
         else
         {
           //Need to remove from round robin array
-          printf("%s:%d current_rr_index = %d num_rr_entries = %d \n", __FUNCTION__, __LINE__, current_rr_index, num_rr_entries);
+//          printf("%s:%d current_rr_index = %d num_rr_entries = %d \n", __FUNCTION__, __LINE__, current_rr_index, num_rr_entries);
           status = remove_job_at_current_rr_index(rr_job_index_array, &current_rr_index, &num_rr_entries);
-          printf("%s:%d After removal current_rr_index = %d num_rr_entries = %d \n", __FUNCTION__, __LINE__, current_rr_index, num_rr_entries);
+//          printf("%s:%d After removal current_rr_index = %d num_rr_entries = %d \n", __FUNCTION__, __LINE__, current_rr_index, num_rr_entries);
           if (status != 0)
           {
               printf("Could not remove job at current RR index =  %d for num_rr_entries = %d\n", current_rr_index, num_rr_entries);

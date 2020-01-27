@@ -77,17 +77,17 @@ int generate_and_sort_jobs()
 //Returns 1 if job unfinished, 0 otherwise
 int unfinished_job(int quantum, int ji)
 {
-   printf("%s:%d quantum = %d, job_index %d \n", __FUNCTION__, __LINE__, quantum, ji);
+//   printf("%s:%d quantum = %d, job_index %d \n", __FUNCTION__, __LINE__, quantum, ji);
    if (quantum < quantum_stop_scheduling)
    {
-       printf("%s:%d quantum = %d, job_index %d \n", __FUNCTION__, __LINE__, quantum, ji);
-       printf("Job_Array.done = %d, Sched_Allowed = %d \n", job_array[ji].done, job_array[ji].sched_allowed);
+//       printf("%s:%d quantum = %d, job_index %d \n", __FUNCTION__, __LINE__, quantum, ji);
+//       printf("Job_Array.done = %d, Sched_Allowed = %d \n", job_array[ji].done, job_array[ji].sched_allowed);
        return (job_array[ji].done == 0);
    }
    else
    {
-       printf("%s:%d quantum = %d, job_index %d \n", __FUNCTION__, __LINE__, quantum, ji);
-       printf("Job_Array.done = %d, Sched_Allowed = %d \n", job_array[ji].done, job_array[ji].sched_allowed);
+//       printf("%s:%d quantum = %d, job_index %d \n", __FUNCTION__, __LINE__, quantum, ji);
+//       printf("Job_Array.done = %d, Sched_Allowed = %d \n", job_array[ji].done, job_array[ji].sched_allowed);
        return ( (job_array[ji].done == 0) && (job_array[ji].sched_allowed == 1) );
    }
 }
@@ -234,7 +234,7 @@ int update_quanta_chart(job_index)
 static int scheduling_stop_called = 0;
 int sched_job_at_quantum(int job_index, int quantum)
 {
-   printf("Job index %d, Quantum %d \n", job_index, quantum);
+//   printf("Job index %d, Quantum %d \n", job_index, quantum);
    if (job_index < 0 || job_index >= NUM_JOBS)
    {
        printf("Invalid job index to schedule %d \n", job_index);
@@ -553,6 +553,43 @@ int create_quanta_chart(int run_number, alg_parameters *alg_ptr)
     return 0;
 }
 
+int display_job_stats(scheduling_algorithm_e alg, int run)
+{
+    printf("Displaying stats for algorithm %d run %d \n", alg, run);
+    int job_index;
+    float turnaround_time = 0.0;
+    float waiting_time = 0.0;
+    float response_time = 0.0;
+    float avg_turnaround_time = 0.0;
+    float avg_waiting_time = 0.0;
+    float avg_response_time = 0.0;
+    int num_done_jobs = 0;
+    for (job_index = 0; job_index < NUM_JOBS; ++job_index)
+    {
+        job * p_job = &job_array[job_index];
+        if (p_job->done)
+        {
+           turnaround_time = p_job->end_time - p_job->arrival_time;
+           response_time = p_job->start_time - p_job->arrival_time;
+           waiting_time = turnaround_time - p_job->expected_run_time;
+           avg_turnaround_time += p_job->end_time - p_job->arrival_time;
+           avg_response_time += p_job->start_time - p_job->arrival_time;
+           avg_waiting_time += turnaround_time - p_job->expected_run_time;
+           ++num_done_jobs;
+        }
+    }
+    if (num_done_jobs != 0)
+    {
+        avg_turnaround_time /= (float) num_done_jobs;
+        avg_response_time /= (float) num_done_jobs;
+        avg_waiting_time /= (float) num_done_jobs;
+    }
+    printf("Average Turnaround Time %f \n", avg_turnaround_time);
+    printf("Average Response Time %f \n", avg_response_time);
+    printf("Average Waiting Time %f \n", avg_waiting_time);
+    return 0;
+}    
+
 int cleanup_simulation_run()
 {
     scheduling_stop_called = 0;
@@ -581,13 +618,14 @@ int main()
     }
 
     //check highest job index to eval array
-    printf("Highest job index to eval: \n");
+/*    printf("Highest job index to eval: \n");
     int q = 0;
     for (q = 0; q < theoretical_max_quantum_for_job_array+1; ++q)
     {
        printf("%d ",highest_job_index_to_eval[q]);
     }
     printf("\n");
+*/
     int status = 0;
     int alg_index = 0;
     for (alg_index = 0; alg_index < num_alg_defined; ++alg_index)
@@ -599,6 +637,7 @@ int main()
        {
            printf("Failed to complete run: %d algorithm: %d", run, alg_ptr->alg); 
        }
+       display_job_stats(alg_ptr->alg, run);
        status = cleanup_simulation_run();
        if (status != 0)
        {
