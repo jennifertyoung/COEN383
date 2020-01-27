@@ -2,20 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #define NUM_JOBS 10
-
-typedef struct _job
-{
-    float arrival_time; /* random between 0.0 and 99.0 */
-    float expected_run_time; /* random float between 0.1 through 10 quanta */
-    int priority; /* integer 1 to 4 where 1 is highest */
-    float start_time;  /*quantum when job started running for the first time. use float for easy subtraction from end time*/
-    float accum_run_time; /* accum time slices */
-    float end_time; /* tracks when job is complete */
-    int jobnum; /*Identifier for job that corresponds with job index in sorted job_array*/
-    int done; /*1 if job is complete, 0 otherwise*/
-    int started; /*1 if job started, 0 otherwise*/
-    int sched_allowed; /*1 if job is allowed to be scheduled, 0 otherwise*/
-} job;
+#include "scheduling_algorithm_api.h"
 
 job job_array[NUM_JOBS];
 static int theoretical_max_quantum_for_job_array;
@@ -24,6 +11,12 @@ int * all_done;
 int quantum_stop_scheduling = 100;
 
 static FILE * current_quanta_chart_fp = NULL;
+
+//Get quantum after which we stop scheduling new jobs
+int get_quantum_stop_scheduling_value()
+{
+    return quantum_stop_scheduling;
+}
 
 int compare_jobs(const void * a, const void * b)
 {
@@ -51,7 +44,7 @@ void print_all_job_fields(job * job_array)
     int j = 0;
     for (j = 0; j < NUM_JOBS; ++j)
     {
-        printf("Job =  %.1f, %.1f, %d, %.0f, %.0f, %.0f, %d \n", job_array[j].arrival_time, job_array[j].expected_run_time, job_array[j].priority, job_array[j].start_time, job_array[j].accum_run_time, job_array[j].end_time, job_array[j].jobnum); 
+        printf("Job =  %f, %f, %d, %.0f, %.0f, %.0f, %d \n", job_array[j].arrival_time, job_array[j].expected_run_time, job_array[j].priority, job_array[j].start_time, job_array[j].accum_run_time, job_array[j].end_time, job_array[j].jobnum); 
     }
 }
 
@@ -81,14 +74,20 @@ int generate_and_sort_jobs()
 
 /*Define Scheduling Algorithm API*/
 
-static int unfinished_job(int quantum, int ji)
+//Returns 1 if job unfinished, 0 otherwise
+int unfinished_job(int quantum, int ji)
 {
+   printf("%s:%d quantum = %d, job_index %d \n", __FUNCTION__, __LINE__, quantum, ji);
    if (quantum < quantum_stop_scheduling)
    {
+       printf("%s:%d quantum = %d, job_index %d \n", __FUNCTION__, __LINE__, quantum, ji);
+       printf("Job_Array.done = %d, Sched_Allowed = %d \n", job_array[ji].done, job_array[ji].sched_allowed);
        return (job_array[ji].done == 0);
    }
    else
    {
+       printf("%s:%d quantum = %d, job_index %d \n", __FUNCTION__, __LINE__, quantum, ji);
+       printf("Job_Array.done = %d, Sched_Allowed = %d \n", job_array[ji].done, job_array[ji].sched_allowed);
        return ( (job_array[ji].done == 0) && (job_array[ji].sched_allowed == 1) );
    }
 }
@@ -235,6 +234,7 @@ int update_quanta_chart(job_index)
 static int scheduling_stop_called = 0;
 int sched_job_at_quantum(int job_index, int quantum)
 {
+   printf("Job index %d, Quantum %d \n", job_index, quantum);
    if (job_index < 0 || job_index >= NUM_JOBS)
    {
        printf("Invalid job index to schedule %d \n", job_index);
@@ -322,12 +322,7 @@ int do_srt(job * job_array, int num_jobs)
     return 0;
 }
 
-int do_rr(job * job_array, int num_jobs)
-{
-    sched_job_at_quantum(0, 6);
-    sched_job_at_quantum(2, 40);
-    return 0;
-}
+extern int do_rr(job * job_array, int num_jobs);
 
 int do_hpf_np(job * job_array, int num_jobs)
 {
@@ -350,12 +345,16 @@ typedef struct alg_parameters
 
 alg_parameters scheduling_algorithm[] =
 {
+#if 0
     {fcfs, "./fcfs_sched_out", do_fcfs},
     {sjf, "./sjf_sched_out", do_sjf},
     {srt, "./srt_sched_out", do_srt},
     {rr, "./rr_sched_out", do_rr},
     {hpf_np, "./hpf_np_sched_out", do_hpf_np},
     {hpf_pre, "./hpf_pre_sched_out", do_hpf_pre}
+#else
+    {rr, "./rr_sched_out", do_rr}
+#endif
 };
 
 int num_alg_defined = sizeof(scheduling_algorithm)/sizeof(scheduling_algorithm[0]);
@@ -437,6 +436,17 @@ int compute_theoretical_max_quantum_for_job_array()
         }
     }
     return theoretical_max_quantum_for_job_array;
+}
+
+static int theoretical_max_initialized = 0;
+int get_theoretical_max_quantum_for_job_array()
+{
+    if (theoretical_max_initialized == 0) 
+    { 
+       compute_theoretical_max_quantum_for_job_array();
+       theoretical_max_initialized = 1;
+    }
+    return theoretical_max_quantum_for_job_array; 
 }
 
 //  Theoretical max quantum for job array is the number of quanta we would need if we actually ran all the jobs generated
@@ -562,7 +572,7 @@ int main()
     generate_and_sort_jobs();
     print_all_job_fields(job_array);
    
-    compute_theoretical_max_quantum_for_job_array();
+    get_theoretical_max_quantum_for_job_array();
 
     if (allocate_quanta_helper_arrays() != 0)
     {

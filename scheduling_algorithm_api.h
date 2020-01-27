@@ -6,6 +6,20 @@
 #ifndef scheduling_algorithm_api_h
 #define scheduling_algorithm_api_h
 
+typedef struct _job
+{
+    float arrival_time; /* random between 0.0 and 99.0 */
+    float expected_run_time; /* random float between 0.1 through 10 quanta */
+    int priority; /* integer 1 to 4 where 1 is highest */
+    float start_time;  /*quantum when job started running for the first time. use float for easy subtraction from end time*/
+    float accum_run_time; /* accum time slices */
+    float end_time; /* tracks when job is complete */
+    int jobnum; /*Identifier for job that corresponds with job index in sorted job_array*/
+    int done; /*1 if job is complete, 0 otherwise*/
+    int started; /*1 if job started, 0 otherwise*/
+    int sched_allowed; /*1 if job is allowed to be scheduled, 0 otherwise*/
+} job;
+
 //Input: quantum number
 //Output: job index into job array for the lowest unfinished job inclusive at that quantum
 //job index into job array for the highest unfinished job inclusive at that quantum
@@ -49,4 +63,12 @@ int get_remaining_run_time(int job_index, float * rem_time);
 //Returns 1 if all prev jobs done at that quantum, 0 otherwise
 int are_all_prev_jobs_done(int quantum);
 
+//Gets theoretical max
+int get_theoretical_max_quantum_for_job_array();
+
+//Returns 1 if unfinished, 0 otherwise
+int unfinished_job(int quantum, int ji);
+
+//Get quantum after which we stop scheduling new jobs
+int get_quantum_stop_scheduling_value();
 #endif
