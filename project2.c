@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define NUM_JOBS 110
+#define NUM_JOBS 30
 #include "scheduling_algorithm_api.h"
 
 job job_array[NUM_JOBS];
@@ -227,7 +227,7 @@ static int update_quanta_chart(int quantum_index, int job_index)
        int index = 0;
        for (index = 0; index < number_idle_quanta; ++index)
        {
-          //fprintf(current_quanta_chart_fp,"%d, ", -1);
+          fprintf(current_quanta_chart_fp,"%d, ", -1);
        }
        if (job_index >= 0 && job_index < NUM_JOBS)
        {
@@ -258,11 +258,6 @@ int sched_job_at_quantum(int job_index, int quantum)
    }
    else
    {
-       if ( (scheduling_stop_called == 0) && (quantum >= quantum_stop_scheduling) )
-       {
-           stop_new_jobs_scheduling();
-           scheduling_stop_called = 1;
-       }
        if (unfinished_job(quantum, job_index))
        {
            if (job_array[job_index].started == 0)
@@ -302,6 +297,11 @@ int sched_job_at_quantum(int job_index, int quantum)
                printf("Impossible case: %d\n", status);
                return (-__LINE__);
            }
+       }
+       if ( (scheduling_stop_called == 0) && (quantum >= quantum_stop_scheduling - 1) )
+       {
+           stop_new_jobs_scheduling();
+           scheduling_stop_called = 1;
        }
    }
    return 0;
@@ -558,7 +558,7 @@ int create_quanta_chart(int run_number, alg_parameters *alg_ptr)
     }
     //No job can start in quantum 0 since the minimum arrival time is 0.1. Therefore we can hard code in -1 
     //for idle for quantum = 0
-    //fprintf(current_quanta_chart_fp,"%d, ", -1);
+    fprintf(current_quanta_chart_fp,"%d, ", -1);
     return 0;
 }
 
@@ -573,17 +573,23 @@ int display_job_stats(scheduling_algorithm_e alg, int run)
     float avg_waiting_time = 0.0;
     float avg_response_time = 0.0;
     int num_done_jobs = 0;
+    int max_end_quantum = 0;
     for (job_index = 0; job_index < NUM_JOBS; ++job_index)
     {
         job * p_job = &job_array[job_index];
         if (p_job->done)
         {
+           printf("JTY Job Index: %d, Start Time: %f End Time: %f \n", job_index, p_job->start_time, p_job->end_time);     
            turnaround_time = p_job->end_time - p_job->arrival_time;
            response_time = p_job->start_time - p_job->arrival_time;
            waiting_time = turnaround_time - p_job->expected_run_time;
            avg_turnaround_time += p_job->end_time - p_job->arrival_time;
            avg_response_time += p_job->start_time - p_job->arrival_time;
            avg_waiting_time += turnaround_time - p_job->expected_run_time;
+           if ((int) ceil(p_job->end_time) > max_end_quantum)
+           {
+              max_end_quantum = (int) ceil(p_job->end_time);
+           }
            ++num_done_jobs;
         }
     }
@@ -596,6 +602,8 @@ int display_job_stats(scheduling_algorithm_e alg, int run)
     printf("Average Turnaround Time %f \n", avg_turnaround_time);
     printf("Average Response Time %f \n", avg_response_time);
     printf("Average Waiting Time %f \n", avg_waiting_time);
+    printf("Max End Quantum: %d \n", max_end_quantum);
+    printf("Throughput %f jobs/quantum\n", (float) num_done_jobs / (float) max_end_quantum);
     return 0;
 }    
 
@@ -641,7 +649,7 @@ int cleanup_overall()
 int main()
 {
     int run = 0;
-    int seed[] = {53, 10, 20, 30, 40};
+    int seed[] = {10173, 10, 20, 30, 40};
     int num_seeds = sizeof(seed)/sizeof(seed[0]);
     for (run = 0; run < num_seeds; ++run)
     {
