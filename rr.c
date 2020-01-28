@@ -71,7 +71,7 @@ int remove_unstarted_jobs_from_rr_array(int *rr_job_index_array, int *current_rr
    }
    if (local_num_rr_entries <= 0)
    {
-      *num_rr_entries = local_num_rr_entries;
+      *num_rr_entries = 0;
       *current_rr_index = -1;
    }
    else
