@@ -57,7 +57,8 @@ int remove_unstarted_jobs_from_rr_array(int *rr_job_index_array, int *current_rr
    int local_num_rr_entries = *num_rr_entries;
    for (ii = *num_rr_entries - 1; ii >= 0; --ii)
    {
-       if (!is_job_started(rr_job_index_array[ii]))
+       //if not able to start this job at this quantum
+       if (!unfinished_job(quantum, rr_job_index_array[ii]))
        {
            int status;
            //printf("RMUNSTARTED Job to remove: %d started state: %d \n",rr_job_index_array[ii],is_job_started(rr_job_index_array[ii]));

@@ -53,6 +53,7 @@ int get_remaining_run_time(int job_index, float * rem_time);
 int get_theoretical_max_quantum_for_job_array();
 
 //Returns 1 if unfinished, 0 otherwise
+//Job can be started this quantum
 int unfinished_job(int quantum, int ji);
 
 //Get quantum after which we stop scheduling new jobs
