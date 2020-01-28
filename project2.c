@@ -320,6 +320,16 @@ typedef enum _scheduling_algorithm_e
 
 int do_fcfs(job * job_array, int num_jobs)
 {
+    int i = 0;
+    int quanta = 0;
+    for (i = 0; quanta < 100 && i < num_jobs; ++i)
+    {
+        // wait if the current quanta is not busy and no other job has arrived
+        while (quanta < (int)ceil(job_array[i].arrival_time))
+            ++quanta;
+        printf ("Starting quanta for process %d: %d\n", i, quanta);
+        quanta += (int)ceil(job_array[i].expected_run_time);
+    }
     return 0;
 }
 
