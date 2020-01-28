@@ -68,6 +68,11 @@ int generate_and_sort_jobs()
     printf("After sort: \n");
     qsort(job_array, NUM_JOBS, sizeof(job), compare_jobs);
     assign_job_nums(job_array);
+    int quanta_gap_threshold = 2;
+    if (quantum_gap_exceeds_threshold(job_array, quanta_gap_threshold))
+    {
+       return (-__LINE__);
+    }
     return 0;
 }
 
@@ -371,7 +376,7 @@ alg_parameters scheduling_algorithm[] =
 int num_alg_defined = sizeof(scheduling_algorithm)/sizeof(scheduling_algorithm[0]);
 
 //returns 1 if CPU is idle for 2 or more quanta, 0 otherwise.
-/*int check_quantum_gaps(job * job_array)
+int quantum_gap_exceeds_threshold(job * job_array, int quanta_gap_threshold)
 {
     int left_job_index = 0;
     int right_job_index = 1;
@@ -383,36 +388,31 @@ int num_alg_defined = sizeof(scheduling_algorithm)/sizeof(scheduling_algorithm[0
         float left_finish_time = job_array[left_job_index].arrival_time + job_array[left_job_index].expected_run_time;
         float right_arrival_time = job_array[i].arrival_time;
         float right_finish_time = job_array[i].arrival_time + job_array[i].expected_run_time;
-        if (right_finish_time <= left_finish_time)
+        int partial_overlap = right_arrival_time <= left_finish_time;
+        int completely_contained = right_finish_time <= left_finish_time;
+        if (completely_contained || partial_overlap)
         {
-            //right job is completely contained
-            continue;
-        }
-        else if (right_arrival_time <= left_finish_time)
-        {
-            //partial overlap
-            left_job_index = i;
-            continue;
+            //any overlap
+            if (partial_overlap)
+            {
+                left_job_index = i;
+            }
         }
         else
         {
-            //we have a gap. Adding 0.5 and casting to int is like the ceiling. Right arrival time won't be able to start until next quantum.
-            //Need to take ceiling of left finish time because CPU was not idle during part of this quantum
+            //we have a gap
             int gap_quanta = (int) ceil(right_arrival_time) - (int) ceil(left_finish_time);
-            printf("Left Job Index = %d, Right Job Index = %d \n", left_job_index, right_job_index);
-            printf("Gap = %d \n",gap_quanta);
-            if (gap_quanta >= 2)
+            if (gap_quanta > quanta_gap_threshold)
             {
-                printf("Generate more jobs!\n");
-                return 1;
-            }
-            //gap small enough
+                printf("Generate more jobs! Gap = %d\n", gap_quanta);
+                return 1; 
+            }            
             left_job_index = i;
         }
     }
     return 0;
 }
-*/
+
 int compute_theoretical_max_quantum_for_job_array()
 {
     theoretical_max_quantum_for_job_array = (int) ceil(job_array[0].arrival_time);
@@ -579,7 +579,7 @@ int display_job_stats(scheduling_algorithm_e alg, int run)
         job * p_job = &job_array[job_index];
         if (p_job->done)
         {
-           printf("JTY Job Index: %d, Start Time: %f End Time: %f \n", job_index, p_job->start_time, p_job->end_time);     
+           printf("Job Index: %d, Start Time: %f End Time: %f \n", job_index, p_job->start_time, p_job->end_time);     
            turnaround_time = p_job->end_time - p_job->arrival_time;
            response_time = p_job->start_time - p_job->arrival_time;
            waiting_time = turnaround_time - p_job->expected_run_time;
