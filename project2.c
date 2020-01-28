@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define NUM_JOBS 90
+#define NUM_JOBS 110
 #include "scheduling_algorithm_api.h"
 
 job job_array[NUM_JOBS];
@@ -208,17 +208,31 @@ static void stop_new_jobs_scheduling(void)
    }
 }
 
-int update_quanta_chart(job_index)
+static int previous_scheduled_quantum_index = 0;
+static int update_quanta_chart(int quantum_index, int job_index)
 {
+   int number_idle_quanta = quantum_index - previous_scheduled_quantum_index - 1;
+   if (number_idle_quanta < 0)
+   {
+      //Impossible
+      printf("%s:%d quantum_index = %d, job_index = %d, previous_scheduled_quantum_index = %d \n",__FUNCTION__, __LINE__, quantum_index, job_index, previous_scheduled_quantum_index);
+      return (-__LINE__);
+   }
    if (current_quanta_chart_fp == NULL)
    {
        return (-__LINE__);
    }
    else
    {
+       int index = 0;
+       for (index = 0; index < number_idle_quanta; ++index)
+       {
+          fprintf(current_quanta_chart_fp,"%d, ", -1);
+       }
        if (job_index >= 0 && job_index < NUM_JOBS)
        {
           fprintf(current_quanta_chart_fp,"%d, ", job_array[job_index].jobnum);
+          previous_scheduled_quantum_index = quantum_index;
        }
        else
        {
@@ -265,7 +279,7 @@ int sched_job_at_quantum(int job_index, int quantum)
            if (status == 0)
            {
                //write out to quanta chart since we are scheduling this job
-               quanta_update_status = update_quanta_chart(job_index);
+               quanta_update_status = update_quanta_chart(quantum, job_index);
                if (quanta_update_status != 0)
                {
                   printf("Failed up update quanta chart %d for job index %d at quantum %d \n", quanta_update_status, job_index, quantum);
@@ -443,6 +457,7 @@ int get_theoretical_max_quantum_for_job_array()
        compute_theoretical_max_quantum_for_job_array();
        theoretical_max_initialized = 1;
     }
+    printf("%s:%d Theoretical Max %d \n", __FUNCTION__, __LINE__, theoretical_max_quantum_for_job_array);
     return theoretical_max_quantum_for_job_array; 
 }
 
@@ -541,6 +556,9 @@ int create_quanta_chart(int run_number, alg_parameters *alg_ptr)
         printf("Unable to create file for %s\n", file_name);
         return (-__LINE__);
     }
+    //No job can start in quantum 0 since the minimum arrival time is 0.1. Therefore we can hard code in -1 
+    //for idle for quantum = 0
+    fprintf(current_quanta_chart_fp,"%d, ", -1);
     return 0;
 }
 
@@ -605,6 +623,7 @@ int cleanup_simulation_run()
         current_quanta_chart_fp = NULL;
     }
     theoretical_max_initialized = 0;
+    previous_scheduled_quantum_index = 0;
     cleanup_job_array();
     return 0;
 }
@@ -622,7 +641,7 @@ int cleanup_overall()
 int main()
 {
     int run = 0;
-    int seed[] = {10173, 10, 20, 30, 40};
+    int seed[] = {53, 10, 20, 30, 40};
     int num_seeds = sizeof(seed)/sizeof(seed[0]);
     for (run = 0; run < num_seeds; ++run)
     {
