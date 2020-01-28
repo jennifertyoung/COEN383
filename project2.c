@@ -333,7 +333,11 @@ int do_fcfs(job * job_array, int num_jobs)
         while (quanta < (int)ceil(job_array[i].arrival_time))
             ++quanta;
         printf("Starting quanta for process %d: %d\n", i, quanta);
-        quanta += (int)ceil(job_array[i].expected_run_time);
+        while (job_array[i].done == 0)
+        {
+            sched_job_at_quantum(i, quanta);
+            ++quanta;
+        }
     }
     return 0;
 }
@@ -379,7 +383,7 @@ alg_parameters scheduling_algorithm[] =
     {hpf_np, "./hpf_np_sched_out", do_hpf_np},
     {hpf_pre, "./hpf_pre_sched_out", do_hpf_pre}
 #else
-    {rr, "./rr_sched_out", do_rr}
+    {fcfs, "./fcfs_sched_out", do_fcfs} /*change to whatever alg you want to test*/
 #endif
 };
 
@@ -587,6 +591,7 @@ int display_job_stats(scheduling_algorithm_e alg, int run)
     for (job_index = 0; job_index < NUM_JOBS; ++job_index)
     {
         job * p_job = &job_array[job_index];
+        //printf("Job index: %d, Arrival time: %f, Run time: %f\n", job_index, p_job->arrival_time, p_job->expected_run_time);
         if (p_job->done)
         {
            printf("Job Index: %d, Start Time: %f End Time: %f \n", job_index, p_job->start_time, p_job->end_time);     
