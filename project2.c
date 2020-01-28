@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define NUM_JOBS 30
+#define NUM_JOBS 20
 #include "scheduling_algorithm_api.h"
 
 job job_array[NUM_JOBS];
@@ -603,6 +603,7 @@ int display_job_stats(scheduling_algorithm_e alg, int run)
     printf("Average Response Time %f \n", avg_response_time);
     printf("Average Waiting Time %f \n", avg_waiting_time);
     printf("Max End Quantum: %d \n", max_end_quantum);
+    printf("Num Jobs Done: %d \n", num_done_jobs);
     printf("Throughput %f jobs/quantum\n", (float) num_done_jobs / (float) max_end_quantum);
     return 0;
 }    
