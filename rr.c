@@ -3,6 +3,18 @@
 #include <math.h>
 #include "scheduling_algorithm_api.h"
 
+int is_job_started(int job_index);
+
+void dump_rr_array(int * rr_job_index_array, int num_rr_entries)
+{
+   int ii;
+   for (ii = 0; ii < num_rr_entries; ++ii)
+   {
+      printf("RRDBG:ii=%d job index: %d, started= %d \n",ii, rr_job_index_array[ii], is_job_started(rr_job_index_array[ii]) );
+   }  
+}
+
+
 static int remove_job_at_current_rr_index(int *rr_job_index_array, int *current_rr_index, int *num_rr_entries)
 {
     if (*num_rr_entries <= 0)
@@ -24,10 +36,50 @@ static int remove_job_at_current_rr_index(int *rr_job_index_array, int *current_
         {
             rr_job_index_array[ri] = rr_job_index_array[ri+1];
         }
+        
         *num_rr_entries = *num_rr_entries - 1;
-        *current_rr_index = (*current_rr_index + 1) % *num_rr_entries;
+        if (*current_rr_index >= *num_rr_entries)
+        {
+           *current_rr_index = 0;
+        }
+        else
+        {
+           *current_rr_index = (*current_rr_index + 1) % *num_rr_entries;
+        }
     }
     return 0;
+}
+
+int remove_unstarted_jobs_from_rr_array(int *rr_job_index_array, int *current_rr_index, int *num_rr_entries, int quantum)
+{
+   int ii;
+   int local_current_rr_index = *current_rr_index;
+   int local_num_rr_entries = *num_rr_entries;
+   for (ii = *num_rr_entries - 1; ii >= 0; --ii)
+   {
+       if (!is_job_started(rr_job_index_array[ii]))
+       {
+           int status;
+           //printf("RMUNSTARTED Job to remove: %d started state: %d \n",rr_job_index_array[ii],is_job_started(rr_job_index_array[ii]));
+           local_current_rr_index = ii;
+           status = remove_job_at_current_rr_index(rr_job_index_array, &local_current_rr_index, &local_num_rr_entries);
+           if (status != 0)
+           {
+               printf("%s:%d: Failed to remove.ii = %d local_num_rr_entries = %d, local_current_rr_index = %d \n", __FUNCTION__, __LINE__,  ii, local_num_rr_entries, local_current_rr_index);      
+           } 
+       }
+   }
+   if (local_num_rr_entries <= 0)
+   {
+      *num_rr_entries = 0;
+      *current_rr_index = -1;
+   }
+   else
+   {
+      *num_rr_entries = local_num_rr_entries;
+      *current_rr_index = local_current_rr_index; 
+   }
+   return 0;
 }
 
 int do_rr(job * job_array, int num_jobs)
@@ -76,32 +128,51 @@ int do_rr(job * job_array, int num_jobs)
             current_rr_index = 0;
         }
         //Schedule the job at the current rr index
-        sched_job_at_quantum(rr_job_index_array[current_rr_index], qi);
-        if (unfinished_job(qi,rr_job_index_array[current_rr_index]))
+        int return_code;
+        int quantum_stop_scheduling = get_quantum_stop_scheduling_value();
+        if (qi == quantum_stop_scheduling)
         {
-//           printf("%s:%d qi = %d \n", __FUNCTION__, __LINE__, qi);
-           if (num_rr_entries == 0)
+           int err_code;
+           //printf("RRDBG_BEFORE \n");
+           //dump_rr_array(rr_job_index_array, num_rr_entries);
+           err_code = remove_unstarted_jobs_from_rr_array(rr_job_index_array, &current_rr_index, &num_rr_entries, qi);
+           //printf("RRDBG_AFTER \n");
+           //dump_rr_array(rr_job_index_array, num_rr_entries);
+           if (err_code != 0)
            {
-               printf("Unexpected 0 RR entries. \n");
-//               printf("%s:%d qi = %d\n", __FUNCTION__, __LINE__, qi);
-               return (-__LINE__);
+               printf("%s:%d Error removing unstarted jobs. Error code %d \n", __FUNCTION__, __LINE__, err_code);
            }
-           //Move to next round robin entry. Preemptive
-           current_rr_index = (current_rr_index + 1) % num_rr_entries;
-//           printf("%s:%d current_rr_index = %d \n", __FUNCTION__, __LINE__, current_rr_index);
         }
-        else
+        if (current_rr_index != -1)
         {
-          //Need to remove from round robin array
-//          printf("%s:%d current_rr_index = %d num_rr_entries = %d \n", __FUNCTION__, __LINE__, current_rr_index, num_rr_entries);
-          status = remove_job_at_current_rr_index(rr_job_index_array, &current_rr_index, &num_rr_entries);
-//          printf("%s:%d After removal current_rr_index = %d num_rr_entries = %d \n", __FUNCTION__, __LINE__, current_rr_index, num_rr_entries);
-          if (status != 0)
-          {
-              printf("Could not remove job at current RR index =  %d for num_rr_entries = %d\n", current_rr_index, num_rr_entries);
-              return (-__LINE__);
-          }
+           return_code = sched_job_at_quantum(rr_job_index_array[current_rr_index], qi);
+           if (unfinished_job(qi,rr_job_index_array[current_rr_index]))
+           {
+    //           printf("%s:%d qi = %d \n", __FUNCTION__, __LINE__, qi);
+               if (num_rr_entries == 0)
+               {
+                   printf("Unexpected 0 RR entries. \n");
+    //               printf("%s:%d qi = %d\n", __FUNCTION__, __LINE__, qi);
+                   return (-__LINE__);
+               }
+               //Move to next round robin entry. Preemptive
+               current_rr_index = (current_rr_index + 1) % num_rr_entries;
+    //           printf("%s:%d current_rr_index = %d \n", __FUNCTION__, __LINE__, current_rr_index);
+            }
+            else
+            {
+              //Need to remove from round robin array
+    //          printf("%s:%d current_rr_index = %d num_rr_entries = %d \n", __FUNCTION__, __LINE__, current_rr_index, num_rr_entries);
+              status = remove_job_at_current_rr_index(rr_job_index_array, &current_rr_index, &num_rr_entries);
+    //          printf("%s:%d After removal current_rr_index = %d num_rr_entries = %d \n", __FUNCTION__, __LINE__, current_rr_index, num_rr_entries);
+              if (status != 0)
+              {
+                  printf("Could not remove job at current RR index =  %d for num_rr_entries = %d\n", current_rr_index, num_rr_entries);
+                  return (-__LINE__);
+              }
+            }
         }
+
         if (qi >= get_quantum_stop_scheduling_value())
         {
            int lower_s;

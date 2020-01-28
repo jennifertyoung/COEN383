@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define NUM_JOBS 110
+#define NUM_JOBS 90
 #include "scheduling_algorithm_api.h"
 
 job job_array[NUM_JOBS];
@@ -68,6 +68,11 @@ int generate_and_sort_jobs()
     printf("After sort: \n");
     qsort(job_array, NUM_JOBS, sizeof(job), compare_jobs);
     assign_job_nums(job_array);
+    int quanta_gap_threshold = 2;
+    if (quantum_gap_exceeds_threshold(job_array, quanta_gap_threshold))
+    {
+       return (-__LINE__);
+    }
     return 0;
 }
 
@@ -227,7 +232,7 @@ static int update_quanta_chart(int quantum_index, int job_index)
        int index = 0;
        for (index = 0; index < number_idle_quanta; ++index)
        {
-          //fprintf(current_quanta_chart_fp,"%d, ", -1);
+          fprintf(current_quanta_chart_fp,"%d, ", -1);
        }
        if (job_index >= 0 && job_index < NUM_JOBS)
        {
@@ -258,11 +263,6 @@ int sched_job_at_quantum(int job_index, int quantum)
    }
    else
    {
-       if ( (scheduling_stop_called == 0) && (quantum >= quantum_stop_scheduling) )
-       {
-           stop_new_jobs_scheduling();
-           scheduling_stop_called = 1;
-       }
        if (unfinished_job(quantum, job_index))
        {
            if (job_array[job_index].started == 0)
@@ -303,6 +303,11 @@ int sched_job_at_quantum(int job_index, int quantum)
                return (-__LINE__);
            }
        }
+       if ( (scheduling_stop_called == 0) && (quantum >= quantum_stop_scheduling - 1) )
+       {
+           stop_new_jobs_scheduling();
+           scheduling_stop_called = 1;
+       }
    }
    return 0;
 }
@@ -327,7 +332,7 @@ int do_fcfs(job * job_array, int num_jobs)
         // wait if the current quanta is not busy and no other job has arrived
         while (quanta < (int)ceil(job_array[i].arrival_time))
             ++quanta;
-        printf ("Starting quanta for process %d: %d\n", i, quanta);
+        printf("Starting quanta for process %d: %d\n", i, quanta);
         quanta += (int)ceil(job_array[i].expected_run_time);
     }
     return 0;
@@ -381,7 +386,7 @@ alg_parameters scheduling_algorithm[] =
 int num_alg_defined = sizeof(scheduling_algorithm)/sizeof(scheduling_algorithm[0]);
 
 //returns 1 if CPU is idle for 2 or more quanta, 0 otherwise.
-/*int check_quantum_gaps(job * job_array)
+int quantum_gap_exceeds_threshold(job * job_array, int quanta_gap_threshold)
 {
     int left_job_index = 0;
     int right_job_index = 1;
@@ -393,36 +398,31 @@ int num_alg_defined = sizeof(scheduling_algorithm)/sizeof(scheduling_algorithm[0
         float left_finish_time = job_array[left_job_index].arrival_time + job_array[left_job_index].expected_run_time;
         float right_arrival_time = job_array[i].arrival_time;
         float right_finish_time = job_array[i].arrival_time + job_array[i].expected_run_time;
-        if (right_finish_time <= left_finish_time)
+        int partial_overlap = right_arrival_time <= left_finish_time;
+        int completely_contained = right_finish_time <= left_finish_time;
+        if (completely_contained || partial_overlap)
         {
-            //right job is completely contained
-            continue;
-        }
-        else if (right_arrival_time <= left_finish_time)
-        {
-            //partial overlap
-            left_job_index = i;
-            continue;
+            //any overlap
+            if (partial_overlap)
+            {
+                left_job_index = i;
+            }
         }
         else
         {
-            //we have a gap. Adding 0.5 and casting to int is like the ceiling. Right arrival time won't be able to start until next quantum.
-            //Need to take ceiling of left finish time because CPU was not idle during part of this quantum
+            //we have a gap
             int gap_quanta = (int) ceil(right_arrival_time) - (int) ceil(left_finish_time);
-            printf("Left Job Index = %d, Right Job Index = %d \n", left_job_index, right_job_index);
-            printf("Gap = %d \n",gap_quanta);
-            if (gap_quanta >= 2)
+            if (gap_quanta > quanta_gap_threshold)
             {
-                printf("Generate more jobs!\n");
-                return 1;
-            }
-            //gap small enough
+                printf("Generate more jobs! Gap = %d\n", gap_quanta);
+                return 1; 
+            }            
             left_job_index = i;
         }
     }
     return 0;
 }
-*/
+
 int compute_theoretical_max_quantum_for_job_array()
 {
     theoretical_max_quantum_for_job_array = (int) ceil(job_array[0].arrival_time);
@@ -568,7 +568,7 @@ int create_quanta_chart(int run_number, alg_parameters *alg_ptr)
     }
     //No job can start in quantum 0 since the minimum arrival time is 0.1. Therefore we can hard code in -1 
     //for idle for quantum = 0
-    //fprintf(current_quanta_chart_fp,"%d, ", -1);
+    fprintf(current_quanta_chart_fp,"%d, ", -1);
     return 0;
 }
 
@@ -583,17 +583,23 @@ int display_job_stats(scheduling_algorithm_e alg, int run)
     float avg_waiting_time = 0.0;
     float avg_response_time = 0.0;
     int num_done_jobs = 0;
+    int max_end_quantum = 0;
     for (job_index = 0; job_index < NUM_JOBS; ++job_index)
     {
         job * p_job = &job_array[job_index];
         if (p_job->done)
         {
+           printf("Job Index: %d, Start Time: %f End Time: %f \n", job_index, p_job->start_time, p_job->end_time);     
            turnaround_time = p_job->end_time - p_job->arrival_time;
            response_time = p_job->start_time - p_job->arrival_time;
            waiting_time = turnaround_time - p_job->expected_run_time;
            avg_turnaround_time += p_job->end_time - p_job->arrival_time;
            avg_response_time += p_job->start_time - p_job->arrival_time;
            avg_waiting_time += turnaround_time - p_job->expected_run_time;
+           if ((int) ceil(p_job->end_time) > max_end_quantum)
+           {
+              max_end_quantum = (int) ceil(p_job->end_time);
+           }
            ++num_done_jobs;
         }
     }
@@ -606,6 +612,9 @@ int display_job_stats(scheduling_algorithm_e alg, int run)
     printf("Average Turnaround Time %f \n", avg_turnaround_time);
     printf("Average Response Time %f \n", avg_response_time);
     printf("Average Waiting Time %f \n", avg_waiting_time);
+    printf("Max End Quantum: %d \n", max_end_quantum);
+    printf("Num Jobs Done: %d \n", num_done_jobs);
+    printf("Throughput %f jobs/quantum\n", (float) num_done_jobs / (float) max_end_quantum);
     return 0;
 }    
 
@@ -651,7 +660,7 @@ int cleanup_overall()
 int main()
 {
     int run = 0;
-    int seed[] = {53, 10, 20, 30, 40};
+    int seed[] = {10173, 10, 20, 30, 40};
     int num_seeds = sizeof(seed)/sizeof(seed[0]);
     for (run = 0; run < num_seeds; ++run)
     {
