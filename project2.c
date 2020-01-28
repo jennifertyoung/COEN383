@@ -227,7 +227,7 @@ static int update_quanta_chart(int quantum_index, int job_index)
        int index = 0;
        for (index = 0; index < number_idle_quanta; ++index)
        {
-          fprintf(current_quanta_chart_fp,"%d, ", -1);
+          //fprintf(current_quanta_chart_fp,"%d, ", -1);
        }
        if (job_index >= 0 && job_index < NUM_JOBS)
        {
@@ -558,7 +558,7 @@ int create_quanta_chart(int run_number, alg_parameters *alg_ptr)
     }
     //No job can start in quantum 0 since the minimum arrival time is 0.1. Therefore we can hard code in -1 
     //for idle for quantum = 0
-    fprintf(current_quanta_chart_fp,"%d, ", -1);
+    //fprintf(current_quanta_chart_fp,"%d, ", -1);
     return 0;
 }
 
