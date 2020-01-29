@@ -43,5 +43,3 @@ int do_sjf(job * job_array, int num_jobs)
     }
     return 0;
 }
-
-

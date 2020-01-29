@@ -47,6 +47,8 @@ void print_all_job_fields(job * job_array)
     }
 }
 
+int quantum_gap_exceeds_threshold(job * job_array, int quanta_gap_threshold);
+
 int generate_and_sort_jobs()
 {
     int i = 0;
@@ -323,24 +325,15 @@ typedef enum _scheduling_algorithm_e
 } scheduling_algorithm_e;
 
 
-int do_fcfs(job * job_array, int num_jobs)
-{
-    return 0;
-}
+extern int do_fcfs(job * job_array, int num_jobs);
 
-int do_sjf(job * job_array, int num_jobs)
-{
-    return 0;
-}
+extern int do_sjf(job * job_array, int num_jobs);
 
 extern int do_srt(job * job_array, int num_jobs);
 
 extern int do_rr(job * job_array, int num_jobs);
 
-int do_hpf_np(job * job_array, int num_jobs)
-{
-    return 0;
-}
+extern int do_hpf_np(job * job_array, int num_jobs);
 
 extern int do_hpf_pre(job * job_array, int num_jobs);
 
@@ -363,8 +356,11 @@ alg_parameters scheduling_algorithm[] =
     {hpf_np, "./hpf_np_sched_out", do_hpf_np},
     {hpf_pre, "./hpf_pre_sched_out", do_hpf_pre}
 #else
-    //{rr, "./rr_sched_out", do_rr}
-    {srt, "./srt_sched_out", do_srt},
+    //{fcfs, "./fcfs_sched_out", do_fcfs}
+    //{sjf, "./sjf_sched_out", do_sjf}
+    //{srt, "./srt_sched_out", do_srt}
+    {rr, "./rr_sched_out", do_rr}
+    //{hpf_np, "./hpf_np_sched_out", do_hpf_np}
     //{hpf_pre, "./hpf_pre_sched_out", do_hpf_pre}
 #endif
 };
