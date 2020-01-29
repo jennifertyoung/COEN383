@@ -50,7 +50,7 @@ static int remove_job_at_current_rr_index(int *rr_job_index_array, int *current_
     return 0;
 }
 
-int remove_unstarted_jobs_from_rr_array(int *rr_job_index_array, int *current_rr_index, int *num_rr_entries, int quantum)
+static int remove_unstarted_jobs_from_rr_array(int *rr_job_index_array, int *current_rr_index, int *num_rr_entries, int quantum)
 {
    int ii;
    int local_current_rr_index = *current_rr_index;
