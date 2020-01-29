@@ -154,7 +154,6 @@ int get_new_job_index_range(int quantum, int *lower_new, int *upper_new)
    {
        *lower_new = highest_job_index_to_eval[quantum-1] + 1;
        *upper_new = highest_job_index_to_eval[quantum];
-       printf("JTY qi=%d, lower=%d, upper=%d", quantum, *lower_new, *upper_new);
    }
    return 0;
 }
@@ -217,9 +216,7 @@ static void stop_new_jobs_scheduling(void)
 static int previous_scheduled_quantum_index = 0;
 static int update_quanta_chart(int quantum_index, int job_index)
 {
-   printf("JTY UQC qi=%d ji=%d\n", quantum_index, job_index);
    int number_idle_quanta = quantum_index - previous_scheduled_quantum_index - 1;
-   printf("JTY UQC Num Idle Quanta = %d\n", number_idle_quanta);
    if (number_idle_quanta < 0)
    {
       //Impossible
@@ -245,7 +242,6 @@ static int update_quanta_chart(int quantum_index, int job_index)
        }
        else
        {
-          printf("JTY UQC Bad Job Index= %d\n", job_index);
           return (-__LINE__);
        }
    }
@@ -255,17 +251,13 @@ static int update_quanta_chart(int quantum_index, int job_index)
 static int scheduling_stop_called = 0;
 int sched_job_at_quantum(int job_index, int quantum)
 {
-   printf("JTY: SJQ qi=%d, ji=%d \n", quantum, job_index);
-//   printf("Job index %d, Quantum %d \n", job_index, quantum);
    if (job_index < 0 || job_index >= NUM_JOBS)
    {
        printf("Invalid job index to schedule %d \n", job_index);
-       printf("JTY: SJQ qi=%d, ji=%d Invalid Job\n", quantum, job_index);
        return (-__LINE__);
    }
    else if (quantum < 0 || quantum > theoretical_max_quantum_for_job_array)
    {
-       printf("JTY: SJQ qi=%d, ji=%d Invalid Quantum\n", quantum, job_index);
        printf("Invalid quantum to schedule %d \n", quantum);
        return (-__LINE__);
    }
@@ -273,7 +265,6 @@ int sched_job_at_quantum(int job_index, int quantum)
    {
        if (unfinished_job(quantum, job_index))
        {
-           printf("JTY: SJQ qi=%d, ji=%d Unfinished Job\n", quantum, job_index);
            if (job_array[job_index].started == 0)
            {
                //start the job
@@ -308,15 +299,12 @@ int sched_job_at_quantum(int job_index, int quantum)
            }
            else
            {
-               printf("JTY: SJQ qi=%d, ji=%d Impossible Case\n", quantum, job_index);
                printf("Impossible case: %d\n", status);
                return (-__LINE__);
            }
        }
        else
        {
-           printf("JTY: SJQ qi=%d, ji=%d Finished Job\n", quantum, job_index);
-           printf("JTY: SJQ: Job Index: %d, Started: %d, Done: %d \n", job_index, job_array[job_index].started, job_array[job_index].done);
            update_quanta_chart(quantum, job_index); 
        }
        if ( (scheduling_stop_called == 0) && (quantum >= quantum_stop_scheduling - 1) )

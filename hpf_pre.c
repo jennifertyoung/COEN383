@@ -15,8 +15,11 @@ void dump_rr_array_helper(const char * fn, int line, int * rr_job_index_array, i
    }  
 }
 
+#if 0
 #define dump_rr_array(rji, nre, pr, qir) dump_rr_array_helper(__FUNCTION__, __LINE__, rji, nre, pr, qir)
-
+#else
+#define dump_rr_array(rji, nre, pr, qir)
+#endif
 static int remove_job_at_current_rr_index(int *rr_job_index_array, int *current_rr_index, int *num_rr_entries)
 {
     if (*num_rr_entries <= 0)
