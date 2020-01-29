@@ -617,8 +617,65 @@ int display_job_stats(scheduling_algorithm_e alg, int run)
     run_avg_response[alg] += avg_response_time;
     run_avg_waiting[alg] += avg_waiting_time;
     run_avg_throughput[alg] += avg_throughput;
+
+    if (alg == hpf_pre)
+    {
+       int priority = 1;
+       float per_pri_turnaround[4];
+       float per_pri_response[4];
+       float per_pri_waiting[4];
+       float per_pri_throughput[4];
+       int per_pri_num_done_jobs[4];
+       int per_pri_max_end_quantum[4];
+       for (priority = 1; priority <= 4; ++priority)
+       {
+            per_pri_num_done_jobs[priority-1]=0;
+            per_pri_turnaround[priority-1]=0.0;
+            per_pri_response[priority-1]=0.0;
+            per_pri_waiting[priority-1]=0.0;
+            per_pri_throughput[priority-1]=0.0;
+            per_pri_max_end_quantum[priority-1]=0;
+            for (job_index = 0; job_index < NUM_JOBS; ++job_index)
+            {
+               job * p_job = &job_array[job_index];
+               if (p_job->done && p_job->priority == priority)
+               {
+                   turnaround_time = p_job->end_time - p_job->arrival_time;
+                   response_time = p_job->start_time - p_job->arrival_time;
+                   waiting_time = turnaround_time - p_job->expected_run_time;
+                   per_pri_turnaround[priority-1] += turnaround_time;
+                   per_pri_response[priority-1] += response_time;
+                   per_pri_waiting[priority-1] += waiting_time;
+                   per_pri_num_done_jobs[priority-1] += 1;
+                   if ((int) ceil(p_job->end_time) > per_pri_max_end_quantum[priority-1])
+                   {
+                       per_pri_max_end_quantum[priority-1] = (int) ceil(p_job->end_time);
+                   }
+               }
+            }
+     }
+     for (priority = 1; priority <= 4; ++priority)
+     {
+         if ( per_pri_num_done_jobs[priority-1] != 0 )
+         {
+             per_pri_turnaround[priority-1] /= (float)per_pri_num_done_jobs[priority-1];
+             per_pri_response[priority-1] /= (float)per_pri_num_done_jobs[priority-1];
+             per_pri_waiting[priority-1] /= (float)per_pri_num_done_jobs[priority-1];
+             printf("Average Priority %d Turnaround Time %f \n", priority, per_pri_turnaround[priority-1]);
+             printf("Average Priority %d Response Time %f \n", priority, per_pri_response[priority-1]);
+             printf("Average Priority %d Waiting Time %f \n", priority, per_pri_waiting[priority-1]);
+         } 
+         if (per_pri_max_end_quantum[priority-1] != 0)
+         {
+             per_pri_throughput[priority-1] = (float)per_pri_num_done_jobs[priority-1] / (float)per_pri_max_end_quantum[priority-1];
+             printf("Priority %d Throughput %f jobs/quantum\n", priority,
+                 (float) per_pri_num_done_jobs[priority-1] / (float) per_pri_max_end_quantum[priority-1]);
+         }
+     }
+  }
+
     return 0;
-}    
+}
 
 static void cleanup_job_array()
 {
@@ -708,5 +765,4 @@ int main()
         status = cleanup_overall();
     }
     return 0;
-
 }
