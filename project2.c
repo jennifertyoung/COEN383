@@ -58,7 +58,7 @@ int generate_and_sort_jobs()
         job_array[i].arrival_time = (float)(rand())/(float)(RAND_MAX) * 99.0; 
         job_array[i].expected_run_time = ((float)(rand())/(float)(RAND_MAX) * 9.9) + 0.1;
         job_array[i].priority = (rand() % 4) + 1;
-        job_array[i].start_time = 0.0;
+        job_array[i].start_time = 0.0; 
         job_array[i].accum_run_time = 0.0;
         job_array[i].end_time = 0.0;
         job_array[i].jobnum = 0; //this will be overwritten after sort
@@ -327,27 +327,15 @@ typedef enum _scheduling_algorithm_e
 
 extern int do_fcfs(job * job_array, int num_jobs);
 
-int do_sjf(job * job_array, int num_jobs)
-{
-    return 0;
-}
+extern int do_sjf(job * job_array, int num_jobs);
 
-int do_srt(job * job_array, int num_jobs)
-{
-    return 0;
-}
+extern int do_srt(job * job_array, int num_jobs);
 
 extern int do_rr(job * job_array, int num_jobs);
 
-int do_hpf_np(job * job_array, int num_jobs)
-{
-    return 0;
-}
+extern int do_hpf_np(job * job_array, int num_jobs);
 
-int do_hpf_pre(job * job_array, int num_jobs)
-{
-    return 0;
-}
+extern int do_hpf_pre(job * job_array, int num_jobs);
 
 typedef int(*scheduling_algorithm_function)(job * job_array, int num_jobs);
 
@@ -368,7 +356,13 @@ alg_parameters scheduling_algorithm[] =
     {hpf_np, "./hpf_np_sched_out", do_hpf_np},
     {hpf_pre, "./hpf_pre_sched_out", do_hpf_pre}
 #else
-    {rr, "./rr_sched_out", do_rr} /*change this for testing*/
+    //{fcfs, "./fcfs_sched_out", do_fcfs}
+    //{sjf, "./sjf_sched_out", do_sjf}
+    //{srt, "./srt_sched_out", do_srt}
+    {rr, "./rr_sched_out", do_rr}
+    //{hpf_np, "./hpf_np_sched_out", do_hpf_np}
+    //{hpf_pre, "./hpf_pre_sched_out", do_hpf_pre}
+
 #endif
 };
 
@@ -404,8 +398,8 @@ int quantum_gap_exceeds_threshold(job * job_array, int quanta_gap_threshold)
             if (gap_quanta > quanta_gap_threshold)
             {
                 printf("Generate more jobs! Gap = %d\n", gap_quanta);
-                return 1;
-            }
+                return 1; 
+            }            
             left_job_index = i;
         }
     }
@@ -451,13 +445,13 @@ int compute_theoretical_max_quantum_for_job_array()
 static int theoretical_max_initialized = 0;
 int get_theoretical_max_quantum_for_job_array()
 {
-    if (theoretical_max_initialized == 0)
-    {
+    if (theoretical_max_initialized == 0) 
+    { 
        compute_theoretical_max_quantum_for_job_array();
        theoretical_max_initialized = 1;
     }
     printf("%s:%d Theoretical Max %d \n", __FUNCTION__, __LINE__, theoretical_max_quantum_for_job_array);
-    return theoretical_max_quantum_for_job_array;
+    return theoretical_max_quantum_for_job_array; 
 }
 
 //  Theoretical max quantum for job array is the number of quanta we would need if we actually ran all the jobs generated
@@ -471,7 +465,7 @@ int allocate_quanta_helper_arrays()
     }
     int m = 0;
     int right_quantum = theoretical_max_quantum_for_job_array + 1;
-    int left_quantum; //index for highest_job_index_to_eval
+    int left_quantum; //index for highest_job_index_to_eval 
     for (m = NUM_JOBS - 1; m >= 0; --m)
     {
        left_quantum = (int) ceil(job_array[m].arrival_time);
@@ -480,7 +474,7 @@ int allocate_quanta_helper_arrays()
        {
           highest_job_index_to_eval[qi] = m;
        }
-       right_quantum = left_quantum;
+       right_quantum = left_quantum; 
     }
     int p = 0;
     for (p = 0; p < (int) ceil(job_array[0].arrival_time); ++p)
@@ -605,7 +599,7 @@ int display_job_stats(scheduling_algorithm_e alg, int run)
     printf("Num Jobs Done: %d \n", num_done_jobs);
     printf("Throughput %f jobs/quantum\n", (float) num_done_jobs / (float) max_end_quantum);
     return 0;
-}
+}    
 
 static void cleanup_job_array()
 {
@@ -639,7 +633,7 @@ int cleanup_simulation_run()
 int cleanup_overall()
 {
     if (highest_job_index_to_eval != NULL)
-    {
+    {   
        free(highest_job_index_to_eval);
        highest_job_index_to_eval = NULL;
     }
@@ -656,7 +650,7 @@ int main()
         srand(seed[run]);
         generate_and_sort_jobs();
         print_all_job_fields(job_array);
-
+       
         get_theoretical_max_quantum_for_job_array();
 
         if (allocate_quanta_helper_arrays() != 0)
