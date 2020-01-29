@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define NUM_JOBS 40
+#define NUM_JOBS 30
 #include "scheduling_algorithm_api.h"
 
 job job_array[NUM_JOBS];
@@ -353,7 +353,7 @@ typedef struct alg_parameters
 
 alg_parameters scheduling_algorithm[] =
 {
-#if 0
+#if 1
     {fcfs, "./fcfs_sched_out", do_fcfs},
     {sjf, "./sjf_sched_out", do_sjf},
     {srt, "./srt_sched_out", do_srt},
