@@ -333,10 +333,7 @@ int do_sjf(job * job_array, int num_jobs)
     return 0;
 }
 
-int do_srt(job * job_array, int num_jobs)
-{
-    return 0;
-}
+extern int do_srt(job * job_array, int num_jobs);
 
 extern int do_rr(job * job_array, int num_jobs);
 
@@ -345,10 +342,7 @@ int do_hpf_np(job * job_array, int num_jobs)
     return 0;
 }
 
-int do_hpf_pre(job * job_array, int num_jobs)
-{
-    return 0;
-}
+extern int do_hpf_pre(job * job_array, int num_jobs);
 
 typedef int(*scheduling_algorithm_function)(job * job_array, int num_jobs);
 
@@ -369,7 +363,9 @@ alg_parameters scheduling_algorithm[] =
     {hpf_np, "./hpf_np_sched_out", do_hpf_np},
     {hpf_pre, "./hpf_pre_sched_out", do_hpf_pre}
 #else
-    {rr, "./rr_sched_out", do_rr}
+    //{rr, "./rr_sched_out", do_rr}
+    {srt, "./srt_sched_out", do_srt},
+    //{hpf_pre, "./hpf_pre_sched_out", do_hpf_pre}
 #endif
 };
 
