@@ -362,7 +362,6 @@ alg_parameters scheduling_algorithm[] =
     {rr, "./rr_sched_out", do_rr}
     //{hpf_np, "./hpf_np_sched_out", do_hpf_np}
     //{hpf_pre, "./hpf_pre_sched_out", do_hpf_pre}
-
 #endif
 };
 
