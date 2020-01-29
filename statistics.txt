@@ -1,0 +1,2001 @@
+After sort: 
+Generate more jobs! Gap = 8
+Job =  1.040563, 1.780970, 2, 0, 0, 0, 0 
+Job =  1.286141, 0.482231, 1, 0, 0, 0, 1 
+Job =  2.280039, 1.396159, 3, 0, 0, 0, 2 
+Job =  5.811385, 7.317753, 3, 0, 0, 0, 3 
+Job =  21.558060, 7.681543, 3, 0, 0, 0, 4 
+Job =  26.025091, 3.741316, 3, 0, 0, 0, 5 
+Job =  27.423548, 7.006442, 4, 0, 0, 0, 6 
+Job =  31.120184, 0.303722, 4, 0, 0, 0, 7 
+Job =  34.793579, 3.757629, 2, 0, 0, 0, 8 
+Job =  36.313217, 3.998668, 2, 0, 0, 0, 9 
+Job =  42.779202, 6.805522, 2, 0, 0, 0, 10 
+Job =  44.062283, 7.816801, 4, 0, 0, 0, 11 
+Job =  44.903488, 1.199832, 2, 0, 0, 0, 12 
+Job =  51.002472, 0.407778, 1, 0, 0, 0, 13 
+Job =  54.672600, 4.127282, 4, 0, 0, 0, 14 
+Job =  58.688862, 2.669586, 3, 0, 0, 0, 15 
+Job =  63.132118, 2.598742, 1, 0, 0, 0, 16 
+Job =  66.395622, 2.591193, 3, 0, 0, 0, 17 
+Job =  66.409149, 8.565689, 2, 0, 0, 0, 18 
+Job =  67.124947, 4.063168, 3, 0, 0, 0, 19 
+Job =  74.011650, 6.177981, 4, 0, 0, 0, 20 
+Job =  74.090225, 1.601823, 2, 0, 0, 0, 21 
+Job =  75.157440, 8.973811, 2, 0, 0, 0, 22 
+Job =  84.423050, 7.194726, 3, 0, 0, 0, 23 
+Job =  85.086388, 7.990720, 3, 0, 0, 0, 24 
+Job =  90.145103, 5.713374, 2, 0, 0, 0, 25 
+Job =  92.724586, 3.558825, 2, 0, 0, 0, 26 
+Job =  94.758034, 1.572646, 1, 0, 0, 0, 27 
+Job =  97.208527, 6.515794, 1, 0, 0, 0, 28 
+Job =  98.836868, 8.432620, 4, 0, 0, 0, 29 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 181 
+file name 0 = ./fcfs_sched_out_run0.txt 
+Starting quanta for process 0: 2
+Starting quanta for process 1: 4
+Starting quanta for process 2: 5
+Starting quanta for process 3: 7
+Starting quanta for process 4: 22
+Starting quanta for process 5: 30
+Starting quanta for process 6: 34
+Starting quanta for process 7: 42
+Starting quanta for process 8: 43
+Starting quanta for process 9: 47
+Starting quanta for process 10: 51
+Starting quanta for process 11: 58
+Starting quanta for process 12: 66
+Starting quanta for process 13: 68
+Starting quanta for process 14: 69
+Starting quanta for process 15: 74
+Starting quanta for process 16: 77
+Starting quanta for process 17: 80
+Starting quanta for process 18: 83
+Starting quanta for process 19: 92
+Starting quanta for process 20: 97
+Displaying stats for algorithm 0 run 0 
+Job Index: 0, Start Time: 2.000000 End Time: 3.780970 
+Job Index: 1, Start Time: 4.000000 End Time: 4.482231 
+Job Index: 2, Start Time: 5.000000 End Time: 6.396159 
+Job Index: 3, Start Time: 7.000000 End Time: 14.317753 
+Job Index: 4, Start Time: 22.000000 End Time: 29.681543 
+Job Index: 5, Start Time: 30.000000 End Time: 33.741318 
+Job Index: 6, Start Time: 34.000000 End Time: 41.006443 
+Job Index: 7, Start Time: 42.000000 End Time: 42.303722 
+Job Index: 8, Start Time: 43.000000 End Time: 46.757629 
+Job Index: 9, Start Time: 47.000000 End Time: 50.998669 
+Job Index: 10, Start Time: 51.000000 End Time: 57.805523 
+Job Index: 11, Start Time: 58.000000 End Time: 65.816803 
+Job Index: 12, Start Time: 66.000000 End Time: 67.199829 
+Job Index: 13, Start Time: 68.000000 End Time: 68.407776 
+Job Index: 14, Start Time: 69.000000 End Time: 73.127281 
+Job Index: 15, Start Time: 74.000000 End Time: 76.669586 
+Job Index: 16, Start Time: 77.000000 End Time: 79.598740 
+Job Index: 17, Start Time: 80.000000 End Time: 82.591194 
+Job Index: 18, Start Time: 83.000000 End Time: 91.565689 
+Job Index: 19, Start Time: 92.000000 End Time: 96.063171 
+Job Index: 20, Start Time: 97.000000 End Time: 103.177979 
+Average Turnaround Time 14.983610 
+Average Response Time 10.960277 
+Average Waiting Time 10.960277 
+Max End Quantum: 104 
+Num Jobs Done: 21 
+Throughput 0.201923 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 2.996722 
+Algorithm 1 Avg Response Time: 2.192055 
+Algorithm 1 Avg Waiting Time: 2.192055 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.040385 
+Algorithm 2 Avg Turnaround Time: 0.000000 
+Algorithm 2 Avg Response Time: 0.000000 
+Algorithm 2 Avg Waiting Time: 0.000000 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.000000 
+Algorithm 3 Avg Turnaround Time: 0.000000 
+Algorithm 3 Avg Response Time: 0.000000 
+Algorithm 3 Avg Waiting Time: 0.000000 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.000000 
+Algorithm 4 Avg Turnaround Time: 0.000000 
+Algorithm 4 Avg Response Time: 0.000000 
+Algorithm 4 Avg Waiting Time: 0.000000 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.000000 
+Algorithm 5 Avg Turnaround Time: 0.000000 
+Algorithm 5 Avg Response Time: 0.000000 
+Algorithm 5 Avg Waiting Time: 0.000000 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.000000 
+Algorithm 6 Avg Turnaround Time: 0.000000 
+Algorithm 6 Avg Response Time: 0.000000 
+Algorithm 6 Avg Waiting Time: 0.000000 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.000000 
+file name 1 = ./sjf_sched_out_run0.txt 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 181 
+update_quanta_chart:225 quantum_index = 0, job_index = 0, previous_scheduled_quantum_index = 0 
+Failed up update quanta chart -226 for job index 0 at quantum 0 
+Displaying stats for algorithm 1 run 0 
+Job Index: 0, Start Time: 0.000000 End Time: 1.780970 
+Job Index: 1, Start Time: 2.000000 End Time: 2.482231 
+Job Index: 2, Start Time: 3.000000 End Time: 4.396159 
+Job Index: 3, Start Time: 5.000000 End Time: 12.317753 
+Job Index: 4, Start Time: 13.000000 End Time: 20.681543 
+Job Index: 5, Start Time: 21.000000 End Time: 24.741316 
+Job Index: 6, Start Time: 25.000000 End Time: 32.006443 
+Job Index: 7, Start Time: 33.000000 End Time: 33.303722 
+Job Index: 8, Start Time: 34.000000 End Time: 37.757629 
+Job Index: 9, Start Time: 38.000000 End Time: 41.998669 
+Job Index: 10, Start Time: 42.000000 End Time: 48.805523 
+Job Index: 12, Start Time: 49.000000 End Time: 50.199833 
+Job Index: 13, Start Time: 52.000000 End Time: 52.407780 
+Job Index: 14, Start Time: 53.000000 End Time: 57.127281 
+Job Index: 15, Start Time: 58.000000 End Time: 60.669586 
+Job Index: 16, Start Time: 61.000000 End Time: 63.598743 
+Job Index: 17, Start Time: 64.000000 End Time: 66.591194 
+Job Index: 18, Start Time: 67.000000 End Time: 75.565689 
+Job Index: 21, Start Time: 76.000000 End Time: 77.601822 
+Job Index: 22, Start Time: 80.000000 End Time: 88.973808 
+Job Index: 23, Start Time: 89.000000 End Time: 96.194725 
+Job Index: 27, Start Time: 97.000000 End Time: 98.572647 
+Average Turnaround Time 3.805045 
+Average Response Time -0.093821 
+Average Waiting Time -0.093821 
+Max End Quantum: 99 
+Num Jobs Done: 22 
+Throughput 0.222222 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 2.996722 
+Algorithm 1 Avg Response Time: 2.192055 
+Algorithm 1 Avg Waiting Time: 2.192055 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.040385 
+Algorithm 2 Avg Turnaround Time: 0.761009 
+Algorithm 2 Avg Response Time: -0.018764 
+Algorithm 2 Avg Waiting Time: -0.018764 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.044444 
+Algorithm 3 Avg Turnaround Time: 0.000000 
+Algorithm 3 Avg Response Time: 0.000000 
+Algorithm 3 Avg Waiting Time: 0.000000 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.000000 
+Algorithm 4 Avg Turnaround Time: 0.000000 
+Algorithm 4 Avg Response Time: 0.000000 
+Algorithm 4 Avg Waiting Time: 0.000000 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.000000 
+Algorithm 5 Avg Turnaround Time: 0.000000 
+Algorithm 5 Avg Response Time: 0.000000 
+Algorithm 5 Avg Waiting Time: 0.000000 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.000000 
+Algorithm 6 Avg Turnaround Time: 0.000000 
+Algorithm 6 Avg Response Time: 0.000000 
+Algorithm 6 Avg Waiting Time: 0.000000 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.000000 
+file name 2 = ./srt_sched_out_run0.txt 
+Max Quantum: 100 
+2626Displaying stats for algorithm 2 run 0 
+Job Index: 0, Start Time: 5.000000 End Time: 6.780970 
+Job Index: 1, Start Time: 2.000000 End Time: 2.482231 
+Job Index: 2, Start Time: 3.000000 End Time: 4.396159 
+Job Index: 3, Start Time: 7.000000 End Time: 14.317753 
+Job Index: 4, Start Time: 22.000000 End Time: 29.681543 
+Job Index: 5, Start Time: 30.000000 End Time: 34.741318 
+Job Index: 6, Start Time: 53.000000 End Time: 74.006439 
+Job Index: 7, Start Time: 32.000000 End Time: 32.303722 
+Job Index: 8, Start Time: 35.000000 End Time: 38.757629 
+Job Index: 9, Start Time: 39.000000 End Time: 42.998669 
+Job Index: 10, Start Time: 43.000000 End Time: 51.805523 
+Job Index: 12, Start Time: 45.000000 End Time: 46.199833 
+Job Index: 13, Start Time: 52.000000 End Time: 52.407780 
+Job Index: 14, Start Time: 55.000000 End Time: 59.127281 
+Job Index: 15, Start Time: 60.000000 End Time: 62.669586 
+Job Index: 16, Start Time: 64.000000 End Time: 66.598740 
+Job Index: 17, Start Time: 67.000000 End Time: 69.591194 
+Job Index: 19, Start Time: 77.000000 End Time: 81.063171 
+Job Index: 20, Start Time: 82.000000 End Time: 88.177979 
+Job Index: 21, Start Time: 75.000000 End Time: 76.601822 
+Job Index: 23, Start Time: 89.000000 End Time: 96.194725 
+Job Index: 26, Start Time: 99.000000 End Time: 102.558823 
+Job Index: 27, Start Time: 97.000000 End Time: 98.572647 
+Average Turnaround Time 7.638124 
+Average Response Time 3.332232 
+Average Waiting Time 4.071362 
+Max End Quantum: 103 
+Num Jobs Done: 23 
+Throughput 0.223301 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 2.996722 
+Algorithm 1 Avg Response Time: 2.192055 
+Algorithm 1 Avg Waiting Time: 2.192055 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.040385 
+Algorithm 2 Avg Turnaround Time: 0.761009 
+Algorithm 2 Avg Response Time: -0.018764 
+Algorithm 2 Avg Waiting Time: -0.018764 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.044444 
+Algorithm 3 Avg Turnaround Time: 1.527625 
+Algorithm 3 Avg Response Time: 0.666446 
+Algorithm 3 Avg Waiting Time: 0.814273 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.044660 
+Algorithm 4 Avg Turnaround Time: 0.000000 
+Algorithm 4 Avg Response Time: 0.000000 
+Algorithm 4 Avg Waiting Time: 0.000000 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.000000 
+Algorithm 5 Avg Turnaround Time: 0.000000 
+Algorithm 5 Avg Response Time: 0.000000 
+Algorithm 5 Avg Waiting Time: 0.000000 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.000000 
+Algorithm 6 Avg Turnaround Time: 0.000000 
+Algorithm 6 Avg Response Time: 0.000000 
+Algorithm 6 Avg Waiting Time: 0.000000 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.000000 
+file name 3 = ./rr_sched_out_run0.txt 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 181 
+Max Quantum: 181 
+Displaying stats for algorithm 3 run 0 
+Job Index: 0, Start Time: 2.000000 End Time: 4.780970 
+Job Index: 1, Start Time: 3.000000 End Time: 3.482231 
+Job Index: 2, Start Time: 5.000000 End Time: 6.396159 
+Job Index: 3, Start Time: 7.000000 End Time: 14.317753 
+Job Index: 4, Start Time: 22.000000 End Time: 34.681541 
+Job Index: 5, Start Time: 28.000000 End Time: 41.741318 
+Job Index: 6, Start Time: 29.000000 End Time: 59.006443 
+Job Index: 7, Start Time: 33.000000 End Time: 33.303722 
+Job Index: 8, Start Time: 36.000000 End Time: 46.757629 
+Job Index: 9, Start Time: 40.000000 End Time: 56.998669 
+Job Index: 10, Start Time: 44.000000 End Time: 91.805519 
+Job Index: 11, Start Time: 48.000000 End Time: 100.816803 
+Job Index: 12, Start Time: 49.000000 End Time: 54.199833 
+Job Index: 13, Start Time: 58.000000 End Time: 58.407780 
+Job Index: 14, Start Time: 61.000000 End Time: 92.127281 
+Job Index: 15, Start Time: 62.000000 End Time: 74.669586 
+Job Index: 16, Start Time: 67.000000 End Time: 107.598740 
+Job Index: 17, Start Time: 68.000000 End Time: 85.591194 
+Job Index: 18, Start Time: 69.000000 End Time: 133.565689 
+Job Index: 19, Start Time: 70.000000 End Time: 102.063171 
+Job Index: 20, Start Time: 78.000000 End Time: 126.177979 
+Job Index: 21, Start Time: 79.000000 End Time: 88.601822 
+Job Index: 22, Start Time: 80.000000 End Time: 136.973816 
+Job Index: 23, Start Time: 89.000000 End Time: 132.194733 
+Job Index: 24, Start Time: 90.000000 End Time: 134.990723 
+Job Index: 25, Start Time: 99.000000 End Time: 129.713379 
+Average Turnaround Time 27.739542 
+Average Response Time 3.317831 
+Average Waiting Time 23.279369 
+Max End Quantum: 137 
+Num Jobs Done: 26 
+Throughput 0.189781 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 2.996722 
+Algorithm 1 Avg Response Time: 2.192055 
+Algorithm 1 Avg Waiting Time: 2.192055 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.040385 
+Algorithm 2 Avg Turnaround Time: 0.761009 
+Algorithm 2 Avg Response Time: -0.018764 
+Algorithm 2 Avg Waiting Time: -0.018764 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.044444 
+Algorithm 3 Avg Turnaround Time: 1.527625 
+Algorithm 3 Avg Response Time: 0.666446 
+Algorithm 3 Avg Waiting Time: 0.814273 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.044660 
+Algorithm 4 Avg Turnaround Time: 5.547908 
+Algorithm 4 Avg Response Time: 0.663566 
+Algorithm 4 Avg Waiting Time: 4.655874 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.037956 
+Algorithm 5 Avg Turnaround Time: 0.000000 
+Algorithm 5 Avg Response Time: 0.000000 
+Algorithm 5 Avg Waiting Time: 0.000000 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.000000 
+Algorithm 6 Avg Turnaround Time: 0.000000 
+Algorithm 6 Avg Response Time: 0.000000 
+Algorithm 6 Avg Waiting Time: 0.000000 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.000000 
+file name 4 = ./hpf_np_sched_out_run0.txt 
+Max Quantum: 100 
+
+per queue analysis:
+number of each priority done:
+ 1: 4, 2: 9, 3: 7, 4: 2
+Average turnaround time per priority: (-1 means N/A)
+ 1:   3.22, 2:  10.53, 3:  11.80, 4:  22.88
+Average waiting time per priority: (-1 means N/A)
+ 1:   1.96, 2:   5.82, 3:   7.59, 4:  19.23
+Average response time per priority: (-1 means N/A)
+ 1:   1.96, 2:   5.71, 3:   7.59, 4:  19.23
+Throughput per priority:
+ 1:   0.04, 2:   0.09, 3:   0.07, 4:   0.02
+Displaying stats for algorithm 4 run 0 
+Job Index: 0, Start Time: 3.000000 End Time: 4.780970 
+Job Index: 1, Start Time: 2.000000 End Time: 2.482231 
+Job Index: 2, Start Time: 5.000000 End Time: 6.396159 
+Job Index: 3, Start Time: 7.000000 End Time: 14.317753 
+Job Index: 4, Start Time: 22.000000 End Time: 29.681543 
+Job Index: 5, Start Time: 30.000000 End Time: 33.741318 
+Job Index: 6, Start Time: 34.000000 End Time: 41.006443 
+Job Index: 7, Start Time: 63.000000 End Time: 63.303722 
+Job Index: 8, Start Time: 42.000000 End Time: 45.757629 
+Job Index: 9, Start Time: 46.000000 End Time: 49.998669 
+Job Index: 10, Start Time: 50.000000 End Time: 56.805523 
+Job Index: 12, Start Time: 58.000000 End Time: 59.199833 
+Job Index: 13, Start Time: 57.000000 End Time: 57.407780 
+Job Index: 15, Start Time: 60.000000 End Time: 62.669586 
+Job Index: 16, Start Time: 64.000000 End Time: 66.598740 
+Job Index: 17, Start Time: 87.000000 End Time: 89.591194 
+Job Index: 18, Start Time: 67.000000 End Time: 75.565689 
+Job Index: 19, Start Time: 90.000000 End Time: 94.063171 
+Job Index: 21, Start Time: 76.000000 End Time: 77.601822 
+Job Index: 22, Start Time: 78.000000 End Time: 86.973808 
+Job Index: 25, Start Time: 97.000000 End Time: 103.713371 
+Job Index: 27, Start Time: 95.000000 End Time: 96.572647 
+Average Turnaround Time 10.726871 
+Average Response Time 6.852797 
+Average Waiting Time 6.898252 
+Max End Quantum: 104 
+Num Jobs Done: 22 
+Throughput 0.211538 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 2.996722 
+Algorithm 1 Avg Response Time: 2.192055 
+Algorithm 1 Avg Waiting Time: 2.192055 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.040385 
+Algorithm 2 Avg Turnaround Time: 0.761009 
+Algorithm 2 Avg Response Time: -0.018764 
+Algorithm 2 Avg Waiting Time: -0.018764 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.044444 
+Algorithm 3 Avg Turnaround Time: 1.527625 
+Algorithm 3 Avg Response Time: 0.666446 
+Algorithm 3 Avg Waiting Time: 0.814273 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.044660 
+Algorithm 4 Avg Turnaround Time: 5.547908 
+Algorithm 4 Avg Response Time: 0.663566 
+Algorithm 4 Avg Waiting Time: 4.655874 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.037956 
+Algorithm 5 Avg Turnaround Time: 2.145374 
+Algorithm 5 Avg Response Time: 1.370559 
+Algorithm 5 Avg Waiting Time: 1.379650 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.042308 
+Algorithm 6 Avg Turnaround Time: 0.000000 
+Algorithm 6 Avg Response Time: 0.000000 
+Algorithm 6 Avg Waiting Time: 0.000000 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.000000 
+file name 5 = ./hpf_pre_sched_out_run0.txt 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 181 
+Max Quantum: 181 
+Displaying stats for algorithm 5 run 0 
+Job Index: 0, Start Time: 6.000000 End Time: 7.780970 
+Job Index: 1, Start Time: 2.000000 End Time: 2.482231 
+Job Index: 2, Start Time: 11.000000 End Time: 12.396158 
+Job Index: 3, Start Time: 14.000000 End Time: 23.317753 
+Job Index: 4, Start Time: 25.000000 End Time: 124.681541 
+Job Index: 5, Start Time: 28.000000 End Time: 31.741316 
+Job Index: 8, Start Time: 35.000000 End Time: 38.757629 
+Job Index: 9, Start Time: 39.000000 End Time: 44.998669 
+Job Index: 10, Start Time: 46.000000 End Time: 63.805523 
+Job Index: 12, Start Time: 49.000000 End Time: 50.199833 
+Job Index: 13, Start Time: 52.000000 End Time: 52.407780 
+Job Index: 16, Start Time: 64.000000 End Time: 66.598740 
+Job Index: 18, Start Time: 71.000000 End Time: 88.565689 
+Job Index: 21, Start Time: 80.000000 End Time: 81.601822 
+Job Index: 22, Start Time: 83.000000 End Time: 110.973808 
+Job Index: 25, Start Time: 94.000000 End Time: 117.713371 
+Job Index: 27, Start Time: 95.000000 End Time: 96.572647 
+Job Index: 28, Start Time: 99.000000 End Time: 105.515793 
+Average Turnaround Time 16.189857 
+Average Response Time 3.572565 
+Average Waiting Time 12.072564 
+Max End Quantum: 125 
+Num Jobs Done: 18 
+Throughput 0.144000 jobs/quantum
+Average Priority 1 Turnaround Time 3.237980 
+Average Priority 1 Response Time 0.922542 
+Average Priority 1 Waiting Time 0.922541 
+Priority 1 Throughput 0.047170 jobs/quantum
+Average Priority 2 Turnaround Time 15.418372 
+Average Priority 2 Response Time 4.152004 
+Average Priority 2 Waiting Time 10.707560 
+Priority 2 Throughput 0.076271 jobs/quantum
+Average Priority 3 Turnaround Time 34.115547 
+Average Priority 3 Response Time 5.581357 
+Average Priority 3 Waiting Time 29.081356 
+Priority 3 Throughput 0.032000 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 2.996722 
+Algorithm 1 Avg Response Time: 2.192055 
+Algorithm 1 Avg Waiting Time: 2.192055 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.040385 
+Algorithm 2 Avg Turnaround Time: 0.761009 
+Algorithm 2 Avg Response Time: -0.018764 
+Algorithm 2 Avg Waiting Time: -0.018764 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.044444 
+Algorithm 3 Avg Turnaround Time: 1.527625 
+Algorithm 3 Avg Response Time: 0.666446 
+Algorithm 3 Avg Waiting Time: 0.814273 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.044660 
+Algorithm 4 Avg Turnaround Time: 5.547908 
+Algorithm 4 Avg Response Time: 0.663566 
+Algorithm 4 Avg Waiting Time: 4.655874 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.037956 
+Algorithm 5 Avg Turnaround Time: 2.145374 
+Algorithm 5 Avg Response Time: 1.370559 
+Algorithm 5 Avg Waiting Time: 1.379650 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.042308 
+Algorithm 6 Avg Turnaround Time: 3.237972 
+Algorithm 6 Avg Response Time: 0.714513 
+Algorithm 6 Avg Waiting Time: 2.414513 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.028800 
+After sort: 
+Generate more jobs! Gap = 5
+Job =  4.073792, 6.849616, 1, 0, 0, 0, 0 
+Job =  5.254604, 2.762986, 3, 0, 0, 0, 1 
+Job =  6.174124, 0.864722, 2, 0, 0, 0, 2 
+Job =  12.277772, 1.029326, 2, 0, 0, 0, 3 
+Job =  13.464375, 9.626392, 3, 0, 0, 0, 4 
+Job =  16.708250, 1.072486, 1, 0, 0, 0, 5 
+Job =  17.785042, 8.185194, 2, 0, 0, 0, 6 
+Job =  20.871956, 1.203109, 1, 0, 0, 0, 7 
+Job =  22.120783, 2.222729, 1, 0, 0, 0, 8 
+Job =  22.643158, 0.179447, 3, 0, 0, 0, 9 
+Job =  24.337818, 6.652786, 2, 0, 0, 0, 10 
+Job =  26.845903, 9.783756, 1, 0, 0, 0, 11 
+Job =  31.309700, 0.706634, 2, 0, 0, 0, 12 
+Job =  31.784641, 8.900983, 3, 0, 0, 0, 13 
+Job =  35.128147, 9.553987, 2, 0, 0, 0, 14 
+Job =  55.103085, 8.986218, 4, 0, 0, 0, 15 
+Job =  56.015263, 6.148206, 3, 0, 0, 0, 16 
+Job =  57.880642, 4.279345, 4, 0, 0, 0, 17 
+Job =  60.977139, 4.585300, 4, 0, 0, 0, 18 
+Job =  63.749638, 2.549547, 2, 0, 0, 0, 19 
+Job =  66.539467, 5.236701, 2, 0, 0, 0, 20 
+Job =  72.800308, 0.128080, 4, 0, 0, 0, 21 
+Job =  77.505707, 8.287895, 2, 0, 0, 0, 22 
+Job =  81.096611, 5.854114, 3, 0, 0, 0, 23 
+Job =  85.970665, 3.384692, 3, 0, 0, 0, 24 
+Job =  87.215355, 5.669474, 1, 0, 0, 0, 25 
+Job =  96.702301, 9.782777, 1, 0, 0, 0, 26 
+Job =  97.162651, 9.622913, 2, 0, 0, 0, 27 
+Job =  97.472519, 8.717248, 2, 0, 0, 0, 28 
+Job =  98.221565, 9.875332, 4, 0, 0, 0, 29 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 203 
+file name 0 = ./fcfs_sched_out_run1.txt 
+Starting quanta for process 0: 5
+Starting quanta for process 1: 12
+Starting quanta for process 2: 15
+Starting quanta for process 3: 16
+Starting quanta for process 4: 18
+Starting quanta for process 5: 28
+Starting quanta for process 6: 30
+Starting quanta for process 7: 39
+Starting quanta for process 8: 41
+Starting quanta for process 9: 44
+Starting quanta for process 10: 45
+Starting quanta for process 11: 52
+Starting quanta for process 12: 62
+Starting quanta for process 13: 63
+Starting quanta for process 14: 72
+Starting quanta for process 15: 82
+Starting quanta for process 16: 91
+Starting quanta for process 17: 98
+Displaying stats for algorithm 0 run 1 
+Job Index: 0, Start Time: 5.000000 End Time: 11.849616 
+Job Index: 1, Start Time: 12.000000 End Time: 14.762985 
+Job Index: 2, Start Time: 15.000000 End Time: 15.864722 
+Job Index: 3, Start Time: 16.000000 End Time: 17.029325 
+Job Index: 4, Start Time: 18.000000 End Time: 27.626392 
+Job Index: 5, Start Time: 28.000000 End Time: 29.072485 
+Job Index: 6, Start Time: 30.000000 End Time: 38.185196 
+Job Index: 7, Start Time: 39.000000 End Time: 40.203110 
+Job Index: 8, Start Time: 41.000000 End Time: 43.222729 
+Job Index: 9, Start Time: 44.000000 End Time: 44.179447 
+Job Index: 10, Start Time: 45.000000 End Time: 51.652786 
+Job Index: 11, Start Time: 52.000000 End Time: 61.783756 
+Job Index: 12, Start Time: 62.000000 End Time: 62.706635 
+Job Index: 13, Start Time: 63.000000 End Time: 71.900986 
+Job Index: 14, Start Time: 72.000000 End Time: 81.553986 
+Job Index: 15, Start Time: 82.000000 End Time: 90.986221 
+Job Index: 16, Start Time: 91.000000 End Time: 97.148209 
+Job Index: 17, Start Time: 98.000000 End Time: 102.279343 
+Average Turnaround Time 24.568272 
+Average Response Time 19.623386 
+Average Waiting Time 19.623386 
+Max End Quantum: 103 
+Num Jobs Done: 18 
+Throughput 0.174757 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 7.910376 
+Algorithm 1 Avg Response Time: 6.116733 
+Algorithm 1 Avg Waiting Time: 6.116733 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.075336 
+Algorithm 2 Avg Turnaround Time: 0.761009 
+Algorithm 2 Avg Response Time: -0.018764 
+Algorithm 2 Avg Waiting Time: -0.018764 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.044444 
+Algorithm 3 Avg Turnaround Time: 1.527625 
+Algorithm 3 Avg Response Time: 0.666446 
+Algorithm 3 Avg Waiting Time: 0.814273 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.044660 
+Algorithm 4 Avg Turnaround Time: 5.547908 
+Algorithm 4 Avg Response Time: 0.663566 
+Algorithm 4 Avg Waiting Time: 4.655874 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.037956 
+Algorithm 5 Avg Turnaround Time: 2.145374 
+Algorithm 5 Avg Response Time: 1.370559 
+Algorithm 5 Avg Waiting Time: 1.379650 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.042308 
+Algorithm 6 Avg Turnaround Time: 3.237972 
+Algorithm 6 Avg Response Time: 0.714513 
+Algorithm 6 Avg Waiting Time: 2.414513 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.028800 
+file name 1 = ./sjf_sched_out_run1.txt 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 203 
+update_quanta_chart:225 quantum_index = 0, job_index = 0, previous_scheduled_quantum_index = 0 
+Failed up update quanta chart -226 for job index 0 at quantum 0 
+Displaying stats for algorithm 1 run 1 
+Job Index: 0, Start Time: 0.000000 End Time: 6.849616 
+Job Index: 1, Start Time: 7.000000 End Time: 9.762985 
+Job Index: 2, Start Time: 10.000000 End Time: 10.864722 
+Job Index: 3, Start Time: 11.000000 End Time: 12.029326 
+Job Index: 4, Start Time: 13.000000 End Time: 22.626392 
+Job Index: 5, Start Time: 23.000000 End Time: 24.072485 
+Job Index: 9, Start Time: 25.000000 End Time: 25.179447 
+Job Index: 10, Start Time: 29.000000 End Time: 35.652786 
+Job Index: 12, Start Time: 36.000000 End Time: 36.706635 
+Job Index: 13, Start Time: 38.000000 End Time: 46.900982 
+Job Index: 14, Start Time: 47.000000 End Time: 56.553986 
+Job Index: 15, Start Time: 57.000000 End Time: 65.986221 
+Job Index: 19, Start Time: 66.000000 End Time: 68.549545 
+Job Index: 20, Start Time: 72.000000 End Time: 77.236702 
+Job Index: 21, Start Time: 78.000000 End Time: 78.128082 
+Job Index: 22, Start Time: 79.000000 End Time: 87.287895 
+Job Index: 24, Start Time: 88.000000 End Time: 91.384689 
+Job Index: 25, Start Time: 93.000000 End Time: 98.669472 
+Job Index: 28, Start Time: 99.000000 End Time: 107.717247 
+Average Turnaround Time 8.034004 
+Average Response Time 3.236151 
+Average Waiting Time 3.236151 
+Max End Quantum: 108 
+Num Jobs Done: 19 
+Throughput 0.175926 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 7.910376 
+Algorithm 1 Avg Response Time: 6.116733 
+Algorithm 1 Avg Waiting Time: 6.116733 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.075336 
+Algorithm 2 Avg Turnaround Time: 2.367810 
+Algorithm 2 Avg Response Time: 0.628466 
+Algorithm 2 Avg Waiting Time: 0.628466 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.079630 
+Algorithm 3 Avg Turnaround Time: 1.527625 
+Algorithm 3 Avg Response Time: 0.666446 
+Algorithm 3 Avg Waiting Time: 0.814273 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.044660 
+Algorithm 4 Avg Turnaround Time: 5.547908 
+Algorithm 4 Avg Response Time: 0.663566 
+Algorithm 4 Avg Waiting Time: 4.655874 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.037956 
+Algorithm 5 Avg Turnaround Time: 2.145374 
+Algorithm 5 Avg Response Time: 1.370559 
+Algorithm 5 Avg Waiting Time: 1.379650 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.042308 
+Algorithm 6 Avg Turnaround Time: 3.237972 
+Algorithm 6 Avg Response Time: 0.714513 
+Algorithm 6 Avg Waiting Time: 2.414513 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.028800 
+file name 2 = ./srt_sched_out_run1.txt 
+Max Quantum: 100 
+16161616Displaying stats for algorithm 2 run 1 
+Job Index: 0, Start Time: 5.000000 End Time: 17.849617 
+Job Index: 1, Start Time: 6.000000 End Time: 9.762985 
+Job Index: 2, Start Time: 7.000000 End Time: 7.864722 
+Job Index: 3, Start Time: 13.000000 End Time: 14.029326 
+Job Index: 5, Start Time: 18.000000 End Time: 19.072485 
+Job Index: 6, Start Time: 20.000000 End Time: 42.185196 
+Job Index: 7, Start Time: 21.000000 End Time: 22.203110 
+Job Index: 8, Start Time: 24.000000 End Time: 26.222729 
+Job Index: 9, Start Time: 23.000000 End Time: 23.179447 
+Job Index: 10, Start Time: 27.000000 End Time: 34.652786 
+Job Index: 12, Start Time: 32.000000 End Time: 32.706635 
+Job Index: 13, Start Time: 43.000000 End Time: 51.900982 
+Job Index: 14, Start Time: 52.000000 End Time: 61.553986 
+Job Index: 16, Start Time: 98.000000 End Time: 104.148209 
+Job Index: 17, Start Time: 62.000000 End Time: 66.279343 
+Job Index: 18, Start Time: 70.000000 End Time: 75.585297 
+Job Index: 19, Start Time: 67.000000 End Time: 69.549545 
+Job Index: 20, Start Time: 76.000000 End Time: 81.236702 
+Job Index: 21, Start Time: 73.000000 End Time: 73.128082 
+Job Index: 23, Start Time: 82.000000 End Time: 87.854111 
+Job Index: 24, Start Time: 88.000000 End Time: 91.384689 
+Job Index: 25, Start Time: 92.000000 End Time: 97.669472 
+Average Turnaround Time 10.332026 
+Average Response Time 5.285687 
+Average Waiting Time 6.331141 
+Max End Quantum: 105 
+Num Jobs Done: 22 
+Throughput 0.209524 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 7.910376 
+Algorithm 1 Avg Response Time: 6.116733 
+Algorithm 1 Avg Waiting Time: 6.116733 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.075336 
+Algorithm 2 Avg Turnaround Time: 2.367810 
+Algorithm 2 Avg Response Time: 0.628466 
+Algorithm 2 Avg Waiting Time: 0.628466 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.079630 
+Algorithm 3 Avg Turnaround Time: 3.594030 
+Algorithm 3 Avg Response Time: 1.723584 
+Algorithm 3 Avg Waiting Time: 2.080501 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.086565 
+Algorithm 4 Avg Turnaround Time: 5.547908 
+Algorithm 4 Avg Response Time: 0.663566 
+Algorithm 4 Avg Waiting Time: 4.655874 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.037956 
+Algorithm 5 Avg Turnaround Time: 2.145374 
+Algorithm 5 Avg Response Time: 1.370559 
+Algorithm 5 Avg Waiting Time: 1.379650 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.042308 
+Algorithm 6 Avg Turnaround Time: 3.237972 
+Algorithm 6 Avg Response Time: 0.714513 
+Algorithm 6 Avg Waiting Time: 2.414513 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.028800 
+file name 3 = ./rr_sched_out_run1.txt 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 203 
+Max Quantum: 203 
+Displaying stats for algorithm 3 run 1 
+Job Index: 0, Start Time: 5.000000 End Time: 20.849617 
+Job Index: 1, Start Time: 7.000000 End Time: 12.762985 
+Job Index: 2, Start Time: 8.000000 End Time: 8.864722 
+Job Index: 3, Start Time: 14.000000 End Time: 17.029325 
+Job Index: 4, Start Time: 15.000000 End Time: 85.626389 
+Job Index: 5, Start Time: 18.000000 End Time: 21.072485 
+Job Index: 6, Start Time: 19.000000 End Time: 73.185196 
+Job Index: 7, Start Time: 22.000000 End Time: 25.203110 
+Job Index: 8, Start Time: 29.000000 End Time: 41.222729 
+Job Index: 9, Start Time: 26.000000 End Time: 26.179447 
+Job Index: 10, Start Time: 30.000000 End Time: 114.652786 
+Job Index: 11, Start Time: 31.000000 End Time: 127.783752 
+Job Index: 12, Start Time: 37.000000 End Time: 37.706635 
+Job Index: 13, Start Time: 43.000000 End Time: 136.900986 
+Job Index: 14, Start Time: 38.000000 End Time: 128.553986 
+Job Index: 15, Start Time: 57.000000 End Time: 152.986221 
+Job Index: 16, Start Time: 58.000000 End Time: 129.148209 
+Job Index: 17, Start Time: 59.000000 End Time: 106.279343 
+Job Index: 18, Start Time: 69.000000 End Time: 137.585297 
+Job Index: 19, Start Time: 70.000000 End Time: 93.549545 
+Job Index: 20, Start Time: 71.000000 End Time: 143.236694 
+Job Index: 21, Start Time: 83.000000 End Time: 83.128082 
+Job Index: 22, Start Time: 94.000000 End Time: 161.287903 
+Job Index: 23, Start Time: 84.000000 End Time: 139.854111 
+Job Index: 24, Start Time: 96.000000 End Time: 133.384689 
+Job Index: 25, Start Time: 97.000000 End Time: 153.669479 
+Job Index: 26, Start Time: 98.000000 End Time: 162.782776 
+Job Index: 27, Start Time: 99.000000 End Time: 160.622910 
+Average Turnaround Time 49.486084 
+Average Response Time 4.553611 
+Average Waiting Time 44.339329 
+Max End Quantum: 163 
+Num Jobs Done: 28 
+Throughput 0.171779 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 7.910376 
+Algorithm 1 Avg Response Time: 6.116733 
+Algorithm 1 Avg Waiting Time: 6.116733 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.075336 
+Algorithm 2 Avg Turnaround Time: 2.367810 
+Algorithm 2 Avg Response Time: 0.628466 
+Algorithm 2 Avg Waiting Time: 0.628466 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.079630 
+Algorithm 3 Avg Turnaround Time: 3.594030 
+Algorithm 3 Avg Response Time: 1.723584 
+Algorithm 3 Avg Waiting Time: 2.080501 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.086565 
+Algorithm 4 Avg Turnaround Time: 15.445125 
+Algorithm 4 Avg Response Time: 1.574288 
+Algorithm 4 Avg Waiting Time: 13.523740 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.072312 
+Algorithm 5 Avg Turnaround Time: 2.145374 
+Algorithm 5 Avg Response Time: 1.370559 
+Algorithm 5 Avg Waiting Time: 1.379650 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.042308 
+Algorithm 6 Avg Turnaround Time: 3.237972 
+Algorithm 6 Avg Response Time: 0.714513 
+Algorithm 6 Avg Waiting Time: 2.414513 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.028800 
+file name 4 = ./hpf_np_sched_out_run1.txt 
+Max Quantum: 100 
+
+per queue analysis:
+number of each priority done:
+ 1: 7, 2: 9, 3: 3, 4: 0
+Average turnaround time per priority: (-1 means N/A)
+ 1:   9.58, 2:  14.25, 3:  48.07, 4:  -1.00
+Average waiting time per priority: (-1 means N/A)
+ 1:   4.35, 2:   9.47, 3:  43.88, 4:  -1.00
+Average response time per priority: (-1 means N/A)
+ 1:   4.21, 2:   9.47, 3:  43.88, 4:  -1.00
+Throughput per priority:
+ 1:   0.07, 2:   0.08, 3:   0.03, 4:   0.00
+Displaying stats for algorithm 4 run 1 
+Job Index: 0, Start Time: 5.000000 End Time: 11.849616 
+Job Index: 1, Start Time: 15.000000 End Time: 17.762985 
+Job Index: 2, Start Time: 12.000000 End Time: 12.864722 
+Job Index: 3, Start Time: 13.000000 End Time: 14.029326 
+Job Index: 4, Start Time: 62.000000 End Time: 71.626389 
+Job Index: 5, Start Time: 18.000000 End Time: 19.072485 
+Job Index: 6, Start Time: 20.000000 End Time: 28.185194 
+Job Index: 7, Start Time: 29.000000 End Time: 30.203110 
+Job Index: 8, Start Time: 31.000000 End Time: 33.222729 
+Job Index: 9, Start Time: 96.000000 End Time: 96.179443 
+Job Index: 10, Start Time: 44.000000 End Time: 50.652786 
+Job Index: 11, Start Time: 34.000000 End Time: 43.783756 
+Job Index: 12, Start Time: 51.000000 End Time: 51.706635 
+Job Index: 14, Start Time: 52.000000 End Time: 61.553986 
+Job Index: 19, Start Time: 72.000000 End Time: 74.549545 
+Job Index: 20, Start Time: 75.000000 End Time: 80.236702 
+Job Index: 22, Start Time: 81.000000 End Time: 89.287895 
+Job Index: 25, Start Time: 90.000000 End Time: 95.669472 
+Job Index: 26, Start Time: 97.000000 End Time: 107.782776 
+Average Turnaround Time 17.869034 
+Average Response Time 12.962743 
+Average Waiting Time 13.015374 
+Max End Quantum: 108 
+Num Jobs Done: 19 
+Throughput 0.175926 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 7.910376 
+Algorithm 1 Avg Response Time: 6.116733 
+Algorithm 1 Avg Waiting Time: 6.116733 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.075336 
+Algorithm 2 Avg Turnaround Time: 2.367810 
+Algorithm 2 Avg Response Time: 0.628466 
+Algorithm 2 Avg Waiting Time: 0.628466 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.079630 
+Algorithm 3 Avg Turnaround Time: 3.594030 
+Algorithm 3 Avg Response Time: 1.723584 
+Algorithm 3 Avg Waiting Time: 2.080501 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.086565 
+Algorithm 4 Avg Turnaround Time: 15.445125 
+Algorithm 4 Avg Response Time: 1.574288 
+Algorithm 4 Avg Waiting Time: 13.523740 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.072312 
+Algorithm 5 Avg Turnaround Time: 5.719181 
+Algorithm 5 Avg Response Time: 3.963108 
+Algorithm 5 Avg Waiting Time: 3.982725 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.077493 
+Algorithm 6 Avg Turnaround Time: 3.237972 
+Algorithm 6 Avg Response Time: 0.714513 
+Algorithm 6 Avg Waiting Time: 2.414513 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.028800 
+file name 5 = ./hpf_pre_sched_out_run1.txt 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 203 
+Max Quantum: 203 
+Displaying stats for algorithm 5 run 1 
+Job Index: 0, Start Time: 5.000000 End Time: 11.849616 
+Job Index: 2, Start Time: 15.000000 End Time: 15.864722 
+Job Index: 3, Start Time: 46.000000 End Time: 47.029327 
+Job Index: 5, Start Time: 17.000000 End Time: 18.072485 
+Job Index: 6, Start Time: 49.000000 End Time: 111.185196 
+Job Index: 7, Start Time: 22.000000 End Time: 23.203110 
+Job Index: 8, Start Time: 24.000000 End Time: 26.222729 
+Job Index: 10, Start Time: 52.000000 End Time: 70.652786 
+Job Index: 11, Start Time: 30.000000 End Time: 42.783756 
+Job Index: 12, Start Time: 56.000000 End Time: 56.706635 
+Job Index: 14, Start Time: 58.000000 End Time: 113.553986 
+Job Index: 19, Start Time: 76.000000 End Time: 78.549545 
+Job Index: 20, Start Time: 79.000000 End Time: 116.236702 
+Job Index: 22, Start Time: 83.000000 End Time: 125.287895 
+Job Index: 25, Start Time: 88.000000 End Time: 93.669472 
+Job Index: 26, Start Time: 97.000000 End Time: 106.782776 
+Average Turnaround Time 28.019060 
+Average Response Time 11.728392 
+Average Waiting Time 23.040892 
+Max End Quantum: 126 
+Num Jobs Done: 16 
+Throughput 0.126984 jobs/quantum
+Average Priority 1 Turnaround Time 6.863657 
+Average Priority 1 Response Time 1.208809 
+Average Priority 1 Waiting Time 1.637379 
+Priority 1 Throughput 0.065421 jobs/quantum
+Average Priority 2 Turnaround Time 44.473267 
+Average Priority 2 Response Time 19.910288 
+Average Priority 2 Waiting Time 39.688065 
+Priority 2 Throughput 0.071429 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 7.910376 
+Algorithm 1 Avg Response Time: 6.116733 
+Algorithm 1 Avg Waiting Time: 6.116733 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.075336 
+Algorithm 2 Avg Turnaround Time: 2.367810 
+Algorithm 2 Avg Response Time: 0.628466 
+Algorithm 2 Avg Waiting Time: 0.628466 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.079630 
+Algorithm 3 Avg Turnaround Time: 3.594030 
+Algorithm 3 Avg Response Time: 1.723584 
+Algorithm 3 Avg Waiting Time: 2.080501 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.086565 
+Algorithm 4 Avg Turnaround Time: 15.445125 
+Algorithm 4 Avg Response Time: 1.574288 
+Algorithm 4 Avg Waiting Time: 13.523740 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.072312 
+Algorithm 5 Avg Turnaround Time: 5.719181 
+Algorithm 5 Avg Response Time: 3.963108 
+Algorithm 5 Avg Waiting Time: 3.982725 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.077493 
+Algorithm 6 Avg Turnaround Time: 8.841784 
+Algorithm 6 Avg Response Time: 3.060191 
+Algorithm 6 Avg Waiting Time: 7.022691 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.054197 
+After sort: 
+Generate more jobs! Gap = 4
+Job =  0.502561, 8.771967, 1, 0, 0, 0, 0 
+Job =  1.779172, 5.084157, 1, 0, 0, 0, 1 
+Job =  2.218693, 9.865094, 4, 0, 0, 0, 2 
+Job =  13.470123, 4.802840, 1, 0, 0, 0, 3 
+Job =  14.641389, 0.911326, 4, 0, 0, 0, 4 
+Job =  14.732414, 7.427182, 2, 0, 0, 0, 5 
+Job =  16.239948, 1.341463, 3, 0, 0, 0, 6 
+Job =  21.238825, 4.073884, 4, 0, 0, 0, 7 
+Job =  26.532125, 4.525918, 2, 0, 0, 0, 8 
+Job =  30.865618, 1.858151, 2, 0, 0, 0, 9 
+Job =  31.483501, 1.163546, 2, 0, 0, 0, 10 
+Job =  31.844551, 2.600641, 1, 0, 0, 0, 11 
+Job =  32.774029, 2.997346, 2, 0, 0, 0, 12 
+Job =  33.975994, 4.132264, 2, 0, 0, 0, 13 
+Job =  37.602028, 6.585845, 2, 0, 0, 0, 14 
+Job =  40.192284, 5.479276, 2, 0, 0, 0, 15 
+Job =  42.129986, 1.815269, 4, 0, 0, 0, 16 
+Job =  48.364639, 9.930641, 1, 0, 0, 0, 17 
+Job =  50.055744, 1.373351, 3, 0, 0, 0, 18 
+Job =  65.333885, 5.650559, 4, 0, 0, 0, 19 
+Job =  65.516716, 1.619464, 1, 0, 0, 0, 20 
+Job =  65.988396, 8.125001, 2, 0, 0, 0, 21 
+Job =  68.687546, 3.765524, 1, 0, 0, 0, 22 
+Job =  69.566986, 7.755115, 2, 0, 0, 0, 23 
+Job =  70.750252, 1.454512, 3, 0, 0, 0, 24 
+Job =  73.824638, 7.834086, 4, 0, 0, 0, 25 
+Job =  83.063812, 2.654301, 3, 0, 0, 0, 26 
+Job =  90.609673, 6.290976, 4, 0, 0, 0, 27 
+Job =  92.530342, 0.941676, 1, 0, 0, 0, 28 
+Job =  92.618149, 6.649800, 1, 0, 0, 0, 29 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 175 
+file name 0 = ./fcfs_sched_out_run2.txt 
+Starting quanta for process 0: 1
+Starting quanta for process 1: 10
+Starting quanta for process 2: 16
+Starting quanta for process 3: 26
+Starting quanta for process 4: 31
+Starting quanta for process 5: 32
+Starting quanta for process 6: 40
+Starting quanta for process 7: 42
+Starting quanta for process 8: 47
+Starting quanta for process 9: 52
+Starting quanta for process 10: 54
+Starting quanta for process 11: 56
+Starting quanta for process 12: 59
+Starting quanta for process 13: 62
+Starting quanta for process 14: 67
+Starting quanta for process 15: 74
+Starting quanta for process 16: 80
+Starting quanta for process 17: 82
+Starting quanta for process 18: 92
+Starting quanta for process 19: 94
+Displaying stats for algorithm 0 run 2 
+Job Index: 0, Start Time: 1.000000 End Time: 9.771967 
+Job Index: 1, Start Time: 10.000000 End Time: 15.084156 
+Job Index: 2, Start Time: 16.000000 End Time: 25.865093 
+Job Index: 3, Start Time: 26.000000 End Time: 30.802841 
+Job Index: 4, Start Time: 31.000000 End Time: 31.911325 
+Job Index: 5, Start Time: 32.000000 End Time: 39.427181 
+Job Index: 6, Start Time: 40.000000 End Time: 41.341461 
+Job Index: 7, Start Time: 42.000000 End Time: 46.073883 
+Job Index: 8, Start Time: 47.000000 End Time: 51.525917 
+Job Index: 9, Start Time: 52.000000 End Time: 53.858150 
+Job Index: 10, Start Time: 54.000000 End Time: 55.163544 
+Job Index: 11, Start Time: 56.000000 End Time: 58.600643 
+Job Index: 12, Start Time: 59.000000 End Time: 61.997345 
+Job Index: 13, Start Time: 62.000000 End Time: 66.132263 
+Job Index: 14, Start Time: 67.000000 End Time: 73.585846 
+Job Index: 15, Start Time: 74.000000 End Time: 79.479279 
+Job Index: 16, Start Time: 80.000000 End Time: 81.815269 
+Job Index: 17, Start Time: 82.000000 End Time: 91.930641 
+Job Index: 18, Start Time: 92.000000 End Time: 93.373352 
+Job Index: 19, Start Time: 94.000000 End Time: 99.650558 
+Average Turnaround Time 27.570660 
+Average Response Time 23.051123 
+Average Waiting Time 23.051123 
+Max End Quantum: 100 
+Num Jobs Done: 20 
+Throughput 0.200000 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 13.424509 
+Algorithm 1 Avg Response Time: 10.726957 
+Algorithm 1 Avg Waiting Time: 10.726957 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.115336 
+Algorithm 2 Avg Turnaround Time: 2.367810 
+Algorithm 2 Avg Response Time: 0.628466 
+Algorithm 2 Avg Waiting Time: 0.628466 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.079630 
+Algorithm 3 Avg Turnaround Time: 3.594030 
+Algorithm 3 Avg Response Time: 1.723584 
+Algorithm 3 Avg Waiting Time: 2.080501 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.086565 
+Algorithm 4 Avg Turnaround Time: 15.445125 
+Algorithm 4 Avg Response Time: 1.574288 
+Algorithm 4 Avg Waiting Time: 13.523740 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.072312 
+Algorithm 5 Avg Turnaround Time: 5.719181 
+Algorithm 5 Avg Response Time: 3.963108 
+Algorithm 5 Avg Waiting Time: 3.982725 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.077493 
+Algorithm 6 Avg Turnaround Time: 8.841784 
+Algorithm 6 Avg Response Time: 3.060191 
+Algorithm 6 Avg Waiting Time: 7.022691 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.054197 
+file name 1 = ./sjf_sched_out_run2.txt 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 175 
+update_quanta_chart:225 quantum_index = 0, job_index = 0, previous_scheduled_quantum_index = 0 
+Failed up update quanta chart -226 for job index 0 at quantum 0 
+Displaying stats for algorithm 1 run 2 
+Job Index: 0, Start Time: 0.000000 End Time: 8.771967 
+Job Index: 1, Start Time: 9.000000 End Time: 14.084156 
+Job Index: 3, Start Time: 15.000000 End Time: 19.802841 
+Job Index: 4, Start Time: 20.000000 End Time: 20.911325 
+Job Index: 6, Start Time: 22.000000 End Time: 23.341463 
+Job Index: 7, Start Time: 25.000000 End Time: 29.073883 
+Job Index: 8, Start Time: 30.000000 End Time: 34.525917 
+Job Index: 10, Start Time: 35.000000 End Time: 36.163544 
+Job Index: 11, Start Time: 38.000000 End Time: 40.600643 
+Job Index: 12, Start Time: 41.000000 End Time: 43.997345 
+Job Index: 16, Start Time: 44.000000 End Time: 45.815269 
+Job Index: 17, Start Time: 49.000000 End Time: 58.930641 
+Job Index: 18, Start Time: 59.000000 End Time: 60.373352 
+Job Index: 19, Start Time: 61.000000 End Time: 66.650558 
+Job Index: 20, Start Time: 67.000000 End Time: 68.619461 
+Job Index: 21, Start Time: 69.000000 End Time: 77.125000 
+Job Index: 24, Start Time: 78.000000 End Time: 79.454514 
+Job Index: 25, Start Time: 82.000000 End Time: 89.834084 
+Job Index: 26, Start Time: 90.000000 End Time: 92.654305 
+Job Index: 27, Start Time: 93.000000 End Time: 99.290977 
+Average Turnaround Time 8.193865 
+Average Response Time 4.042802 
+Average Waiting Time 4.042802 
+Max End Quantum: 100 
+Num Jobs Done: 20 
+Throughput 0.200000 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 13.424509 
+Algorithm 1 Avg Response Time: 10.726957 
+Algorithm 1 Avg Waiting Time: 10.726957 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.115336 
+Algorithm 2 Avg Turnaround Time: 4.006583 
+Algorithm 2 Avg Response Time: 1.437026 
+Algorithm 2 Avg Waiting Time: 1.437026 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.119630 
+Algorithm 3 Avg Turnaround Time: 3.594030 
+Algorithm 3 Avg Response Time: 1.723584 
+Algorithm 3 Avg Waiting Time: 2.080501 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.086565 
+Algorithm 4 Avg Turnaround Time: 15.445125 
+Algorithm 4 Avg Response Time: 1.574288 
+Algorithm 4 Avg Waiting Time: 13.523740 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.072312 
+Algorithm 5 Avg Turnaround Time: 5.719181 
+Algorithm 5 Avg Response Time: 3.963108 
+Algorithm 5 Avg Waiting Time: 3.982725 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.077493 
+Algorithm 6 Avg Turnaround Time: 8.841784 
+Algorithm 6 Avg Response Time: 3.060191 
+Algorithm 6 Avg Waiting Time: 7.022691 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.054197 
+file name 2 = ./srt_sched_out_run2.txt 
+Max Quantum: 100 
+2929292929Displaying stats for algorithm 2 run 2 
+Job Index: 0, Start Time: 1.000000 End Time: 15.771967 
+Job Index: 1, Start Time: 2.000000 End Time: 7.084157 
+Job Index: 3, Start Time: 19.000000 End Time: 23.802841 
+Job Index: 4, Start Time: 16.000000 End Time: 16.911325 
+Job Index: 5, Start Time: 80.000000 End Time: 90.427185 
+Job Index: 6, Start Time: 17.000000 End Time: 18.341463 
+Job Index: 7, Start Time: 24.000000 End Time: 28.073883 
+Job Index: 8, Start Time: 29.000000 End Time: 37.525917 
+Job Index: 9, Start Time: 31.000000 End Time: 32.858150 
+Job Index: 10, Start Time: 33.000000 End Time: 34.163544 
+Job Index: 11, Start Time: 38.000000 End Time: 40.600643 
+Job Index: 12, Start Time: 41.000000 End Time: 43.997345 
+Job Index: 13, Start Time: 46.000000 End Time: 50.132263 
+Job Index: 14, Start Time: 59.000000 End Time: 65.585846 
+Job Index: 15, Start Time: 53.000000 End Time: 58.479275 
+Job Index: 16, Start Time: 44.000000 End Time: 45.815269 
+Job Index: 18, Start Time: 51.000000 End Time: 52.373352 
+Job Index: 19, Start Time: 68.000000 End Time: 79.650558 
+Job Index: 20, Start Time: 66.000000 End Time: 67.619461 
+Job Index: 22, Start Time: 69.000000 End Time: 74.765526 
+Job Index: 24, Start Time: 71.000000 End Time: 72.454514 
+Job Index: 26, Start Time: 84.000000 End Time: 86.654305 
+Job Index: 27, Start Time: 91.000000 End Time: 98.290977 
+Job Index: 28, Start Time: 93.000000 End Time: 93.941673 
+Job Index: 29, Start Time: 99.000000 End Time: 105.649803 
+Average Turnaround Time 10.872023 
+Average Response Time 6.233172 
+Average Waiting Time 7.113173 
+Max End Quantum: 106 
+Num Jobs Done: 25 
+Throughput 0.235849 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 13.424509 
+Algorithm 1 Avg Response Time: 10.726957 
+Algorithm 1 Avg Waiting Time: 10.726957 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.115336 
+Algorithm 2 Avg Turnaround Time: 4.006583 
+Algorithm 2 Avg Response Time: 1.437026 
+Algorithm 2 Avg Waiting Time: 1.437026 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.119630 
+Algorithm 3 Avg Turnaround Time: 5.768435 
+Algorithm 3 Avg Response Time: 2.970218 
+Algorithm 3 Avg Waiting Time: 3.503135 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.133735 
+Algorithm 4 Avg Turnaround Time: 15.445125 
+Algorithm 4 Avg Response Time: 1.574288 
+Algorithm 4 Avg Waiting Time: 13.523740 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.072312 
+Algorithm 5 Avg Turnaround Time: 5.719181 
+Algorithm 5 Avg Response Time: 3.963108 
+Algorithm 5 Avg Waiting Time: 3.982725 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.077493 
+Algorithm 6 Avg Turnaround Time: 8.841784 
+Algorithm 6 Avg Response Time: 3.060191 
+Algorithm 6 Avg Waiting Time: 7.022691 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.054197 
+file name 3 = ./rr_sched_out_run2.txt 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 175 
+Max Quantum: 175 
+Displaying stats for algorithm 3 run 2 
+Job Index: 0, Start Time: 1.000000 End Time: 31.771967 
+Job Index: 1, Start Time: 3.000000 End Time: 21.084156 
+Job Index: 2, Start Time: 4.000000 End Time: 80.865097 
+Job Index: 3, Start Time: 17.000000 End Time: 44.802841 
+Job Index: 4, Start Time: 18.000000 End Time: 18.911325 
+Job Index: 5, Start Time: 23.000000 End Time: 108.427185 
+Job Index: 6, Start Time: 19.000000 End Time: 24.341463 
+Job Index: 7, Start Time: 29.000000 End Time: 68.073883 
+Job Index: 8, Start Time: 30.000000 End Time: 81.525917 
+Job Index: 9, Start Time: 36.000000 End Time: 47.858150 
+Job Index: 10, Start Time: 37.000000 End Time: 60.163544 
+Job Index: 11, Start Time: 38.000000 End Time: 69.600639 
+Job Index: 12, Start Time: 39.000000 End Time: 61.997345 
+Job Index: 13, Start Time: 40.000000 End Time: 115.132263 
+Job Index: 14, Start Time: 41.000000 End Time: 102.585846 
+Job Index: 15, Start Time: 42.000000 End Time: 94.479279 
+Job Index: 16, Start Time: 53.000000 End Time: 64.815269 
+Job Index: 17, Start Time: 54.000000 End Time: 135.930634 
+Job Index: 18, Start Time: 55.000000 End Time: 65.373352 
+Job Index: 19, Start Time: 73.000000 End Time: 116.650558 
+Job Index: 20, Start Time: 74.000000 End Time: 86.619461 
+Job Index: 21, Start Time: 75.000000 End Time: 134.125000 
+Job Index: 22, Start Time: 76.000000 End Time: 105.765526 
+Job Index: 23, Start Time: 77.000000 End Time: 129.755112 
+Job Index: 24, Start Time: 78.000000 End Time: 89.454514 
+Job Index: 25, Start Time: 79.000000 End Time: 132.834091 
+Job Index: 26, Start Time: 90.000000 End Time: 114.654305 
+Average Turnaround Time 42.748989 
+Average Response Time 5.467561 
+Average Waiting Time 38.171265 
+Max End Quantum: 136 
+Num Jobs Done: 27 
+Throughput 0.198529 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 13.424509 
+Algorithm 1 Avg Response Time: 10.726957 
+Algorithm 1 Avg Waiting Time: 10.726957 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.115336 
+Algorithm 2 Avg Turnaround Time: 4.006583 
+Algorithm 2 Avg Response Time: 1.437026 
+Algorithm 2 Avg Waiting Time: 1.437026 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.119630 
+Algorithm 3 Avg Turnaround Time: 5.768435 
+Algorithm 3 Avg Response Time: 2.970218 
+Algorithm 3 Avg Waiting Time: 3.503135 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.133735 
+Algorithm 4 Avg Turnaround Time: 23.994923 
+Algorithm 4 Avg Response Time: 2.667800 
+Algorithm 4 Avg Waiting Time: 21.157993 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.112018 
+Algorithm 5 Avg Turnaround Time: 5.719181 
+Algorithm 5 Avg Response Time: 3.963108 
+Algorithm 5 Avg Waiting Time: 3.982725 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.077493 
+Algorithm 6 Avg Turnaround Time: 8.841784 
+Algorithm 6 Avg Response Time: 3.060191 
+Algorithm 6 Avg Waiting Time: 7.022691 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.054197 
+file name 4 = ./hpf_np_sched_out_run2.txt 
+Max Quantum: 100 
+
+per queue analysis:
+number of each priority done:
+ 1: 9, 2: 10, 3: 0, 4: 0
+Average turnaround time per priority: (-1 means N/A)
+ 1:   7.87, 2:  16.93, 3:  -1.00, 4:  -1.00
+Average waiting time per priority: (-1 means N/A)
+ 1:   2.97, 2:  11.93, 3:  -1.00, 4:  -1.00
+Average response time per priority: (-1 means N/A)
+ 1:   2.85, 2:  11.93, 3:  -1.00, 4:  -1.00
+Throughput per priority:
+ 1:   0.09, 2:   0.10, 3:   0.00, 4:   0.00
+Displaying stats for algorithm 4 run 2 
+Job Index: 0, Start Time: 1.000000 End Time: 9.771967 
+Job Index: 1, Start Time: 10.000000 End Time: 15.084156 
+Job Index: 3, Start Time: 16.000000 End Time: 20.802841 
+Job Index: 5, Start Time: 21.000000 End Time: 28.427181 
+Job Index: 8, Start Time: 29.000000 End Time: 33.525917 
+Job Index: 9, Start Time: 37.000000 End Time: 38.858150 
+Job Index: 10, Start Time: 39.000000 End Time: 40.163544 
+Job Index: 11, Start Time: 34.000000 End Time: 36.600643 
+Job Index: 12, Start Time: 41.000000 End Time: 43.997345 
+Job Index: 13, Start Time: 44.000000 End Time: 48.132263 
+Job Index: 14, Start Time: 59.000000 End Time: 65.585846 
+Job Index: 15, Start Time: 68.000000 End Time: 73.479279 
+Job Index: 17, Start Time: 49.000000 End Time: 58.930641 
+Job Index: 20, Start Time: 66.000000 End Time: 67.619461 
+Job Index: 21, Start Time: 78.000000 End Time: 86.125000 
+Job Index: 22, Start Time: 74.000000 End Time: 77.765526 
+Job Index: 23, Start Time: 87.000000 End Time: 94.755112 
+Job Index: 28, Start Time: 95.000000 End Time: 95.941673 
+Job Index: 29, Start Time: 96.000000 End Time: 103.649803 
+Average Turnaround Time 12.641534 
+Average Response Time 7.630148 
+Average Waiting Time 7.682779 
+Max End Quantum: 104 
+Num Jobs Done: 19 
+Throughput 0.182692 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 13.424509 
+Algorithm 1 Avg Response Time: 10.726957 
+Algorithm 1 Avg Waiting Time: 10.726957 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.115336 
+Algorithm 2 Avg Turnaround Time: 4.006583 
+Algorithm 2 Avg Response Time: 1.437026 
+Algorithm 2 Avg Waiting Time: 1.437026 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.119630 
+Algorithm 3 Avg Turnaround Time: 5.768435 
+Algorithm 3 Avg Response Time: 2.970218 
+Algorithm 3 Avg Waiting Time: 3.503135 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.133735 
+Algorithm 4 Avg Turnaround Time: 23.994923 
+Algorithm 4 Avg Response Time: 2.667800 
+Algorithm 4 Avg Waiting Time: 21.157993 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.112018 
+Algorithm 5 Avg Turnaround Time: 8.247488 
+Algorithm 5 Avg Response Time: 5.489138 
+Algorithm 5 Avg Waiting Time: 5.519281 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.114031 
+Algorithm 6 Avg Turnaround Time: 8.841784 
+Algorithm 6 Avg Response Time: 3.060191 
+Algorithm 6 Avg Waiting Time: 7.022691 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.054197 
+file name 5 = ./hpf_pre_sched_out_run2.txt 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 175 
+Max Quantum: 175 
+Displaying stats for algorithm 5 run 2 
+Job Index: 0, Start Time: 1.000000 End Time: 19.771967 
+Job Index: 1, Start Time: 5.000000 End Time: 14.084156 
+Job Index: 3, Start Time: 16.000000 End Time: 23.802841 
+Job Index: 5, Start Time: 30.000000 End Time: 121.427185 
+Job Index: 8, Start Time: 40.000000 End Time: 122.525917 
+Job Index: 9, Start Time: 44.000000 End Time: 45.858150 
+Job Index: 10, Start Time: 47.000000 End Time: 48.163544 
+Job Index: 11, Start Time: 32.000000 End Time: 34.600643 
+Job Index: 12, Start Time: 62.000000 End Time: 64.997345 
+Job Index: 13, Start Time: 65.000000 End Time: 107.132263 
+Job Index: 14, Start Time: 81.000000 End Time: 111.585846 
+Job Index: 15, Start Time: 85.000000 End Time: 113.479279 
+Job Index: 17, Start Time: 49.000000 End Time: 58.930641 
+Job Index: 20, Start Time: 66.000000 End Time: 67.619461 
+Job Index: 21, Start Time: 89.000000 End Time: 128.125000 
+Job Index: 22, Start Time: 70.000000 End Time: 73.765526 
+Job Index: 28, Start Time: 93.000000 End Time: 93.941673 
+Job Index: 29, Start Time: 97.000000 End Time: 103.649803 
+Average Turnaround Time 34.666725 
+Average Response Time 13.474434 
+Average Waiting Time 29.863321 
+Max End Quantum: 129 
+Num Jobs Done: 18 
+Throughput 0.139535 jobs/quantum
+Average Priority 1 Turnaround Time 8.316990 
+Average Priority 1 Response Time 1.520689 
+Average Priority 1 Waiting Time 3.409578 
+Priority 1 Throughput 0.086538 jobs/quantum
+Average Priority 2 Turnaround Time 61.016460 
+Average Priority 2 Response Time 25.428179 
+Average Priority 2 Waiting Time 56.317062 
+Priority 2 Throughput 0.069767 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 13.424509 
+Algorithm 1 Avg Response Time: 10.726957 
+Algorithm 1 Avg Waiting Time: 10.726957 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.115336 
+Algorithm 2 Avg Turnaround Time: 4.006583 
+Algorithm 2 Avg Response Time: 1.437026 
+Algorithm 2 Avg Waiting Time: 1.437026 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.119630 
+Algorithm 3 Avg Turnaround Time: 5.768435 
+Algorithm 3 Avg Response Time: 2.970218 
+Algorithm 3 Avg Waiting Time: 3.503135 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.133735 
+Algorithm 4 Avg Turnaround Time: 23.994923 
+Algorithm 4 Avg Response Time: 2.667800 
+Algorithm 4 Avg Waiting Time: 21.157993 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.112018 
+Algorithm 5 Avg Turnaround Time: 8.247488 
+Algorithm 5 Avg Response Time: 5.489138 
+Algorithm 5 Avg Waiting Time: 5.519281 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.114031 
+Algorithm 6 Avg Turnaround Time: 15.775128 
+Algorithm 6 Avg Response Time: 5.755078 
+Algorithm 6 Avg Waiting Time: 12.995356 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.082104 
+After sort: 
+Generate more jobs! Gap = 3
+Job =  0.965889, 2.841920, 4, 0, 0, 0, 0 
+Job =  2.377658, 2.565572, 1, 0, 0, 0, 1 
+Job =  7.195050, 9.289024, 2, 0, 0, 0, 2 
+Job =  14.423353, 1.112958, 4, 0, 0, 0, 3 
+Job =  15.272551, 0.231060, 2, 0, 0, 0, 4 
+Job =  16.833374, 2.385874, 1, 0, 0, 0, 5 
+Job =  20.599108, 7.524004, 1, 0, 0, 0, 6 
+Job =  22.766741, 8.710610, 3, 0, 0, 0, 7 
+Job =  23.345119, 2.989276, 4, 0, 0, 0, 8 
+Job =  23.470716, 4.007333, 4, 0, 0, 0, 9 
+Job =  26.121529, 6.727240, 1, 0, 0, 0, 10 
+Job =  29.996922, 2.970162, 4, 0, 0, 0, 11 
+Job =  33.472973, 6.488688, 4, 0, 0, 0, 12 
+Job =  41.028149, 4.822279, 4, 0, 0, 0, 13 
+Job =  43.860413, 9.051259, 1, 0, 0, 0, 14 
+Job =  45.064072, 7.783989, 1, 0, 0, 0, 15 
+Job =  47.633938, 3.017597, 2, 0, 0, 0, 16 
+Job =  49.523621, 6.585278, 2, 0, 0, 0, 17 
+Job =  49.851803, 7.485486, 4, 0, 0, 0, 18 
+Job =  54.976276, 0.192224, 2, 0, 0, 0, 19 
+Job =  57.183651, 9.941105, 3, 0, 0, 0, 20 
+Job =  61.934078, 8.063200, 2, 0, 0, 0, 21 
+Job =  63.323196, 7.827100, 3, 0, 0, 0, 22 
+Job =  67.005363, 1.162892, 1, 0, 0, 0, 23 
+Job =  79.196411, 8.205968, 3, 0, 0, 0, 24 
+Job =  85.108292, 9.003914, 4, 0, 0, 0, 25 
+Job =  86.299889, 3.775045, 2, 0, 0, 0, 26 
+Job =  91.572090, 2.382969, 2, 0, 0, 0, 27 
+Job =  98.422455, 5.582432, 1, 0, 0, 0, 28 
+Job =  98.568886, 5.129613, 3, 0, 0, 0, 29 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 199 
+file name 0 = ./fcfs_sched_out_run3.txt 
+Starting quanta for process 0: 1
+Starting quanta for process 1: 4
+Starting quanta for process 2: 8
+Starting quanta for process 3: 18
+Starting quanta for process 4: 20
+Starting quanta for process 5: 21
+Starting quanta for process 6: 24
+Starting quanta for process 7: 32
+Starting quanta for process 8: 41
+Starting quanta for process 9: 44
+Starting quanta for process 10: 49
+Starting quanta for process 11: 56
+Starting quanta for process 12: 59
+Starting quanta for process 13: 66
+Starting quanta for process 14: 71
+Starting quanta for process 15: 81
+Starting quanta for process 16: 89
+Starting quanta for process 17: 93
+Displaying stats for algorithm 0 run 3 
+Job Index: 0, Start Time: 1.000000 End Time: 3.841920 
+Job Index: 1, Start Time: 4.000000 End Time: 6.565572 
+Job Index: 2, Start Time: 8.000000 End Time: 17.289024 
+Job Index: 3, Start Time: 18.000000 End Time: 19.112957 
+Job Index: 4, Start Time: 20.000000 End Time: 20.231060 
+Job Index: 5, Start Time: 21.000000 End Time: 23.385874 
+Job Index: 6, Start Time: 24.000000 End Time: 31.524004 
+Job Index: 7, Start Time: 32.000000 End Time: 40.710609 
+Job Index: 8, Start Time: 41.000000 End Time: 43.989277 
+Job Index: 9, Start Time: 44.000000 End Time: 48.007332 
+Job Index: 10, Start Time: 49.000000 End Time: 55.727242 
+Job Index: 11, Start Time: 56.000000 End Time: 58.970161 
+Job Index: 12, Start Time: 59.000000 End Time: 65.488686 
+Job Index: 13, Start Time: 66.000000 End Time: 70.822281 
+Job Index: 14, Start Time: 71.000000 End Time: 80.051262 
+Job Index: 15, Start Time: 81.000000 End Time: 88.783989 
+Job Index: 16, Start Time: 89.000000 End Time: 92.017593 
+Job Index: 17, Start Time: 93.000000 End Time: 99.585281 
+Average Turnaround Time 22.341831 
+Average Response Time 17.391602 
+Average Waiting Time 17.391602 
+Max End Quantum: 100 
+Num Jobs Done: 18 
+Throughput 0.180000 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 17.892874 
+Algorithm 1 Avg Response Time: 14.205278 
+Algorithm 1 Avg Waiting Time: 14.205278 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.151336 
+Algorithm 2 Avg Turnaround Time: 4.006583 
+Algorithm 2 Avg Response Time: 1.437026 
+Algorithm 2 Avg Waiting Time: 1.437026 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.119630 
+Algorithm 3 Avg Turnaround Time: 5.768435 
+Algorithm 3 Avg Response Time: 2.970218 
+Algorithm 3 Avg Waiting Time: 3.503135 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.133735 
+Algorithm 4 Avg Turnaround Time: 23.994923 
+Algorithm 4 Avg Response Time: 2.667800 
+Algorithm 4 Avg Waiting Time: 21.157993 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.112018 
+Algorithm 5 Avg Turnaround Time: 8.247488 
+Algorithm 5 Avg Response Time: 5.489138 
+Algorithm 5 Avg Waiting Time: 5.519281 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.114031 
+Algorithm 6 Avg Turnaround Time: 15.775128 
+Algorithm 6 Avg Response Time: 5.755078 
+Algorithm 6 Avg Waiting Time: 12.995356 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.082104 
+file name 1 = ./sjf_sched_out_run3.txt 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 199 
+update_quanta_chart:225 quantum_index = 0, job_index = 0, previous_scheduled_quantum_index = 0 
+Failed up update quanta chart -226 for job index 0 at quantum 0 
+Displaying stats for algorithm 1 run 3 
+Job Index: 0, Start Time: 0.000000 End Time: 2.841920 
+Job Index: 1, Start Time: 3.000000 End Time: 5.565572 
+Job Index: 2, Start Time: 6.000000 End Time: 15.289024 
+Job Index: 3, Start Time: 16.000000 End Time: 17.112957 
+Job Index: 4, Start Time: 18.000000 End Time: 18.231060 
+Job Index: 5, Start Time: 19.000000 End Time: 21.385874 
+Job Index: 6, Start Time: 22.000000 End Time: 29.524004 
+Job Index: 8, Start Time: 30.000000 End Time: 32.989277 
+Job Index: 11, Start Time: 33.000000 End Time: 35.970161 
+Job Index: 12, Start Time: 39.000000 End Time: 45.488689 
+Job Index: 13, Start Time: 46.000000 End Time: 50.822281 
+Job Index: 16, Start Time: 51.000000 End Time: 54.017597 
+Job Index: 19, Start Time: 56.000000 End Time: 56.192223 
+Job Index: 20, Start Time: 60.000000 End Time: 69.941101 
+Job Index: 23, Start Time: 70.000000 End Time: 71.162895 
+Job Index: 24, Start Time: 74.000000 End Time: 82.205971 
+Job Index: 25, Start Time: 83.000000 End Time: 92.003914 
+Job Index: 27, Start Time: 93.000000 End Time: 95.382973 
+Job Index: 28, Start Time: 97.000000 End Time: 102.582436 
+Average Turnaround Time 5.900069 
+Average Response Time 1.546915 
+Average Waiting Time 1.546915 
+Max End Quantum: 103 
+Num Jobs Done: 19 
+Throughput 0.184466 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 17.892874 
+Algorithm 1 Avg Response Time: 14.205278 
+Algorithm 1 Avg Waiting Time: 14.205278 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.151336 
+Algorithm 2 Avg Turnaround Time: 5.186596 
+Algorithm 2 Avg Response Time: 1.746409 
+Algorithm 2 Avg Waiting Time: 1.746409 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.156523 
+Algorithm 3 Avg Turnaround Time: 5.768435 
+Algorithm 3 Avg Response Time: 2.970218 
+Algorithm 3 Avg Waiting Time: 3.503135 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.133735 
+Algorithm 4 Avg Turnaround Time: 23.994923 
+Algorithm 4 Avg Response Time: 2.667800 
+Algorithm 4 Avg Waiting Time: 21.157993 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.112018 
+Algorithm 5 Avg Turnaround Time: 8.247488 
+Algorithm 5 Avg Response Time: 5.489138 
+Algorithm 5 Avg Waiting Time: 5.519281 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.114031 
+Algorithm 6 Avg Turnaround Time: 15.775128 
+Algorithm 6 Avg Response Time: 5.755078 
+Algorithm 6 Avg Waiting Time: 12.995356 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.082104 
+file name 2 = ./srt_sched_out_run3.txt 
+Max Quantum: 100 
+29292929Displaying stats for algorithm 2 run 3 
+Job Index: 0, Start Time: 1.000000 End Time: 3.841920 
+Job Index: 1, Start Time: 4.000000 End Time: 6.565572 
+Job Index: 2, Start Time: 8.000000 End Time: 20.289024 
+Job Index: 3, Start Time: 15.000000 End Time: 16.112957 
+Job Index: 4, Start Time: 17.000000 End Time: 17.231060 
+Job Index: 5, Start Time: 21.000000 End Time: 23.385874 
+Job Index: 6, Start Time: 76.000000 End Time: 83.524002 
+Job Index: 8, Start Time: 24.000000 End Time: 26.989277 
+Job Index: 9, Start Time: 27.000000 End Time: 31.007334 
+Job Index: 10, Start Time: 47.000000 End Time: 58.727242 
+Job Index: 11, Start Time: 32.000000 End Time: 34.970161 
+Job Index: 12, Start Time: 35.000000 End Time: 41.488689 
+Job Index: 13, Start Time: 42.000000 End Time: 46.822281 
+Job Index: 15, Start Time: 84.000000 End Time: 98.783989 
+Job Index: 16, Start Time: 48.000000 End Time: 51.017597 
+Job Index: 17, Start Time: 59.000000 End Time: 65.585281 
+Job Index: 18, Start Time: 66.000000 End Time: 75.485489 
+Job Index: 19, Start Time: 55.000000 End Time: 55.192223 
+Job Index: 23, Start Time: 68.000000 End Time: 69.162895 
+Job Index: 26, Start Time: 87.000000 End Time: 90.775047 
+Job Index: 27, Start Time: 92.000000 End Time: 94.382973 
+Job Index: 29, Start Time: 99.000000 End Time: 104.129616 
+Average Turnaround Time 12.266916 
+Average Response Time 7.336440 
+Average Waiting Time 8.109169 
+Max End Quantum: 105 
+Num Jobs Done: 22 
+Throughput 0.209524 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 17.892874 
+Algorithm 1 Avg Response Time: 14.205278 
+Algorithm 1 Avg Waiting Time: 14.205278 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.151336 
+Algorithm 2 Avg Turnaround Time: 5.186596 
+Algorithm 2 Avg Response Time: 1.746409 
+Algorithm 2 Avg Waiting Time: 1.746409 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.156523 
+Algorithm 3 Avg Turnaround Time: 8.221818 
+Algorithm 3 Avg Response Time: 4.437506 
+Algorithm 3 Avg Waiting Time: 5.124969 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.175640 
+Algorithm 4 Avg Turnaround Time: 23.994923 
+Algorithm 4 Avg Response Time: 2.667800 
+Algorithm 4 Avg Waiting Time: 21.157993 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.112018 
+Algorithm 5 Avg Turnaround Time: 8.247488 
+Algorithm 5 Avg Response Time: 5.489138 
+Algorithm 5 Avg Waiting Time: 5.519281 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.114031 
+Algorithm 6 Avg Turnaround Time: 15.775128 
+Algorithm 6 Avg Response Time: 5.755078 
+Algorithm 6 Avg Waiting Time: 12.995356 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.082104 
+file name 3 = ./rr_sched_out_run3.txt 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 199 
+Max Quantum: 199 
+Displaying stats for algorithm 3 run 3 
+Job Index: 0, Start Time: 1.000000 End Time: 3.841920 
+Job Index: 1, Start Time: 4.000000 End Time: 6.565572 
+Job Index: 2, Start Time: 8.000000 End Time: 20.289024 
+Job Index: 3, Start Time: 16.000000 End Time: 19.112957 
+Job Index: 4, Start Time: 17.000000 End Time: 17.231060 
+Job Index: 5, Start Time: 21.000000 End Time: 29.385874 
+Job Index: 6, Start Time: 22.000000 End Time: 98.524002 
+Job Index: 7, Start Time: 25.000000 End Time: 113.710609 
+Job Index: 8, Start Time: 26.000000 End Time: 38.989277 
+Job Index: 9, Start Time: 27.000000 End Time: 69.007332 
+Job Index: 10, Start Time: 28.000000 End Time: 99.727242 
+Job Index: 11, Start Time: 34.000000 End Time: 46.970161 
+Job Index: 12, Start Time: 35.000000 End Time: 125.488686 
+Job Index: 13, Start Time: 47.000000 End Time: 102.822281 
+Job Index: 14, Start Time: 48.000000 End Time: 155.051254 
+Job Index: 15, Start Time: 49.000000 End Time: 136.783997 
+Job Index: 16, Start Time: 50.000000 End Time: 89.017593 
+Job Index: 17, Start Time: 51.000000 End Time: 143.585281 
+Job Index: 18, Start Time: 52.000000 End Time: 137.485489 
+Job Index: 19, Start Time: 64.000000 End Time: 64.192223 
+Job Index: 20, Start Time: 77.000000 End Time: 163.941101 
+Job Index: 21, Start Time: 65.000000 End Time: 149.063202 
+Job Index: 22, Start Time: 66.000000 End Time: 145.827103 
+Job Index: 23, Start Time: 80.000000 End Time: 94.162895 
+Job Index: 24, Start Time: 81.000000 End Time: 162.205963 
+Job Index: 25, Start Time: 95.000000 End Time: 160.003906 
+Job Index: 26, Start Time: 96.000000 End Time: 134.775040 
+Job Index: 27, Start Time: 97.000000 End Time: 124.382973 
+Average Turnaround Time 53.276489 
+Average Response Time 4.342778 
+Average Waiting Time 48.021343 
+Max End Quantum: 164 
+Num Jobs Done: 28 
+Throughput 0.170732 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 17.892874 
+Algorithm 1 Avg Response Time: 14.205278 
+Algorithm 1 Avg Waiting Time: 14.205278 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.151336 
+Algorithm 2 Avg Turnaround Time: 5.186596 
+Algorithm 2 Avg Response Time: 1.746409 
+Algorithm 2 Avg Waiting Time: 1.746409 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.156523 
+Algorithm 3 Avg Turnaround Time: 8.221818 
+Algorithm 3 Avg Response Time: 4.437506 
+Algorithm 3 Avg Waiting Time: 5.124969 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.175640 
+Algorithm 4 Avg Turnaround Time: 34.650219 
+Algorithm 4 Avg Response Time: 3.536356 
+Algorithm 4 Avg Waiting Time: 30.762262 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.146164 
+Algorithm 5 Avg Turnaround Time: 8.247488 
+Algorithm 5 Avg Response Time: 5.489138 
+Algorithm 5 Avg Waiting Time: 5.519281 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.114031 
+Algorithm 6 Avg Turnaround Time: 15.775128 
+Algorithm 6 Avg Response Time: 5.755078 
+Algorithm 6 Avg Waiting Time: 12.995356 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.082104 
+file name 4 = ./hpf_np_sched_out_run3.txt 
+Max Quantum: 100 
+
+per queue analysis:
+number of each priority done:
+ 1: 7, 2: 7, 3: 2, 4: 1
+Average turnaround time per priority: (-1 means N/A)
+ 1:   8.19, 2:  18.33, 3:  33.85, 4:   2.88
+Average waiting time per priority: (-1 means N/A)
+ 1:   2.88, 2:  13.88, 3:  24.52, 4:   0.03
+Average response time per priority: (-1 means N/A)
+ 1:   2.88, 2:  13.88, 3:  24.02, 4:   0.03
+Throughput per priority:
+ 1:   0.07, 2:   0.07, 3:   0.02, 4:   0.01
+Displaying stats for algorithm 4 run 3 
+Job Index: 0, Start Time: 1.000000 End Time: 3.841920 
+Job Index: 1, Start Time: 4.000000 End Time: 6.565572 
+Job Index: 2, Start Time: 8.000000 End Time: 17.289024 
+Job Index: 4, Start Time: 36.000000 End Time: 36.231060 
+Job Index: 5, Start Time: 18.000000 End Time: 20.385874 
+Job Index: 6, Start Time: 21.000000 End Time: 28.524004 
+Job Index: 7, Start Time: 37.000000 End Time: 45.710609 
+Job Index: 10, Start Time: 29.000000 End Time: 35.727242 
+Job Index: 14, Start Time: 46.000000 End Time: 55.051258 
+Job Index: 15, Start Time: 56.000000 End Time: 63.783989 
+Job Index: 16, Start Time: 64.000000 End Time: 67.017593 
+Job Index: 17, Start Time: 70.000000 End Time: 76.585281 
+Job Index: 19, Start Time: 77.000000 End Time: 77.192223 
+Job Index: 20, Start Time: 91.000000 End Time: 101.941101 
+Job Index: 21, Start Time: 78.000000 End Time: 86.063202 
+Job Index: 23, Start Time: 68.000000 End Time: 69.162895 
+Job Index: 26, Start Time: 87.000000 End Time: 90.775047 
+Average Turnaround Time 15.072628 
+Average Response Time 9.728634 
+Average Waiting Time 9.787459 
+Max End Quantum: 102 
+Num Jobs Done: 17 
+Throughput 0.166667 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 17.892874 
+Algorithm 1 Avg Response Time: 14.205278 
+Algorithm 1 Avg Waiting Time: 14.205278 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.151336 
+Algorithm 2 Avg Turnaround Time: 5.186596 
+Algorithm 2 Avg Response Time: 1.746409 
+Algorithm 2 Avg Waiting Time: 1.746409 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.156523 
+Algorithm 3 Avg Turnaround Time: 8.221818 
+Algorithm 3 Avg Response Time: 4.437506 
+Algorithm 3 Avg Waiting Time: 5.124969 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.175640 
+Algorithm 4 Avg Turnaround Time: 34.650219 
+Algorithm 4 Avg Response Time: 3.536356 
+Algorithm 4 Avg Waiting Time: 30.762262 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.146164 
+Algorithm 5 Avg Turnaround Time: 11.262013 
+Algorithm 5 Avg Response Time: 7.434865 
+Algorithm 5 Avg Waiting Time: 7.476773 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.147365 
+Algorithm 6 Avg Turnaround Time: 15.775128 
+Algorithm 6 Avg Response Time: 5.755078 
+Algorithm 6 Avg Waiting Time: 12.995356 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.082104 
+file name 5 = ./hpf_pre_sched_out_run3.txt 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 199 
+Max Quantum: 199 
+Displaying stats for algorithm 5 run 3 
+Job Index: 0, Start Time: 1.000000 End Time: 121.841919 
+Job Index: 1, Start Time: 3.000000 End Time: 5.565572 
+Job Index: 2, Start Time: 9.000000 End Time: 93.289024 
+Job Index: 4, Start Time: 73.000000 End Time: 73.231064 
+Job Index: 5, Start Time: 17.000000 End Time: 19.385874 
+Job Index: 6, Start Time: 22.000000 End Time: 34.524002 
+Job Index: 10, Start Time: 29.000000 End Time: 38.727242 
+Job Index: 14, Start Time: 44.000000 End Time: 61.051258 
+Job Index: 15, Start Time: 48.000000 End Time: 59.783989 
+Job Index: 16, Start Time: 75.000000 End Time: 78.017593 
+Job Index: 17, Start Time: 79.000000 End Time: 109.585281 
+Job Index: 19, Start Time: 82.000000 End Time: 82.192223 
+Job Index: 21, Start Time: 84.000000 End Time: 116.063202 
+Job Index: 23, Start Time: 68.000000 End Time: 69.162895 
+Job Index: 26, Start Time: 88.000000 End Time: 91.775047 
+Job Index: 28, Start Time: 99.000000 End Time: 104.582436 
+Average Turnaround Time 32.168335 
+Average Response Time 11.057171 
+Average Waiting Time 27.369667 
+Max End Quantum: 122 
+Num Jobs Done: 16 
+Throughput 0.131148 jobs/quantum
+Average Priority 1 Turnaround Time 9.062411 
+Average Priority 1 Response Time 1.214504 
+Average Priority 1 Waiting Time 3.714504 
+Priority 1 Throughput 0.076190 jobs/quantum
+Average Priority 2 Turnaround Time 45.902576 
+Average Priority 2 Response Time 23.880655 
+Average Priority 2 Waiting Time 41.452084 
+Priority 2 Throughput 0.059829 jobs/quantum
+Average Priority 4 Turnaround Time 120.876030 
+Average Priority 4 Response Time 0.034111 
+Average Priority 4 Waiting Time 118.034111 
+Priority 4 Throughput 0.008197 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 17.892874 
+Algorithm 1 Avg Response Time: 14.205278 
+Algorithm 1 Avg Waiting Time: 14.205278 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.151336 
+Algorithm 2 Avg Turnaround Time: 5.186596 
+Algorithm 2 Avg Response Time: 1.746409 
+Algorithm 2 Avg Waiting Time: 1.746409 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.156523 
+Algorithm 3 Avg Turnaround Time: 8.221818 
+Algorithm 3 Avg Response Time: 4.437506 
+Algorithm 3 Avg Waiting Time: 5.124969 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.175640 
+Algorithm 4 Avg Turnaround Time: 34.650219 
+Algorithm 4 Avg Response Time: 3.536356 
+Algorithm 4 Avg Waiting Time: 30.762262 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.146164 
+Algorithm 5 Avg Turnaround Time: 11.262013 
+Algorithm 5 Avg Response Time: 7.434865 
+Algorithm 5 Avg Waiting Time: 7.476773 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.147365 
+Algorithm 6 Avg Turnaround Time: 22.208796 
+Algorithm 6 Avg Response Time: 7.966512 
+Algorithm 6 Avg Waiting Time: 18.469288 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.108333 
+After sort: 
+Generate more jobs! Gap = 3
+Job =  2.065120, 0.469520, 3, 0, 0, 0, 0 
+Job =  5.776300, 4.489762, 4, 0, 0, 0, 1 
+Job =  6.337070, 8.775817, 3, 0, 0, 0, 2 
+Job =  10.211191, 1.906726, 2, 0, 0, 0, 3 
+Job =  11.854919, 0.670939, 4, 0, 0, 0, 4 
+Job =  14.519392, 2.366551, 3, 0, 0, 0, 5 
+Job =  15.189401, 0.175856, 4, 0, 0, 0, 6 
+Job =  15.206903, 7.666325, 3, 0, 0, 0, 7 
+Job =  19.367691, 4.688329, 3, 0, 0, 0, 8 
+Job =  25.561602, 0.721234, 3, 0, 0, 0, 9 
+Job =  31.434435, 6.678531, 4, 0, 0, 0, 10 
+Job =  32.541672, 5.709448, 1, 0, 0, 0, 11 
+Job =  34.462399, 7.273862, 2, 0, 0, 0, 12 
+Job =  38.501396, 8.101541, 4, 0, 0, 0, 13 
+Job =  50.304276, 4.814332, 3, 0, 0, 0, 14 
+Job =  51.425049, 9.559588, 3, 0, 0, 0, 15 
+Job =  59.385155, 0.382368, 1, 0, 0, 0, 16 
+Job =  61.948147, 6.112601, 2, 0, 0, 0, 17 
+Job =  67.136795, 6.214386, 3, 0, 0, 0, 18 
+Job =  67.926262, 9.277296, 2, 0, 0, 0, 19 
+Job =  70.189430, 5.636755, 4, 0, 0, 0, 20 
+Job =  72.178375, 3.828608, 4, 0, 0, 0, 21 
+Job =  74.352150, 6.277475, 3, 0, 0, 0, 22 
+Job =  77.767899, 3.477658, 3, 0, 0, 0, 23 
+Job =  81.122864, 5.112274, 2, 0, 0, 0, 24 
+Job =  85.167656, 3.568372, 3, 0, 0, 0, 25 
+Job =  90.925392, 2.843681, 1, 0, 0, 0, 26 
+Job =  94.905518, 1.559091, 3, 0, 0, 0, 27 
+Job =  96.053581, 7.256876, 3, 0, 0, 0, 28 
+Job =  97.966667, 2.132169, 4, 0, 0, 0, 29 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 175 
+file name 0 = ./fcfs_sched_out_run4.txt 
+Starting quanta for process 0: 3
+Starting quanta for process 1: 6
+Starting quanta for process 2: 11
+Starting quanta for process 3: 20
+Starting quanta for process 4: 22
+Starting quanta for process 5: 23
+Starting quanta for process 6: 26
+Starting quanta for process 7: 27
+Starting quanta for process 8: 35
+Starting quanta for process 9: 40
+Starting quanta for process 10: 41
+Starting quanta for process 11: 48
+Starting quanta for process 12: 54
+Starting quanta for process 13: 62
+Starting quanta for process 14: 71
+Starting quanta for process 15: 76
+Starting quanta for process 16: 86
+Starting quanta for process 17: 87
+Starting quanta for process 18: 94
+Displaying stats for algorithm 0 run 4 
+Job Index: 0, Start Time: 3.000000 End Time: 3.469520 
+Job Index: 1, Start Time: 6.000000 End Time: 10.489761 
+Job Index: 2, Start Time: 11.000000 End Time: 19.775818 
+Job Index: 3, Start Time: 20.000000 End Time: 21.906725 
+Job Index: 4, Start Time: 22.000000 End Time: 22.670940 
+Job Index: 5, Start Time: 23.000000 End Time: 25.366550 
+Job Index: 6, Start Time: 26.000000 End Time: 26.175856 
+Job Index: 7, Start Time: 27.000000 End Time: 34.666325 
+Job Index: 8, Start Time: 35.000000 End Time: 39.688328 
+Job Index: 9, Start Time: 40.000000 End Time: 40.721233 
+Job Index: 10, Start Time: 41.000000 End Time: 47.678532 
+Job Index: 11, Start Time: 48.000000 End Time: 53.709450 
+Job Index: 12, Start Time: 54.000000 End Time: 61.273861 
+Job Index: 13, Start Time: 62.000000 End Time: 70.101540 
+Job Index: 14, Start Time: 71.000000 End Time: 75.814331 
+Job Index: 15, Start Time: 76.000000 End Time: 85.559586 
+Job Index: 16, Start Time: 86.000000 End Time: 86.382370 
+Job Index: 17, Start Time: 87.000000 End Time: 93.112602 
+Job Index: 18, Start Time: 94.000000 End Time: 100.214386 
+Average Turnaround Time 19.239412 
+Average Response Time 14.672164 
+Average Waiting Time 14.672164 
+Max End Quantum: 101 
+Num Jobs Done: 19 
+Throughput 0.188119 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 21.740757 
+Algorithm 1 Avg Response Time: 17.139711 
+Algorithm 1 Avg Waiting Time: 17.139711 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.188960 
+Algorithm 2 Avg Turnaround Time: 5.186596 
+Algorithm 2 Avg Response Time: 1.746409 
+Algorithm 2 Avg Waiting Time: 1.746409 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.156523 
+Algorithm 3 Avg Turnaround Time: 8.221818 
+Algorithm 3 Avg Response Time: 4.437506 
+Algorithm 3 Avg Waiting Time: 5.124969 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.175640 
+Algorithm 4 Avg Turnaround Time: 34.650219 
+Algorithm 4 Avg Response Time: 3.536356 
+Algorithm 4 Avg Waiting Time: 30.762262 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.146164 
+Algorithm 5 Avg Turnaround Time: 11.262013 
+Algorithm 5 Avg Response Time: 7.434865 
+Algorithm 5 Avg Waiting Time: 7.476773 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.147365 
+Algorithm 6 Avg Turnaround Time: 22.208796 
+Algorithm 6 Avg Response Time: 7.966512 
+Algorithm 6 Avg Waiting Time: 18.469288 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.108333 
+file name 1 = ./sjf_sched_out_run4.txt 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 175 
+update_quanta_chart:225 quantum_index = 0, job_index = 0, previous_scheduled_quantum_index = 0 
+Failed up update quanta chart -226 for job index 0 at quantum 0 
+Displaying stats for algorithm 1 run 4 
+Job Index: 0, Start Time: 0.000000 End Time: 0.469520 
+Job Index: 1, Start Time: 1.000000 End Time: 5.489762 
+Job Index: 2, Start Time: 6.000000 End Time: 14.775817 
+Job Index: 4, Start Time: 15.000000 End Time: 15.670939 
+Job Index: 6, Start Time: 17.000000 End Time: 17.175856 
+Job Index: 7, Start Time: 19.000000 End Time: 26.666325 
+Job Index: 9, Start Time: 27.000000 End Time: 27.721233 
+Job Index: 10, Start Time: 29.000000 End Time: 35.678532 
+Job Index: 11, Start Time: 36.000000 End Time: 41.709450 
+Job Index: 12, Start Time: 42.000000 End Time: 49.273861 
+Job Index: 13, Start Time: 50.000000 End Time: 58.101540 
+Job Index: 14, Start Time: 59.000000 End Time: 63.814331 
+Job Index: 16, Start Time: 64.000000 End Time: 64.382370 
+Job Index: 17, Start Time: 66.000000 End Time: 72.112602 
+Job Index: 20, Start Time: 73.000000 End Time: 78.636757 
+Job Index: 23, Start Time: 79.000000 End Time: 82.477661 
+Job Index: 25, Start Time: 87.000000 End Time: 90.568375 
+Job Index: 26, Start Time: 92.000000 End Time: 94.843681 
+Job Index: 27, Start Time: 95.000000 End Time: 96.559090 
+Job Index: 28, Start Time: 97.000000 End Time: 104.256874 
+Average Turnaround Time 6.740315 
+Average Response Time 2.421087 
+Average Waiting Time 2.421087 
+Max End Quantum: 105 
+Num Jobs Done: 20 
+Throughput 0.190476 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 21.740757 
+Algorithm 1 Avg Response Time: 17.139711 
+Algorithm 1 Avg Waiting Time: 17.139711 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.188960 
+Algorithm 2 Avg Turnaround Time: 6.534659 
+Algorithm 2 Avg Response Time: 2.230627 
+Algorithm 2 Avg Waiting Time: 2.230627 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.194618 
+Algorithm 3 Avg Turnaround Time: 8.221818 
+Algorithm 3 Avg Response Time: 4.437506 
+Algorithm 3 Avg Waiting Time: 5.124969 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.175640 
+Algorithm 4 Avg Turnaround Time: 34.650219 
+Algorithm 4 Avg Response Time: 3.536356 
+Algorithm 4 Avg Waiting Time: 30.762262 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.146164 
+Algorithm 5 Avg Turnaround Time: 11.262013 
+Algorithm 5 Avg Response Time: 7.434865 
+Algorithm 5 Avg Waiting Time: 7.476773 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.147365 
+Algorithm 6 Avg Turnaround Time: 22.208796 
+Algorithm 6 Avg Response Time: 7.966512 
+Algorithm 6 Avg Waiting Time: 18.469288 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.108333 
+file name 2 = ./srt_sched_out_run4.txt 
+Max Quantum: 100 
+Displaying stats for algorithm 2 run 4 
+Job Index: 0, Start Time: 3.000000 End Time: 3.469520 
+Job Index: 1, Start Time: 6.000000 End Time: 10.489761 
+Job Index: 2, Start Time: 14.000000 End Time: 67.775818 
+Job Index: 3, Start Time: 11.000000 End Time: 13.906726 
+Job Index: 4, Start Time: 12.000000 End Time: 12.670939 
+Job Index: 5, Start Time: 15.000000 End Time: 18.366550 
+Job Index: 6, Start Time: 16.000000 End Time: 16.175856 
+Job Index: 7, Start Time: 19.000000 End Time: 32.666325 
+Job Index: 8, Start Time: 20.000000 End Time: 24.688330 
+Job Index: 9, Start Time: 26.000000 End Time: 26.721233 
+Job Index: 10, Start Time: 39.000000 End Time: 45.678532 
+Job Index: 11, Start Time: 33.000000 End Time: 38.709450 
+Job Index: 12, Start Time: 46.000000 End Time: 53.273861 
+Job Index: 14, Start Time: 54.000000 End Time: 58.814331 
+Job Index: 16, Start Time: 60.000000 End Time: 60.382366 
+Job Index: 17, Start Time: 68.000000 End Time: 74.112602 
+Job Index: 21, Start Time: 75.000000 End Time: 78.828606 
+Job Index: 23, Start Time: 79.000000 End Time: 82.477661 
+Job Index: 24, Start Time: 83.000000 End Time: 88.112274 
+Job Index: 25, Start Time: 89.000000 End Time: 92.568375 
+Job Index: 26, Start Time: 93.000000 End Time: 95.843681 
+Job Index: 27, Start Time: 96.000000 End Time: 97.559090 
+Job Index: 29, Start Time: 98.000000 End Time: 100.132172 
+Average Turnaround Time 8.574958 
+Average Response Time 2.556520 
+Average Waiting Time 4.860868 
+Max End Quantum: 101 
+Num Jobs Done: 23 
+Throughput 0.227723 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 21.740757 
+Algorithm 1 Avg Response Time: 17.139711 
+Algorithm 1 Avg Waiting Time: 17.139711 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.188960 
+Algorithm 2 Avg Turnaround Time: 6.534659 
+Algorithm 2 Avg Response Time: 2.230627 
+Algorithm 2 Avg Waiting Time: 2.230627 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.194618 
+Algorithm 3 Avg Turnaround Time: 9.936810 
+Algorithm 3 Avg Response Time: 4.948810 
+Algorithm 3 Avg Waiting Time: 6.097142 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.221184 
+Algorithm 4 Avg Turnaround Time: 34.650219 
+Algorithm 4 Avg Response Time: 3.536356 
+Algorithm 4 Avg Waiting Time: 30.762262 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.146164 
+Algorithm 5 Avg Turnaround Time: 11.262013 
+Algorithm 5 Avg Response Time: 7.434865 
+Algorithm 5 Avg Waiting Time: 7.476773 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.147365 
+Algorithm 6 Avg Turnaround Time: 22.208796 
+Algorithm 6 Avg Response Time: 7.966512 
+Algorithm 6 Avg Waiting Time: 18.469288 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.108333 
+file name 3 = ./rr_sched_out_run4.txt 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 175 
+Max Quantum: 175 
+Displaying stats for algorithm 3 run 4 
+Job Index: 0, Start Time: 3.000000 End Time: 3.469520 
+Job Index: 1, Start Time: 6.000000 End Time: 15.489761 
+Job Index: 2, Start Time: 8.000000 End Time: 41.775818 
+Job Index: 3, Start Time: 13.000000 End Time: 16.906725 
+Job Index: 4, Start Time: 14.000000 End Time: 14.670939 
+Job Index: 5, Start Time: 19.000000 End Time: 27.366550 
+Job Index: 6, Start Time: 17.000000 End Time: 17.175856 
+Job Index: 7, Start Time: 20.000000 End Time: 65.666321 
+Job Index: 8, Start Time: 21.000000 End Time: 37.688328 
+Job Index: 9, Start Time: 29.000000 End Time: 29.721233 
+Job Index: 10, Start Time: 33.000000 End Time: 89.678528 
+Job Index: 11, Start Time: 34.000000 End Time: 60.709450 
+Job Index: 12, Start Time: 39.000000 End Time: 110.273865 
+Job Index: 13, Start Time: 40.000000 End Time: 101.101540 
+Job Index: 14, Start Time: 56.000000 End Time: 91.814331 
+Job Index: 15, Start Time: 57.000000 End Time: 140.559586 
+Job Index: 16, Start Time: 64.000000 End Time: 64.382370 
+Job Index: 17, Start Time: 70.000000 End Time: 126.112602 
+Job Index: 18, Start Time: 71.000000 End Time: 131.214386 
+Job Index: 19, Start Time: 72.000000 End Time: 141.277298 
+Job Index: 20, Start Time: 73.000000 End Time: 122.636757 
+Job Index: 21, Start Time: 74.000000 End Time: 106.828606 
+Job Index: 22, Start Time: 85.000000 End Time: 139.277481 
+Job Index: 23, Start Time: 86.000000 End Time: 116.477661 
+Job Index: 24, Start Time: 87.000000 End Time: 133.112274 
+Job Index: 25, Start Time: 88.000000 End Time: 124.568375 
+Average Turnaround Time 38.000870 
+Average Response Time 3.733325 
+Average Waiting Time 33.233322 
+Max End Quantum: 142 
+Num Jobs Done: 26 
+Throughput 0.183099 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 21.740757 
+Algorithm 1 Avg Response Time: 17.139711 
+Algorithm 1 Avg Waiting Time: 17.139711 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.188960 
+Algorithm 2 Avg Turnaround Time: 6.534659 
+Algorithm 2 Avg Response Time: 2.230627 
+Algorithm 2 Avg Waiting Time: 2.230627 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.194618 
+Algorithm 3 Avg Turnaround Time: 9.936810 
+Algorithm 3 Avg Response Time: 4.948810 
+Algorithm 3 Avg Waiting Time: 6.097142 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.221184 
+Algorithm 4 Avg Turnaround Time: 42.250393 
+Algorithm 4 Avg Response Time: 4.283021 
+Algorithm 4 Avg Waiting Time: 37.408928 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.182784 
+Algorithm 5 Avg Turnaround Time: 11.262013 
+Algorithm 5 Avg Response Time: 7.434865 
+Algorithm 5 Avg Waiting Time: 7.476773 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.147365 
+Algorithm 6 Avg Turnaround Time: 22.208796 
+Algorithm 6 Avg Response Time: 7.966512 
+Algorithm 6 Avg Waiting Time: 18.469288 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.108333 
+file name 4 = ./hpf_np_sched_out_run4.txt 
+Max Quantum: 100 
+
+per queue analysis:
+number of each priority done:
+ 1: 3, 2: 5, 3: 9, 4: 1
+Average turnaround time per priority: (-1 means N/A)
+ 1:   6.36, 2:  11.00, 3:  18.04, 4:   4.71
+Average waiting time per priority: (-1 means N/A)
+ 1:   3.38, 2:   5.07, 3:  13.01, 4:   0.22
+Average response time per priority: (-1 means N/A)
+ 1:   3.38, 2:   5.07, 3:  12.90, 4:   0.22
+Throughput per priority:
+ 1:   0.03, 2:   0.05, 3:   0.09, 4:   0.01
+Displaying stats for algorithm 4 run 4 
+Job Index: 0, Start Time: 3.000000 End Time: 3.469520 
+Job Index: 1, Start Time: 6.000000 End Time: 10.489761 
+Job Index: 2, Start Time: 13.000000 End Time: 21.775818 
+Job Index: 3, Start Time: 11.000000 End Time: 12.906726 
+Job Index: 5, Start Time: 22.000000 End Time: 24.366550 
+Job Index: 7, Start Time: 25.000000 End Time: 32.666325 
+Job Index: 8, Start Time: 47.000000 End Time: 51.688328 
+Job Index: 9, Start Time: 52.000000 End Time: 52.721233 
+Job Index: 11, Start Time: 33.000000 End Time: 38.709450 
+Job Index: 12, Start Time: 39.000000 End Time: 46.273861 
+Job Index: 14, Start Time: 53.000000 End Time: 57.814331 
+Job Index: 15, Start Time: 58.000000 End Time: 67.559586 
+Job Index: 16, Start Time: 68.000000 End Time: 68.382370 
+Job Index: 17, Start Time: 69.000000 End Time: 75.112602 
+Job Index: 18, Start Time: 95.000000 End Time: 102.214386 
+Job Index: 19, Start Time: 76.000000 End Time: 85.277298 
+Job Index: 24, Start Time: 86.000000 End Time: 91.112274 
+Job Index: 26, Start Time: 92.000000 End Time: 94.843681 
+Average Turnaround Time 13.397823 
+Average Response Time 8.432041 
+Average Waiting Time 8.487597 
+Max End Quantum: 103 
+Num Jobs Done: 18 
+Throughput 0.174757 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 21.740757 
+Algorithm 1 Avg Response Time: 17.139711 
+Algorithm 1 Avg Waiting Time: 17.139711 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.188960 
+Algorithm 2 Avg Turnaround Time: 6.534659 
+Algorithm 2 Avg Response Time: 2.230627 
+Algorithm 2 Avg Waiting Time: 2.230627 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.194618 
+Algorithm 3 Avg Turnaround Time: 9.936810 
+Algorithm 3 Avg Response Time: 4.948810 
+Algorithm 3 Avg Waiting Time: 6.097142 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.221184 
+Algorithm 4 Avg Turnaround Time: 42.250393 
+Algorithm 4 Avg Response Time: 4.283021 
+Algorithm 4 Avg Waiting Time: 37.408928 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.182784 
+Algorithm 5 Avg Turnaround Time: 13.941577 
+Algorithm 5 Avg Response Time: 9.121273 
+Algorithm 5 Avg Waiting Time: 9.174292 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.182316 
+Algorithm 6 Avg Turnaround Time: 22.208796 
+Algorithm 6 Avg Response Time: 7.966512 
+Algorithm 6 Avg Waiting Time: 18.469288 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.108333 
+file name 5 = ./hpf_pre_sched_out_run4.txt 
+get_theoretical_max_quantum_for_job_array:457 Theoretical Max 175 
+Max Quantum: 175 
+Displaying stats for algorithm 5 run 4 
+Job Index: 0, Start Time: 3.000000 End Time: 3.469520 
+Job Index: 2, Start Time: 7.000000 End Time: 53.775818 
+Job Index: 3, Start Time: 11.000000 End Time: 12.906726 
+Job Index: 5, Start Time: 20.000000 End Time: 22.366550 
+Job Index: 7, Start Time: 23.000000 End Time: 100.666321 
+Job Index: 8, Start Time: 27.000000 End Time: 102.688332 
+Job Index: 9, Start Time: 31.000000 End Time: 31.721233 
+Job Index: 11, Start Time: 33.000000 End Time: 38.709450 
+Job Index: 12, Start Time: 42.000000 End Time: 49.273861 
+Job Index: 16, Start Time: 60.000000 End Time: 60.382366 
+Job Index: 17, Start Time: 64.000000 End Time: 70.112602 
+Job Index: 19, Start Time: 71.000000 End Time: 83.277298 
+Job Index: 24, Start Time: 84.000000 End Time: 97.112274 
+Job Index: 26, Start Time: 91.000000 End Time: 93.843681 
+Average Turnaround Time 21.337515 
+Average Response Time 3.244224 
+Average Waiting Time 16.815653 
+Max End Quantum: 103 
+Num Jobs Done: 14 
+Throughput 0.135922 jobs/quantum
+Average Priority 1 Turnaround Time 3.361093 
+Average Priority 1 Response Time 0.382594 
+Average Priority 1 Waiting Time 0.382594 
+Priority 1 Throughput 0.031915 jobs/quantum
+Average Priority 2 Turnaround Time 11.402380 
+Average Priority 2 Response Time 3.265828 
+Average Priority 2 Waiting Time 5.465828 
+Priority 2 Throughput 0.051020 jobs/quantum
+Average Priority 3 Turnaround Time 38.605000 
+Average Priority 3 Response Time 4.657037 
+Average Priority 3 Waiting Time 34.490368 
+Priority 3 Throughput 0.058252 jobs/quantum
+Algorithm 1 Avg Turnaround Time: 21.740757 
+Algorithm 1 Avg Response Time: 17.139711 
+Algorithm 1 Avg Waiting Time: 17.139711 
+Algorithm 1 Avg Throughput Jobs/Quantum: 0.188960 
+Algorithm 2 Avg Turnaround Time: 6.534659 
+Algorithm 2 Avg Response Time: 2.230627 
+Algorithm 2 Avg Waiting Time: 2.230627 
+Algorithm 2 Avg Throughput Jobs/Quantum: 0.194618 
+Algorithm 3 Avg Turnaround Time: 9.936810 
+Algorithm 3 Avg Response Time: 4.948810 
+Algorithm 3 Avg Waiting Time: 6.097142 
+Algorithm 3 Avg Throughput Jobs/Quantum: 0.221184 
+Algorithm 4 Avg Turnaround Time: 42.250393 
+Algorithm 4 Avg Response Time: 4.283021 
+Algorithm 4 Avg Waiting Time: 37.408928 
+Algorithm 4 Avg Throughput Jobs/Quantum: 0.182784 
+Algorithm 5 Avg Turnaround Time: 13.941577 
+Algorithm 5 Avg Response Time: 9.121273 
+Algorithm 5 Avg Waiting Time: 9.174292 
+Algorithm 5 Avg Throughput Jobs/Quantum: 0.182316 
+Algorithm 6 Avg Turnaround Time: 26.476297 
+Algorithm 6 Avg Response Time: 8.615357 
+Algorithm 6 Avg Waiting Time: 21.832418 
+Algorithm 6 Avg Throughput Jobs/Quantum: 0.135518 

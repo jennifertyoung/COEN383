@@ -555,6 +555,7 @@ int create_quanta_chart(int run_number, alg_parameters *alg_ptr)
     }
     //No job can start in quantum 0 since the minimum arrival time is 0.1. Therefore we can hard code in -1 
     //for idle for quantum = 0
+    fprintf(current_quanta_chart_fp, "Quanta Chart for Algorithm=%d Run=%d:\n", alg_ptr->alg, run_number);
     fprintf(current_quanta_chart_fp,"%d, ", -1);
     return 0;
 }
@@ -693,6 +694,7 @@ int cleanup_simulation_run()
     scheduling_stop_called = 0;
     if (current_quanta_chart_fp != NULL)
     {
+        fprintf(current_quanta_chart_fp,"\n\n\n");
         fclose(current_quanta_chart_fp);
         current_quanta_chart_fp = NULL;
     }
