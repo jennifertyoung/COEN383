@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#define NUM_JOBS 90
+#define NUM_JOBS 40
 #include "scheduling_algorithm_api.h"
 
 job job_array[NUM_JOBS];
@@ -52,7 +52,7 @@ int quantum_gap_exceeds_threshold(job * job_array, int quanta_gap_threshold);
 int generate_and_sort_jobs()
 {
     int i = 0;
-    printf("Before sort: \n");
+    //printf("Before sort: \n");
     for (i = 0; i < NUM_JOBS; ++i)
     {
         job_array[i].arrival_time = (float)(rand())/(float)(RAND_MAX) * 99.0; 
@@ -65,7 +65,7 @@ int generate_and_sort_jobs()
         job_array[i].done = 0;
         job_array[i].started = 0;
         job_array[i].sched_allowed = 1;
-        printf("Job =  %.1f, %.1f, %d, %.0f, %.0f, %.0f \n", job_array[i].arrival_time, job_array[i].expected_run_time, job_array[i].priority, job_array[i].start_time, job_array[i].accum_run_time, job_array[i].end_time);
+        //printf("Job =  %.1f, %.1f, %d, %.0f, %.0f, %.0f \n", job_array[i].arrival_time, job_array[i].expected_run_time, job_array[i].priority, job_array[i].start_time, job_array[i].accum_run_time, job_array[i].end_time);
     }
     printf("After sort: \n");
     qsort(job_array, NUM_JOBS, sizeof(job), compare_jobs);
@@ -239,6 +239,7 @@ static int update_quanta_chart(int quantum_index, int job_index)
        if (job_index >= 0 && job_index < NUM_JOBS)
        {
           fprintf(current_quanta_chart_fp,"%d, ", job_array[job_index].jobnum);
+          fflush(current_quanta_chart_fp);
           previous_scheduled_quantum_index = quantum_index;
        }
        else
@@ -252,7 +253,6 @@ static int update_quanta_chart(int quantum_index, int job_index)
 static int scheduling_stop_called = 0;
 int sched_job_at_quantum(int job_index, int quantum)
 {
-//   printf("Job index %d, Quantum %d \n", job_index, quantum);
    if (job_index < 0 || job_index >= NUM_JOBS)
    {
        printf("Invalid job index to schedule %d \n", job_index);
@@ -305,6 +305,10 @@ int sched_job_at_quantum(int job_index, int quantum)
                return (-__LINE__);
            }
        }
+       else
+       {
+           update_quanta_chart(quantum, job_index); 
+       }
        if ( (scheduling_stop_called == 0) && (quantum >= quantum_stop_scheduling - 1) )
        {
            stop_new_jobs_scheduling();
@@ -321,7 +325,8 @@ typedef enum _scheduling_algorithm_e
     srt,
     rr,
     hpf_np,
-    hpf_pre
+    hpf_pre,
+    num_algorithms
 } scheduling_algorithm_e;
 
 
@@ -554,6 +559,11 @@ int create_quanta_chart(int run_number, alg_parameters *alg_ptr)
     return 0;
 }
 
+float run_avg_turnaround[num_algorithms];
+float run_avg_response[num_algorithms];
+float run_avg_waiting[num_algorithms];
+float run_avg_throughput[num_algorithms];
+
 int display_job_stats(scheduling_algorithm_e alg, int run)
 {
     printf("Displaying stats for algorithm %d run %d \n", alg, run);
@@ -564,6 +574,7 @@ int display_job_stats(scheduling_algorithm_e alg, int run)
     float avg_turnaround_time = 0.0;
     float avg_waiting_time = 0.0;
     float avg_response_time = 0.0;
+    float avg_throughput = 0.0;
     int num_done_jobs = 0;
     int max_end_quantum = 0;
     for (job_index = 0; job_index < NUM_JOBS; ++job_index)
@@ -591,14 +602,76 @@ int display_job_stats(scheduling_algorithm_e alg, int run)
         avg_response_time /= (float) num_done_jobs;
         avg_waiting_time /= (float) num_done_jobs;
     }
+    avg_throughput = (float) num_done_jobs / (float) max_end_quantum;
     printf("Average Turnaround Time %f \n", avg_turnaround_time);
     printf("Average Response Time %f \n", avg_response_time);
     printf("Average Waiting Time %f \n", avg_waiting_time);
     printf("Max End Quantum: %d \n", max_end_quantum);
     printf("Num Jobs Done: %d \n", num_done_jobs);
     printf("Throughput %f jobs/quantum\n", (float) num_done_jobs / (float) max_end_quantum);
+    run_avg_turnaround[alg] += avg_turnaround_time;
+    run_avg_response[alg] += avg_response_time;
+    run_avg_waiting[alg] += avg_waiting_time;
+    run_avg_throughput[alg] += avg_throughput;
+
+    if (alg == hpf_pre)
+    {
+       int priority = 1;
+       float per_pri_turnaround[4];
+       float per_pri_response[4];
+       float per_pri_waiting[4];
+       float per_pri_throughput[4];
+       int per_pri_num_done_jobs[4];
+       int per_pri_max_end_quantum[4];
+       for (priority = 1; priority <= 4; ++priority)
+       {
+            per_pri_num_done_jobs[priority-1]=0;
+            per_pri_turnaround[priority-1]=0.0;
+            per_pri_response[priority-1]=0.0;
+            per_pri_waiting[priority-1]=0.0;
+            per_pri_throughput[priority-1]=0.0;
+            per_pri_max_end_quantum[priority-1]=0;
+            for (job_index = 0; job_index < NUM_JOBS; ++job_index)
+            {
+               job * p_job = &job_array[job_index];
+               if (p_job->done && p_job->priority == priority)
+               {
+                   turnaround_time = p_job->end_time - p_job->arrival_time;
+                   response_time = p_job->start_time - p_job->arrival_time;
+                   waiting_time = turnaround_time - p_job->expected_run_time;
+                   per_pri_turnaround[priority-1] += turnaround_time;
+                   per_pri_response[priority-1] += response_time;
+                   per_pri_waiting[priority-1] += waiting_time;
+                   per_pri_num_done_jobs[priority-1] += 1;
+                   if ((int) ceil(p_job->end_time) > per_pri_max_end_quantum[priority-1])
+                   {
+                       per_pri_max_end_quantum[priority-1] = (int) ceil(p_job->end_time);
+                   }
+               }
+            }
+     }
+     for (priority = 1; priority <= 4; ++priority)
+     {
+         if ( per_pri_num_done_jobs[priority-1] != 0 )
+         {
+             per_pri_turnaround[priority-1] /= (float)per_pri_num_done_jobs[priority-1];
+             per_pri_response[priority-1] /= (float)per_pri_num_done_jobs[priority-1];
+             per_pri_waiting[priority-1] /= (float)per_pri_num_done_jobs[priority-1];
+             printf("Average Priority %d Turnaround Time %f \n", priority, per_pri_turnaround[priority-1]);
+             printf("Average Priority %d Response Time %f \n", priority, per_pri_response[priority-1]);
+             printf("Average Priority %d Waiting Time %f \n", priority, per_pri_waiting[priority-1]);
+         } 
+         if (per_pri_max_end_quantum[priority-1] != 0)
+         {
+             per_pri_throughput[priority-1] = (float)per_pri_num_done_jobs[priority-1] / (float)per_pri_max_end_quantum[priority-1];
+             printf("Priority %d Throughput %f jobs/quantum\n", priority,
+                 (float) per_pri_num_done_jobs[priority-1] / (float) per_pri_max_end_quantum[priority-1]);
+         }
+     }
+  }
+
     return 0;
-}    
+}
 
 static void cleanup_job_array()
 {
@@ -642,6 +715,7 @@ int cleanup_overall()
 int main()
 {
     int run = 0;
+    //int seed[] = {10173};
     int seed[] = {10173, 10, 20, 30, 40};
     int num_seeds = sizeof(seed)/sizeof(seed[0]);
     for (run = 0; run < num_seeds; ++run)
@@ -670,6 +744,14 @@ int main()
                printf("Failed to complete run: %d algorithm: %d", run, alg_ptr->alg); 
            }
            display_job_stats(alg_ptr->alg, run);
+           int ii;
+           for (ii = 0; ii < 6; ++ii)
+           {
+              printf("Algorithm %d Avg Turnaround Time: %f \n", ii+1, run_avg_turnaround[ii]/5);
+              printf("Algorithm %d Avg Response Time: %f \n", ii+1, run_avg_response[ii]/5);
+              printf("Algorithm %d Avg Waiting Time: %f \n", ii+1, run_avg_waiting[ii]/5);
+              printf("Algorithm %d Avg Throughput Jobs/Quantum: %f \n", ii+1, run_avg_throughput[ii]/5);
+           }
            status = cleanup_simulation_run();
            if (status != 0)
            {
@@ -679,5 +761,4 @@ int main()
         status = cleanup_overall();
     }
     return 0;
-
 }
